@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 클래스 선택자 */
+
+        .test1 {
+            color: blueviolet;
+        }
+
+        /* 태그 선택자(태그명) */
+        /* 우선순위가 밀리더라도, 스타일 속성이 중복되지 않으면 적용 가능 */
+        div {
+            background: darkgreen;
+            width: 300px;
+            height: 300px;
+        }
+
+        /* 아이디 선택자 (#) */
+        #test1 {
+            background-color: bisque;
+        }
+
+        .test2 {
+            background-color: tan !important;
+            color: blueviolet;
+        }
+        #test2 {
+            background-color: bisque;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>선택자 우선순위</h1>
+    <p>
+        기본적으로 css 속성은 위에서 아래로 적용이 되지만,
+        같은 태그에 여러 개의 css 속성이 설정된 경우에는 우선순위에 따라 적용된다.
+    </p>
+    <p>
+        태그 선택자 < 클래스 선택자 < 아이디 선택자 < 인라인 선택자 < !important 순서
+    </p>
+
+    <br><hr><br>
+
+    <h2>선택자 우선순위 테스트</h2>
+    <div id="test1" class="test1">우선순위테스트</div>
+    
+    <br><hr><br>
+
+    <p id="test2" class="test2" style="background-color: cornflowerblue;">우선순위테스트</p>
+</body>
+</html>

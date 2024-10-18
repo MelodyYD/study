@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 형제 관계 선택자 */
+        #div-test1 {
+            background-color: olivedrab;
+        }
+
+        /* 해당 요소 바로 다음에 특정 타입요소 선택 */
+        #div-test1 + div {
+            background-color: burlywood;
+        }
+
+        /* 해당 요소보다 뒤에 존재하는 특정 타입요소 모두 선택 */
+        /* #div-test1 ~ div {
+            background-color: plum;
+        } */
+
+        #test :first-child {
+            background-color: goldenrod;
+        }
+        /* 태그 종류 상관없이 형제 관계라면 가능 */
+        #test :last-child {
+            background-color: chocolate;
+        }
+
+        /* 형제 관계 태그 중 앞에서 수열번 째 태그 선택 */
+        #test :nth-child(2n) {
+            background-color: hotpink;
+        }
+
+        #test :nth-last-child(2n) {
+            background-color: lightskyblue;
+        }
+
+        #test2 :first-of-type {
+            background-color: bisque;
+        }
+        #test2 :last-of-type {
+            background-color: brown;
+        }
+
+        #test2 p:nth-of-type(2n) {
+            background-color: teal;
+        }
+
+        #test2 p:nth-last-of-type(3) {
+            background-color: aqua;
+        }
+
+    </style>
+</head>
+<body>
+    <p>동위 관계(형제 관계)에서 뒤에 위치한 태그를 선택할 때 사용이 된다.</p>
+    <pre>
+        바로 뒤의 요소를 선택할 시
+        : 선택자a + 선택자b {설정내용}
+
+        뒤에 있는 모든 요소를 선택할 시
+        : 선택자a ~ 선택자b {설정내용}
+    </pre>
+    <div id="div-test1">div-test1</div>
+    <div id="div-test2">div-test2</div>
+    <div id="div-test3">div-test3</div>
+    <div id="div-test4">div-test4</div>
+    <div id="div-test5">div-test5</div>
+    <script type="text/javascript">
+        window.onload = function() {
+            let second = 
+                document.querySelector('div[id=div-test2]');
+            console.log(typeof second);
+        }
+    </script>
+
+    <br><br><hr>
+
+    <h2>일반 구조 선택자</h2>
+    <p>특정한 위치에 있는 태그 선택하기(위치로 구분)</p>
+    <div id="test">
+        <p>테스트1</p>
+        <p>테스트2</p>
+        <p>테스트3</p>
+        <p>테스트4</p>
+        <p>테스트5</p>
+        <pre>테스트6</pre>
+    </div>
+
+    <br><br><hr>
+
+    <h2>형태 구조 선택자(태그로 구분)</h2>
+    <p>특정 위치에 있는 태그 선택(태그별 구분)</p>
+    <div id="test2">
+        <p>테스트1</p>
+        <p>테스트2</p>
+        <p>테스트3</p>
+        <p>테스트4</p>
+        <p>테스트5</p>
+        <pre>테스트6</pre>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

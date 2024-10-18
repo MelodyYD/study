@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        이미지를 삽입하기 위해서 <img> 태그를 사용
+        src 속성 : 어떤 이미지 파일을 읽을지 경로를 기술해줄 때 사용하는 속성
+    -->
+    <h1>이미지 관련 태그</h1>
+    <img src="sample/image/city1.PNG">
+    <p>src 속성에 우리가 부르고 싶은 이미지 파일 경로 기술</p>
+    <hr>
+    <img src="sample/image/flower1.PNG" alt="꽃 사진">
+    <p>
+        alt 속성은 화면낭독기가 사진을 읽을 수 없기 때문에 대체할 수 있는 텍스트를 기술한다. <br>
+        사진 경로가 이상할시 대체 텍스트의 역할!
+    </p>
+    <hr> <br>
+    <h3>width 속성과 height 속성</h3>
+    <br>
+    <p>
+        가변 크기와 고정 크기
+    </p>
+    <h4>고정 크기 단위 : 화면의 크기가 변경되어도 변하지 않음</h4>
+    <img src="sample/image/flower2.PNG" alt="꽃 사진2"> <br>
+    <img src="sample/image/flower3.PNG" alt="꽃 사진3"><br>
+    <img src="sample/image/flower4.PNG" alt="꽃 사진4"><br>
+    <img src="sample/image/flower2.PNG" alt="꽃 사진2" width="200px; height=100px"><br>
+    <img src="sample/image/flower3.PNG" alt="꽃 사진3" width="200px; height=100px"><br>
+    <img src="sample/image/flower4.PNG" alt="꽃 사진4" width="200px; height=100px"><br>
+    <br><hr><br>
+    <h4>가변 크기 단위 : 화면의 크기가 변경되면 같이 변경됨</h4>
+    <img src="sample/image/flower2.PNG" alt="꽃 사진2"> <br>
+    <img src="sample/image/flower3.PNG" alt="꽃 사진3"><br>
+    <img src="sample/image/flower4.PNG" alt="꽃 사진4"><br>
+    <img src="sample/image/flower3.PNG" alt="꽃 사진3" width="50%"> <br>
+    <img src="sample/image/flower2.PNG" alt="꽃 사진2" width="50%"> <br>
+    <img src="sample/image/flower4.PNG" alt="꽃 사진4" width="50%"> <br>
+    <br><hr><br>
+    <h4>이미지의 구역을 2개로 나누어 각각의 링크 설정하기</h4> <br>
+    <img src="sample/image/river1.PNG" alt="강 사진1" width="600px" height="500px" usemap="#map">
+    <map name="map">
+        <area shape="rect" coords="00, 00, 300, 500" href="https://www.naver.com" alt="강 영역">
+        <area shape="rect" coords="300, 0, 600, 500" href="https://www.google.com" alt="강 영역2">
+    </map>
+
+    <img src="http://dev.danpoongmall.kr/wp-content/uploads/2021/03/3-9.jpg" alt="가츠동 맛있겠다............">
+</body>
+</html>

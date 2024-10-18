@@ -1,0 +1,71 @@
+/* HTML 문서 내에 스타일 정의 방식 : 내부 스타일 방식 */
+
+/* 속성 값과 일치하는 객체(태그, 요소) 선택 */
+div[name=name2] {
+    background-color: beige;
+}
+
+/* 속성 안의 값이 특정 값을 띄어쓰기 단위로 포함하는 객체 선택 : ~ */
+div[name~=name1] {
+    background-color: rosybrown;
+}
+
+/* 속성 값이 특정 값과 일치하건 '-' 문자가 곧바로 해당 값 뒤에 붙는 객체 선택 */
+/* |= class 혹은 class- */
+div[class|=class] {
+    background-color: cornflowerblue;
+}
+
+/* 속성 값을 가지고 있으며, 접두사로 값이 포함되어 있는 객체 선택 */
+div[name^=name] {
+    background-color: lightgreen;
+}
+
+/* 속상 안의 값이 특정 값으로 끝나는(접미사) 객체 선택 */
+div[class$=class] {
+    color: aliceblue;
+}
+
+/* 속성 안의 값이 특정 값을 포함하는 객체 선택 */
+div[class*=div] {
+    background-color: darkolivegreen;
+}
+
+/* 자손 선택자 테스트 */
+#test1>h4 {
+    background-color: darkcyan;
+    color: rgba(245, 245, 245, 0.849);
+}
+
+/* #test1>ul>li {
+    background-color: mediumslateblue;
+} */
+
+/* 후손 선택자 테스트 */
+#test1 ul {
+    background-color: mediumslateblue;
+}
+
+/* 형제 관계 선택자(동위 선택자)   -> 조금 나중에 */
+
+/* css에서 제공하는 이벤트 관련 선택자 */
+#active-test:active {
+    background-color: red;
+    color: antiquewhite;
+}
+
+#hover-test:hover {
+    cursor: pointer;
+    background-color: darkgreen;
+    color: beige;
+    font: 60px bold;
+}
+
+input[type=checkbox]:checked {
+    width: 100px;
+    height: 100px;
+}
+
+#userId:focus, #userPwd:focus {
+    background-color: rgb(228, 228, 228);
+}

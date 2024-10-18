@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<>
+    <h1>기본적인 표 만들기</h1>
+    <table border="1">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+    <br><hr>
+    <!--
+        표를 만드는 태그는 table, tr, th, td가 있다.
+        table : 기본적인 표를 생성
+        tr : 표의 행을 나타내는 태그
+        th : 표(테이블)의 제목(헤더)
+        td : 표에 들어갈 데이터를 나타내는 태그
+    -->
+    
+    <table border="1">
+        <caption><b>메뉴 리스트</b></caption>
+        <tr>
+            <th>메뉴 이름</th>
+            <th>메뉴 가격</th>
+            <th>판매 상태</th>
+        </tr>
+        <tr>
+            <td>과메기떡</td>
+            <td>3000</td>
+            <td>Y</td>
+        </tr>
+        <tr>
+            <td>크로플</td>
+            <td>4500</td>
+            <td>Y</td>
+        </tr>
+        <tr>
+            <td>소금빵</td>
+            <td>1800</td>
+            <td>Y</td>
+        </tr>
+    </table>
+    <br><hr>
+    <h1>표의 행과 열 합치기</h1>
+    <!--
+        td 태그의 속성을 이용해서 행과 열을 합칠 수 있다.
+        colspan : 열 합치기
+        rowspan : 행 합치기
+    -->
+    <table border="1">
+        <caption>회원정보 리스트</caption>
+        <tr>
+            <td colspan="2" rowspan="2" width="130px" height="180px">사진</td>
+            <td width="80px"><b>이름</b></td>
+            <td width="200px"></td>
+        </tr>
+        <tr>
+            <td>연락처</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td width="70px" height="50px">주소</td>
+            <td colspan="3"></td>
+        </tr>
+    </table>
+    <br><hr>
+    <h1>테이블 태그의 구조 설정하기</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>푸바오</td>
+                <td>4</td>
+                <td>중국 사천성</td>
+            </tr>
+            <tr>
+                <td>후이바오</td>
+                <td>1</td>
+                <td>용인시 에버랜드</td>
+            </tr>
+            <tr>
+                <td>루이바오</td>
+                <td>1</td>
+                <td>용인시 에버랜드</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">총 바오 패밀리</td>
+                <td>3</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

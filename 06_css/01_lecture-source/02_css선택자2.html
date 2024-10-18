@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="selector.css">
+</head>
+<body>
+    <h1>CSS 선택자 내부 속성 방식</h1>
+    <hr>
+    <h2>기본 속성 선택자</h2>
+    <pre>
+        기본 선택자 뒤에 [] 기호를 사용해서 속성과 속성 값을 사용할 수 있다.
+        주로 id나 class 속성이 아닌 것들에 적용한다.
+        선택자[속성명=속성값]{설정할 내용}
+    </pre>
+    <div name="name1 name5 name6" class="div-class">div1</div>
+    <div name="name2" class="div-class">div2</div>
+    <div name="name3" class="div-class">div3</div>
+    <div name="name4" class="class-div">div4</div>
+
+    <br><br><hr>
+
+    <h2>후손 선택자와 자손 선택자</h2>
+    <pre>
+        자손 선택자 : 바로 아래에 있는 요소
+        후손 선택자 : 하위 요소 전부
+    </pre>
+    <div id="test1">
+        <h4>자손 1번입니다.</h4>
+        <h4>자손 2번입니다.</h4>
+        <div>
+            <ul id="testul">리스트
+                <li>ul 태그의 자손이면서 div 태그의 후손 1번입니다.</li>
+                <li>ul 태그의 자손이면서 div 태그의 후손 2번입니다.</li>
+            </ul>
+        </div>
+    </div>
+
+    <br><br><hr>
+
+    <h2>반응 선택자</h2>
+    <p>사용자의 행동에 따라 달라지는 선택자</p>
+    <pre>
+        사용자가 클릭을 한 태그 - 선택자:active{설정내용}
+        사용자의 마우스가 올라온 태그 - 선택자:hover
+    </pre>
+    <div id="active-test">active 테스트</div>
+    <div id="hover-test">hover 테스트</div>
+    
+    <br><br><hr>
+
+    <h2>상태 선택자</h2>
+    <p>입력 양식의 상태에 따라서 선택되는 선택자</p>
+    <!-- input[type="checkbox" name="fruits" values="사과"]#apple+label[for="apple"]{사과} -->
+    <input type="checkbox" name="fruits" values="사과" id="apple"><label for="apple">사과</label>
+    <input type="checkbox" name="fruits" values="포도" id="grape"><label for="grape">포도</label>
+    <input type="checkbox" name="fruits" values="바나나" id="banana"><label for="banana">바나나</label>
+
+    <br><br><hr>
+
+    <label for="userId">아이디 : </label>
+    <input type="text" id="userId" placeholder="아이디 입력">
+    <br>
+    <label for="userPwd">비밀번호 : </label>
+    <input type="password" id="userPwd" placeholder="비밀번호 입력">
+    
+    <br><br><hr>
+
+    <p>사용 가능한 input 태그 선택</p>
+    <pre>
+        태그:enabled{설정내용}
+        태그:disablee{설정내용}
+    </pre>
+    <h3>주문 물품 선택</h3>
+    <select>
+        <option value="붕어빵" disabled>붕어빵</option>
+        <option value="피자빵">피자빵</option>
+        <option value="모카빵">모카빵</option>
+        <option value="소금빵">소금빵</option>
+        <option value="소보로">소보로</option>
+        <option value="크림빵" disabled>크림빵</option>
+    </select>
+    <input type="text" disabled>
+    <button disabled>눌리지 않는 버튼</button>
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

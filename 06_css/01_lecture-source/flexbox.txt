@@ -1,0 +1,27 @@
+justify-content : 수평
+
+start
+end
+center
+space-between
+space-around
+
+aling-items: 수직
+
+start
+end
+center
+
+flex-direction : 기준 방향
+
+row
+collumn
+
+align-self : 한놈
+flex-wrap : 줄바꿈 
+
+기본 기준 ------
+
+display:flex;
+
+
