@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost/employee"/>
+                <property name="username" value="ohgiraffers"/>
+                <property name="password" value="ohgiraffers"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!-- 예시 -->
+        <!--    <mapper resource="com/conan2zo/teamMission1008/employee-mapper.xml"/>   -->
+
+        <!-- 윤이정 -->
+        <mapper resource="com/conan2zo/teamMission1008/YEJEmployee-Mapper.xml"/>
+    </mappers>
+</configuration>

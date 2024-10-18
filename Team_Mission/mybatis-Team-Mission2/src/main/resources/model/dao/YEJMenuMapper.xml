@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="model.dao.YEJMenuMapper">
+    <resultMap id="memberResultMap" type="model.dto.EmployeeDTO">
+
+        <id property="empId" column="EMP_ID"/>
+        <result property="empName" column="EMP_NAME"/>
+        <result property="empNo" column="EMP_NO"/>
+        <result property="email" column="EMAIL"/>
+        <result property="phone" column="PHONE"/>
+        <result property="deptCode" column="DEPT_CODE"/>
+        <result property="jobCode" column="JOB_CODE"/>
+        <result property="salLevel" column="SAL_LEVEL"/>
+        <result property="salary" column="SALARY"/>
+        <result property="bonus" column="BONUS"/>
+        <result property="managerId" column="MANAGER_ID"/>
+        <result property="hireDate" column="HIRE_DATE"/>
+        <result property="entDate" column="ENT_DATE"/>
+        <result property="entYn" column="ENT_YN"/>
+    </resultMap>
+
+    <select id="selEmpAllList" resultMap="memberResultMap">
+          SELECT *
+            FROM EMPLOYEE
+        ORDER BY EMP_ID ASC
+    </select>
+
+</mapper>

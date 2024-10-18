@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="YEJEmployeeMapper">
+    <resultMap id="employeeResultMap" type="com/conan2zo/teamMission1008/model/dto/YEJMemberDTO.java">
+        <id property="EMP_ID" column="EMP_ID"/>
+        <result property="EMP_NAME" column="EMP_NAME"/>
+        <result property="EMP_NO" column="EMP_NO"/>
+        <result property="EMAIL" column="EMAIL"/>
+        <result property="PHONE" column="PHONE"/>
+        <result property="DEPT_CODE" column="DEPT_CODE"/>
+        <result property="JOB_CODE" column="JOB_CODE"/>
+        <result property="SAL_LEVEL" column="SAL_LEVEL"/>
+        <result property="SALARY" column="SALARY"/>
+        <result property="BONUS" column="BONUS"/>
+        <result property="MANAGER_ID" column="MANAGER_ID"/>
+        <result property="HIRE_DATE" column="HIRE_DATE"/>
+        <result property="ENT_DATE" column="ENT_DATE"/>
+        <result property="ENT_YN" column="ENT_YN"/>
+    </resultMap>
+</mapper>
