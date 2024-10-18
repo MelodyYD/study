@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>jdbc driver</comment>
+<entry key="password">ohgiraffers</entry>
+<entry key="driver">com.mysql.jdbc.Driver</entry>
+<entry key="url">jdbc:mysql://localhost/menu</entry>
+<entry key="username">ohgiraffers</entry>
+</properties>
