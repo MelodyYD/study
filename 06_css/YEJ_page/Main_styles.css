@@ -428,7 +428,6 @@ h3 {
     margin: 0 0 5px 0;
 }
 
-/* 화면이 작아질 경우 */
 @media (max-width: 768px) {
     .books {
         flex: 1 1 calc(50% - 1rem);
