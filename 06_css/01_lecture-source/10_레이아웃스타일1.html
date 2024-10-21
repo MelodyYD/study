@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .size-test {
+            border: 2px solid red;
+        }
+
+        #test1 {
+            width: 800px;
+            height: 200px;
+        }
+
+        #test2 {
+            width: 80%;
+            height: 200px;
+        }
+
+        .block {
+            width: 150px;
+            height: 130px;
+            border: 1px solid black;
+            color: white;
+            padding-top: 20px;
+            padding-left: 20px;
+        }
+        .area1 {
+            background: red;
+        }
+        .area2 {
+            background: orange;
+        }
+        .area3 {
+            background: yellowgreen;
+        }
+        .area4 {
+            background: green;
+        }
+        .area5 {
+            background: blue;
+        }
+
+        .block-test1 {
+            display: inline;    /* width와 height 속성 적용x, 가로로 배치된다.(padding 크기는 적용 됨) */
+        }
+
+        .block-test2 {
+            display: inline-block;
+            margin-left: -6px;  /* 줄일 수 없어 보이는 간격은 -margin으로 어느정도 커버는 가능하다. */
+        }
+
+        .block-test3 {
+            display: block;
+            display: none;     /* display 속성을 none으로 하면 태그는 존재하지만 공간(영역)을 차지 하지 않는다.(화면에서 제거) - modal창에서 활용 */
+        }
+    </style>
+    <title>레이아웃 스타일1</title>
+</head>
+<body>
+    <h1>레이아웃 스타일</h1>
+    <h3>width와 height</h3>
+    <p>내용이 차지하고 있는 영역의 크기를 조절할 수 있는 속성</p>
+    <h4>고정 크기</h4>
+    <div id="test1" class="size-test"></div>
+    <h4>가변 크기</h4>
+    <div id="test2" class="size-test"></div>
+    <hr>
+
+    <h3>화면 배치 방법 변경</h3>
+    <p>블럭 요소와 인라인 요소의 속성을 변경하여 배치 방식을 변경할 수 있다.</p>
+    <h4>블럭 요소를 인라인 요소로 변경</h4>
+    <pre><b>>> display: inline 테스트</b></pre>
+    <pre>인라인 요소로 변경되면서 width와 height 속성이 무시된다.</pre>
+    <!-- div.block.block-test1.area$*5 -->
+    <div class="block block-test1 area1">첫 번째 영역</div>
+    <div class="block block-test1 area2">두 번째 영역</div>
+    <div class="block block-test1 area3">세 번째 영역</div>
+    <div class="block block-test1 area4">네 번째 영역</div>
+    <div class="block block-test1 area5">다섯 번째 영역</div>
+
+    <h4>블럭 요소를 인라인 블럭 요소로 변경</h4>
+    <pre><b>>> display: inline-block 테스트</b></pre>
+    <pre>영역은 인라인요소로 변경되지만 내용은 블럭요소가 되어
+width와 height 속성을 설정할 수 있다.(요소간에 작은 간격이 존재)
+    </pre>
+    <!-- div.block.block-test2.area$*5 -->
+    <div class="block block-test2 area1">첫 번째 영역</div>
+    <div class="block block-test2 area2">두 번째 영역</div>
+    <div class="block block-test2 area3">세 번째 영역</div>
+    <div class="block block-test2 area4">네 번째 영역</div>
+    <div class="block block-test2 area5">다섯 번째 영역</div>
+
+    <h4>인라인 요소를 블럭 요소로 변경</h4>
+    <pre><b>>> display: block 테스트</b></pre>
+    <pre>인라인 요소를 블럭 요소로 변경하면 width와 height값을 지정할 수 있고
+세로로 쌓인다.
+    </pre>
+    <!-- span.block.block-test3.area$*5 -->
+    <span class="block block-test3 area1">첫 번째 영역</span>
+    <span class="block block-test3 area2">두 번째 영역</span>
+    <span class="block block-test3 area3">세 번째 영역</span>
+    <span class="block block-test3 area4">네 번째 영역</span>
+    <span class="block block-test3 area5">다섯 번째 영역</span>
+
+    <p>나 글이야</p>
+
+    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

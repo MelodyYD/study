@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+
+        * {
+            box-sizing: border-box;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 600px;
+            color: whitesmoke;
+            font-weight: bold;
+        }
+
+        hr {
+            width: 100%;
+            border: none;
+            border-top: 1px solid gray;
+        }
+
+        header, nav, footer {
+            width: 100%;
+        }
+
+        header {
+            background-color: orangered;
+            height: 80pt;
+        }
+
+        nav {
+            background-color: darkgrey;
+            height: 40pt;
+        }
+
+        section {
+            background-color:forestgreen;
+            float: left;
+            height: 23rem;
+            width: 80%;
+            justify-content: center;
+        }
+
+        article {
+            display: flex;
+            flex-direction: column;
+            /* margin: 20px 10px 10px 10px; */
+        }
+
+        .art1 {
+            background-color: palevioletred;
+            position: relative;
+            float: left;
+            height: 18rem;
+            width: 140px;
+        }
+
+        .art2 {
+            background-color: orange;
+            position: relative;
+            float: right;
+            height: 9rem;
+            width: 290px;
+        }
+
+        .art3 {
+            background-color: darkgreen;
+            position: relative;
+            float: right;
+            height: 9rem;
+            width: 290px;
+        }
+
+        aside {
+            background-color: royalblue;
+            width: 20%;
+            height: 23rem;
+            float: right;
+        }
+
+        footer {
+            background-color: purple;
+            clear: both;
+            height: 3rem;
+        }
+
+    </style>
+
+</head>
+<body>
+    <h1>페이지 레이아웃 설정</h1>
+    <hr>
+    
+    <div class="container">
+        <header>HEADER</header>
+        <nav>NAV</nav>
+        <section>SECTION
+            <article class="art1">ARTICLE</article>
+            <article class="art2">ARTICLE</article>
+            <article class="art3">ARTICLE</article>
+        </section>
+        <aside>ASIDE</aside>
+        <footer>FOOTER</footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        img{
+            width: 250px;
+            height: 200px;
+        }
+        .trans1:hover{
+            transform: perspective(300px) translate3d(50px, 0px, 100px);
+        }
+        .trans2:hover{
+            transform: perspective(300px) translateZ(100px);
+        }
+        .trans3:hover{
+            transform: perspective(300px) rotateX(30deg);
+        }
+        .trans4:hover{
+            transform: perspective(300px) rotateY(30deg);
+        }
+        .trans5:hover{
+            transform: perspective(300px) rotateZ(30deg);
+        }
+        .trans6:hover{
+            transform: perspective(300px) rotate3d(2.5, 1.5, -1.5, 30deg);
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>3차원 변형</h1>
+    <h3>지정한 크기만큼 x, y, z축으로 이동</h3>
+    <img src="sample/image/flower1.PNG" class="trans1">
+    <hr>
+
+    <h3>지정한 크기만큼 z축으로 이동</h3>
+    <img src="sample/image/flower2.PNG" class="trans2">
+    <hr>
+
+    <h3>지정한 크기만큼 x축 방향으로 회전</h3>
+    <img src="sample/image/flower3.PNG" class="trans3">
+    <hr>
+
+    <h3>지정한 크기만큼 y축 방향으로 회전</h3>
+    <img src="sample/image/flower4.PNG" class="trans4">
+    <hr>  
+
+    <h3>지정한 크기만큼 z축 방향으로 회전</h3>
+    <img src="sample/image/flower5.PNG" class="trans5">
+    <hr>
+
+    <h3>지정한 크기만큼 x, y, z축 방향으로 회전</h3>
+    <img src="sample/image/river1.PNG" class="trans6">
+    <hr>
+</body>
+</html>

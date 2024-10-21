@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header {
+            background: blue;
+            width: 500px;
+            height: 50px;
+        }
+
+        nav {
+            width: 400px;
+            height: 30px;
+            background: red;
+            margin: auto;
+        }
+
+        section {
+            float: left;
+            width: 420px;
+            height: 300px;
+            background: green;
+        }
+
+        article {
+            width: 300px;
+            height: 90px;
+            margin: auto;
+        }
+
+        .a1 {
+            background: yellowgreen;
+        }
+        .a2 {
+            background: pink;
+        }
+        .a3 {
+            background: cyan;
+        }
+
+        aside {
+            float: left;
+            width: 80px;
+            height: 300px;
+            background: cornsilk;
+        }
+
+        footer {
+            width: 500px;
+            background: purple;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- HTML5의 레이아웃인 시멘틱 태그를 CSS를 적용하여 알아보자. -->
+
+    <!--
+        header: 머리말로 주로 로그인(form태그), 검색(form태그), 메뉴(nav태그)가 존재
+        nav: 메뉴와 관련된 태그로 다른 사이트나 페이지로 이동하는 태그를 모아놓은 태그
+             (네비게이션 태그)(주로 사이드 또는 header 안에 존재)
+        section: 웹 화면의 컨텐츠가 들어가는 영역으로 주제별로 영역을 나누어 묶을 때 사용하며
+                 화면이 전환되는 것(페이지가 바뀜)과 관련된 태그이다.
+                 주제별로 article 태그를 묶어주는 태그이기도 하다.
+        article: 웹 페이지는 내용(기사거리, 하나의 세부 주제에 대한 내용)이 들어가는 영역
+                 내부에 또 다른 section 태그를 가질 수 있음
+        aside: 사이드 바로 본문 외에 광고나 링크 모음 같은 기타 내용을 담고 있음
+               왼쪽이나 오른쪽 사이드에 존재
+        footer: 맨 아래쪽에 위치하는 태그로써 회사, 저작권, 연락처 관련 정보를 지니고 있음
+
+        시멘틱 태그는 clear="both" 속성이 기본적으로 적용된 태그들이다.
+    -->
+    <h1>페이지 레이아웃 설정</h1>
+    <br>
+    <header>header
+
+        <nav>nav</nav>
+    </header>
+
+    
+
+    <section>section
+        <!-- article.a$*3{article}         -->
+        <article class="a1">article</article>
+        <article class="a2">article</article>
+        <article class="a3">article</article>
+    </section>
+
+    <aside>aside</aside>
+    <footer>footer</footer>
+</body>
+</html>

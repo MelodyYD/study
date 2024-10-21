@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /*
+        * {
+            font-family: 'Dokdo', '궁서체';
+        }
+        */
+        #ff1 {
+            font-family: "Dokdo";
+        }
+        #ff2 {
+            font-family: "궁서체";
+        }
+        #ff3 {
+            font-family: "없는 글꼴", "Dokdo", "Nanum Gothic";
+        }
+
+        /* 크기 관련 스타일 지정 */
+        #size1 {
+            font-size: 30px;
+        }
+        #size2 {
+            font-size: 2em;
+        }
+        #size3 {
+            font-size: 150%;
+        }
+        #size4 {
+            font-size: 6pt; 
+        }
+
+        /* 두꺼운 글꼴 스타일 지정 */
+        #fw1 {
+            font-weight: bold;
+        }
+        #fw2 {
+            font-weight: lighter;
+        }
+        #fw3 {
+            font-weight: 500;
+        }
+
+        /* 작은 대문자로 변경 */
+        #fv {
+            font-variant: small-caps;
+        }
+
+        /* 기울임꼴 지정 */
+        #fs1 {
+            font-style: italic;
+        }
+        #fs2 {
+            font-style: oblique;
+        }
+
+        /* 글꼴 관련 스타일 지정 */
+        #f1 {
+            font: 16px "궁서체";
+        }
+        #f2 {
+            font: italic bold 25px/50px "Dokdo";
+            color:aqua;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dokdo&family=Nanum+Gothic:wght@800&display=swap" rel="stylesheet">
+    <title>글꼴 관련 스타일</title>
+</head>
+<body>
+    <h1>글꼴 관련 스타일</h1>
+    <hr>
+    <h3>font-family 속성: 텍스트의 글꼴을 지정할 때 사용한다.</h3>
+    <pre>선택자{font-family: 글꼴이름1, 글꼴이름2, ...;}의 형식으로 사용한다.</pre>
+    <!-- p#ff${글꼴 변경 테스트$}*3 -->
+    <p id="ff1">글꼴 변경 테스트1</p>
+    <p id="ff2">글꼴 변경 테스트2</p>
+    <p id="ff3">글꼴 변경 테스트3</p>
+
+    <h3>웹 폰트 사용하는 방법</h3>
+    <p>웹 폰트 제공 사이트 예시: 
+        <a href="http://fonts.google.com" target="_blank">구글 웹 폰트 사이트로</a>
+    </p>
+
+    <h3>font-size 속성: 텍스트의 크기를 변경할 때 사용한다.</h3>
+    <pre>선택자{font-size: 크기;}의 형식으로 사용한다.</pre>
+    <!-- ul>li#size$*3 -->
+    <ul>
+        <li id="size1">고정크기 px 테스트</li>
+        <li id="size2">가변크기 em 테스트</li>
+        <li id="size3">가변크기 % 테스트</li>
+        <li id="size4">가변크기 pt 테스트</li>
+    </ul>
+
+    <h3>font-weight 속성 : 두꺼운 글씨를 표현할 때 사용한다.</h3>
+	<pre> 선택자 { font-weight : normal | bold | bolder | lighter | 100 | 400 | 900; }의 형식으로 표현한다.</pre>
+	<ul>
+		<li id="fw1">굵은 글꼴로 변경</li>
+		<li id="fw2">원래 굵기보다 더 가늘게</li>
+		<li id="fw3">원래 굵기보다 더 굵게</li>
+	</ul>
+	
+	<hr>
+	
+	<h3>font-variant 속성 : 작은 대문자로 변경할 때 사용한다.</h3>
+	<pre> 선택자 { font-variant : 속성값; } 의 형식으로 사용된다.</pre>
+	<p>I LOVE YOU</p>
+	<p id="fv">i love you</p>
+	<hr>
+
+	<h3>font-style 속성 : 텍스트의 기울임을 지정할 때 사용한다.</h3>
+	<pre> 선택자 { font-style : normal | italic | oblique; }의 형식으로 사용한다.</pre>
+	<ul>
+		<li id="fs1">italic 기울임 글꼴</li>
+		<li id="fs2">oblique 기울임 글꼴</li>
+	</ul>
+	<hr>
+
+	<h3>font 속성 : 글꼴 관련 스타일을 한번에 지정할 때 사용한다.</h3>
+	<pre> 선택자 { font : font-style font-variant font-weight font-size/line-height font-family; }의 형식으로 사용한다.</pre>
+	<ul>
+		<li id="f1">글꼴 관련 스타일 테스트1</li>
+		<li id="f2">글꼴 관련 스타일 테스트2</li>
+	</ul>
+	<hr>
+</body>
+</html>
+
+
+

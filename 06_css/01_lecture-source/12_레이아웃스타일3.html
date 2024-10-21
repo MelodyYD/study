@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .test {
+            background: yellow;
+            width: 100px;
+            height: 100px;
+        }
+
+        .test1 {
+            padding: 100px;
+        }
+        .test2 {
+            padding-top: 50px;
+            padding-left: 100px;
+        }
+
+        .test3 {
+            margin: 50px;
+        }
+        .test4 {
+            margin-top: 50px;
+            margin-left: 50px;
+            margin: auto;           /* ★요소를 가운데 정렬하고자 할때 자동으로 여백 조절을 해줌★ */
+        }
+    </style>
+    <title>레이아웃스타일3</title>
+</head>
+<body>
+    <h1>여백 관련 속성</h1>
+    <h4>기준 div</h4>
+    <div class="test"></div>
+
+    <h4>padding</h4>
+    <h5>테두리와 컨텐츠 영역 사이의 거리를 조절하는 속성</h5>
+    <pre>padding: 100px;</pre>
+    <!-- div.test.test1{콘텐츠 영역} -->
+    <div class="test test1">콘텐츠 영역</div>
+    <pre>padding-top: 50px; padding-left: 100px;</pre>
+    <div class="test test2">콘텐츠 영역</div>
+
+    <h3>margin</h3>
+    <h4>box 레벨(block)이나 inline 레벨의 요소들 간의 간격을 조절하는 속성</h4>
+    <pre>margin: 50px;</pre>
+    <div class="test test3">콘텐츠 영역</div>
+    <pre>margin-top: 50px; margin-left: 50px;</pre>
+    <div class="test test4">콘텐츠 영역</div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

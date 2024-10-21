@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .tran1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            border: 1px solid black;
+            transition-duration: 2s;
+        }
+
+        .tran1:hover {
+            width: 200px;
+            background: yellow;
+        }
+
+        .tran2 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            border: 1px solid black;
+            transition-property: background-color, transform, width, height; /* 필수는 아니다. */
+            transition-duration: 2s, 3s, 4s, 1s;
+        }
+
+        .tran2:hover {
+            width: 200px;
+            height: 200px;
+            background: yellow;
+            transform: rotateZ(180deg);
+        }
+
+        .tran3 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            border: 1px solid black;
+            transition-duration: 2s;
+            transition-timing-function: ease;
+        }
+        .tran3:hover {
+            background: yellow;
+            transform: rotateZ(60deg);
+        }
+
+        .tran4 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            border: 1px solid black;
+            transition-duration: 2s;
+            transition-delay: 2s;
+        }
+        .tran4:hover {
+            background: yellow;
+            transform: rotateZ(60deg);
+        }
+    </style>
+    <title>변형1</title>
+</head>
+<body>
+    <h1>트랜지션</h1>
+    <p>시간에 따라 웹 요소의 스타일 속성이 조금씩 바뀌는 것을 의미한다.</p>
+    <h3>트랜지션 진행시간 지정하기</h3>
+    <div class="tran1"></div>
+
+    <hr>
+    <h3>트랜지션 진행별 시간 설정하기</h3>
+    <div class="tran2"></div>
+
+    <hr>
+    <h3>트랜지션 진행별 속도 지정하기</h3>
+    <p>transition-timing-function: linear|ease|ease-in|ease-out...</p>
+    <a href="https://www.codingfactory.net/10953#transition-timing-function">
+        진행 과정별 상세 사이트
+    </a>
+    <div class="tran3"></div>
+
+    <hr>
+    <h3>트랜지션 시간 지연하기</h3>
+    <div class="tran4"></div>
+</body>
+</html>

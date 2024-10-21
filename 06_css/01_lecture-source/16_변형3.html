@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>변형3</title>
+    <style>
+        img {
+            width:250px;
+            height:200px;
+            margin-left: 200px;
+        }
+        .trans1:hover {
+            -webkit-transform:translateX(50px);
+        }
+        .trans2:hover {
+            -webkit-transform:translateY(50px);
+        }
+        .trans3:hover {
+            -webkit-transform:translate(50px, 50px);
+        }
+
+        .trans4:hover {
+            -webkit-transform:scaleX(2);
+        }
+        .trans5:hover {
+            -webkit-transform:scaleY(2);
+        }
+        .trans6:hover {
+            -webkit-transform:scale(1.5, 1.5);
+        }
+
+        .trans7:hover {
+            -webkit-transform:rotate(45deg);
+        }
+        .trans8:hover {
+            -webkit-transform:rotate(-30deg);
+        }
+
+        .trans9:hover {
+            -webkit-transform:skewX(45deg);
+        }
+        .trans10:hover {
+            -webkit-transform:skew(30deg, -50deg);
+        }
+    </style>
+</head>
+<body>
+    <h1>2차원 변형</h1>
+    <h3>좌우로 움직이기</h3>
+    <img src="sample/image/flower1.PNG" class="trans1">
+    <h3>상하로 움직이기</h3>
+    <img src="sample/image/flower2.PNG" class="trans2">
+    <h3>대각선으로 움직이기</h3>
+    <img src="sample/image/flower3.PNG" class="trans3">
+
+    <h3>가로로 확대 축소</h3>
+    <img src="sample/image/flower4.PNG" class="trans4">
+    <h3>세로로 확대 축소</h3>
+    <img src="sample/image/flower5.PNG" class="trans5">
+    <h3>전체로 확대 축소</h3>
+    <div id="test">
+    <img src="sample/image/river1.PNG" class="trans6">
+    </div>
+
+    <hr>
+
+    <h3>지정한 각도만큼 회전</h3>
+    <img src="sample/image/river2.PNG" class="trans7">
+    <h3>지정한 각도만큼 회전(다른각도)</h3>
+    <img src="sample/image/city1.PNG" class="trans8">
+
+    <hr>
+
+    <h3>지정한 각도만큼 가로로 뒤틀기</h3>
+    <img src="sample/image/tower1.PNG" class="trans9">
+    <h3>지정한 각도만큼 전체 뒤틀기</h3>
+    <img src="sample/image/forest1.PNG" class="trans10">
+</body>
+</html>

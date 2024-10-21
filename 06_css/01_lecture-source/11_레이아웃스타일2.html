@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            border-width:3px;
+        }
+        .border-test1{
+            border-style:none;
+        }
+        .border-test2{
+            border-style:hidden;
+            box-shadow:5px 5px 3px 2px gray;    /* offset-x | offset-y | blur-radius(그림자 테두리 흐리게, 흐림 정도) | spread-radius(번짐 정도) | color */
+        }
+        .border-test3{
+            border-style:dotted;
+        }
+        .border-test4{
+            border-style: dashed;
+            border-top-color: blue;
+        }
+        .border-test5{
+            border-style: double;
+            border-color: blue;
+        }
+        .border-test6{
+            border-style: groove;
+            border-top-left-radius: 50px;       /* 귀퉁이 부분의 영역을 완만하게 깎을 때 쓸 수 있다. */
+            border-top-right-radius: 50px;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        .border-test7{
+            border-style: inset;
+            border-bottom-right-radius: 50px;
+        }
+        .border-test8{
+            border-style: outset;
+            border-top-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        .border-test9{
+            border-style: ridge;
+            box-shadow:5px 5px 3px 2px gray;    
+        }
+        .border-test10{
+            border-style: solid;
+            box-shadow: 5px 5px 3px 2px gray;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>테두리 스타일</h1>
+    <h3>border-style:none</h3>
+    <div class="border-test1"></div>
+
+    <h3>border-style:hidden & box-shadow:5px 5px 3px 2px gray</h3>
+    <div class="border-test2"></div>
+
+    <h3>border-style:dotted</h3>
+    <div class="border-test3"></div>
+
+    <h3>border-style:dashed & border-top-color:blue</h3>
+    <div class="border-test4"></div>
+
+    <h3>border-style:double & border-color:blue</h3>
+    <div class="border-test5"></div>
+
+    <h3>border-style:groove & border-top-left-radius:50px</h3>
+    <div class="border-test6"></div>
+
+    <h3>border-style:inset & border-bottom-right-radius:50px</h3>
+    <div class="border-test7"></div>
+
+    <h3>border-style:outset & border-top-left-radius:50px & 
+        border-bottom-right-radius:50px</h3>
+    <div class="border-test8"></div>
+
+    <h3>border-style:ridge & box-shadow:5px 5px 3px 2px gray</h3>
+    <div class="border-test9"></div>
+
+    <h3>border-style:solid & box-shadow:5px 5px 3px 2px gray</h3>
+    <div class="border-test10"></div>
+
+
+</body>
+</html>
