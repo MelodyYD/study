@@ -17,6 +17,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
 
         .container {
@@ -46,41 +47,39 @@
         }
 
         section {
+            position: absolute;
             background-color:forestgreen;
             float: left;
             height: 23rem;
-            width: 80%;
-            justify-content: center;
-        }
-
-        article {
-            display: flex;
-            flex-direction: column;
-            /* margin: 20px 10px 10px 10px; */
+            width: 480px;
+            justify-content: flex-start;
+            text-align: flex-start;
         }
 
         .art1 {
             background-color: palevioletred;
-            position: relative;
-            float: left;
             height: 18rem;
-            width: 140px;
+            width: 180px;
+            margin-right: 20px;
+        }
+
+        .right {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 18rem;
         }
 
         .art2 {
             background-color: orange;
-            position: relative;
-            float: right;
             height: 9rem;
-            width: 290px;
+            width: 250px;
         }
 
         .art3 {
             background-color: darkgreen;
-            position: relative;
-            float: right;
             height: 9rem;
-            width: 290px;
+            width: 250px;
         }
 
         aside {
@@ -108,8 +107,10 @@
         <nav>NAV</nav>
         <section>SECTION
             <article class="art1">ARTICLE</article>
-            <article class="art2">ARTICLE</article>
-            <article class="art3">ARTICLE</article>
+            <div class="rightArt">
+                <article class="art2">ARTICLE</article>
+                <article class="art3">ARTICLE</article>
+            </div>
         </section>
         <aside>ASIDE</aside>
         <footer>FOOTER</footer>

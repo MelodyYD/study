@@ -10,4 +10,3 @@ console.log(String(10));
 
 // 2. Object.prototype.toString 메소드 사용
 console.log((10).toString());
-
