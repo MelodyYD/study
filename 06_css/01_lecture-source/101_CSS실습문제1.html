@@ -6,86 +6,81 @@
     <title>Document</title>
 
     <style>
-        *{
+        h1 {
             text-align: center;
-            font-weight: bold;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* 중앙 정렬 */
         }
 
         .container {
-            width: 600px; /* 고정 너비 */
+            width: 600px;
+            height: 500px;
+            /* display: flex; */
+            /* flex-direction: column; */
+            align-items: center;
+            color: aliceblue;
+            font-weight: bold;
+            text-align: center;
+            margin: auto;
         }
 
         header {
             background-color: orangered;
-            color: aliceblue;
-            height: 80px;
-            width: 100%;
+            height: 15%;
+            /* height: 80px; */
+            /* width: 100%; */
         }
 
         nav {
             background-color: gray;
-            color: aliceblue;
-            height: 50px;
-            width: 100%;
+            height: 10%;
+            /* height: 50px; */
+            /* width: 100%; */
         }
 
         section {
             background-color: rgb(139, 226, 81);
-            width: 450px;
-            color: aliceblue;
-            height: 350px;
-            padding-top: 10px;
             float: left;
-            position: absolute;
+            width: 75%;
+            height: 80%;
+            /* padding-top: 10px; */
+            /* position: absolute; */
         }
 
-        article {
-            width: 200px;
-            height: 300px;
-            margin: auto;
+        .article {
+            width: 100%;
+            height: 30%;
+            /* display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            text-align: center; */
+            justify-content: center;
         }
 
         .a1 {
             background-color: pink;
-            text-align: center;
-            color: aliceblue;
             float:left;
-            margin-left: 25px;
-            margin-top: 15px;
+            width: 47%;
+            height: 83%;
+            margin: 5% 0 0 3%;
         }
 
         .a2 {
             background-color:chocolate;
-            text-align: center;
-            color: aliceblue;
-            margin-right: 25px;
-            margin-top: 15px;
+            float: left;
+            width: 47%;
+            height: 83%;
+            margin-top: 5%;
         }
 
         aside {
-            width: 150px;
-            height: 360px;
+            width: 25%;
+            height: 80%;
             background: blue;
-            color: aliceblue;
             float: left;
-            text-align: center;
-            position: relative;
-            left: 450px;
         }
 
         footer {
             background: purple;
-            text-align: center;
-            color: aliceblue;
-            height: 60px;
+            height: 10%;
             width: 100%;
-            position: relative;
             clear: both; 
         }
     </style>
@@ -93,7 +88,7 @@
 </head>
 <body>
     <h1>페이지 레이아웃 설정</h1>
-    <br><hr><br>
+    <hr>
     <!-- HTML5의 레이아웃인 시멘틱 태그를 CSS를 적용하여 알아보자. -->
 
     <!--
@@ -119,8 +114,8 @@
 
         <section>section <br>
             <!-- article.a$*3{article}         -->
-            <article class="a1" id="a1">article</article>
-            <article class="a2" id="a2">article</article>
+            <article class="article a1">article</article>
+            <article class="article a2">article</article>
         </section>
 
         <aside>aside</aside>
