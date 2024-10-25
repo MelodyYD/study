@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>01. 요소 노드의 텍스트 조작</h1>
+    <h3>nodeValue</h3>
+    <pre>
+        nodeValue (property)
+        - getter, setter가 모두 존재하는 프로퍼티
+        - nodeValuev 프로퍼티 참조 시 노드 객체의 값(텍스트 노드의 텍스트)을 반환해준다.
+        - 주의 : 텍스트가 아닌 요소 노드는 null을 반환한다.
+    </pre>
+    <div id="area">변경 전</div>
+    <script>
+        const $area = document.getElementById('area');
+        console.log($area.nodeValue);       null
+        
+        const textNode = $area.firstChild;
+        console.log(textNode.nodeValue);
+
+        textNode.nodeValue = '변경 후';
+    </script>
+    <h3>textContent</h3>
+    <pre>
+        textContent 프로퍼티도 setter 와 getter 가 모두 존재하는 프로퍼티다.
+        하지만 위에서 nodeValue와 다른 점은 요소 노드의 텍스트와 모든 자손 노드의 텍스트를 모두 췯그하거나 변경할 수 있다.
+    </pre>
+    <div id="area2">textContent<span>내부 span</span></div>
+    <script>
+        const $area2 = document.getElementById('area2');
+
+        console.log($area2.textContent);
+
+        // nodeValue는 텍스트 노드의 값만 변환하기 때문에 textContent보다 많은 접근 과정 코드가 필요하다.
+        // 따라서 textContent는 한 번에 바꿔버릴 때 유리하지만,
+        // 내부에 html 태그는 파싱이 되지 않기 때문에 유의해야 한다.
+        // -> 문자열로 취급
+
+        $area2.textContent = '변경해보기<span>내부 span</span>';
+    </script>
+</body>
+</html>

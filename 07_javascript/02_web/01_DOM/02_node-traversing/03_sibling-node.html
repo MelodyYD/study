@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>03. 형제 관계 노드 탐색</h1>
+    <ol id="node">
+        <li>previousSibling : 형제 중 이전 형제 노드(요소, 텍스트)탐색</li>
+        <li>nextSibling : 형제 중 자신의 다음 형제 노드(요소, 텍스트)탐색</li>
+    </ol>
+    <script>
+        const $node = document.getElementById('node');
+        
+        /*
+            구조분해 할당
+            변수 명이랑 접근할 프로퍼티가 동일한 경우 {} 자바스크립트 표현식을 사용해서 생략 가능하다.
+        */
+        // const firstChild = $node.firstChild;
+        const {firstChild} = $node;
+        console.log(firstChild);
+
+        const {nextSibling} = firstChild;
+        console.log(nextSibling);
+
+        const {previousSibling} = nextSibling;
+        console.log(previousSibling);
+
+        // 태그 요소 노드만 취득하고 싶으면
+        // previousElementSibling, nextElementSibling 을 쓰면 된다.
+    </script>
+</body>
+</html>

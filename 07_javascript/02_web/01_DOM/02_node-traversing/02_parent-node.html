@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>02. 부모 노드 탐색</h1>
+    <pre>
+        부모 노드를 탐색하기 위해서는 parentNode 프로퍼티를 사용할 수 있다.
+    </pre>
+    <ul id="lists">
+        <li class="coffee">커피</li>
+        <li class="coke">콜라</li>
+        <li class="milk">우유</li>
+    </ul>
+    <script>
+        const $coke = document.querySelector('.coke');
+        console.log($coke);
+        // 부모 노드 접근
+        console.log($coke.parentNode);
+    </script>
+</body>
+</html>

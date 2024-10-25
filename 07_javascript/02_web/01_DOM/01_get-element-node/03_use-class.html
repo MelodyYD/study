@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>03_class 속성을 이용한 요소 노드 취득</h1>
+    <pre>
+        getElementByClassName()
+        인자로 전달받은 클래스 어트리뷰트 값을 갖는 모든 요소를 탐색하여 반환한다.
+        반항형이 HTMLCollection 타입의 객체이다.
+    </pre>
+    <ul id="use">
+        <li class="drink coffee">커피</li>
+        <li class="drink coke">콜라</li>
+        <li class="drink milk">우유</li>
+    </ul>
+    <ul id="noUse">
+        <li class="drink soju">소주</li>
+        <li class="drink heer">맥주</li>
+    </ul>
+    <script>
+        const $drinks = document.getElementsByClassName('drink');
+        console.log($drinks);
+
+        // forEach 쓰기 위해 스프레드 문법 사용
+        [...$drinks].forEach(drink => drink.style.color = 'red');
+        const $coffee = document.getElementsByClassName('drink coffee');
+        console.log($coffee);
+
+        const $use = document.getElementById('use');
+        const $usechild = $use.getElementsByClassName('drink');
+        [...$usechild].forEach(drink => drink.style.color = 'blue');
+        // console.log
+    </script>
+</body>
+</html>

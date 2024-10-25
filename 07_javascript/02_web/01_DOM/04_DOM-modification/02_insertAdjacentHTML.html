@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>02. insertAdjacentHTML</h1>
+    <pre>
+        insertAdjacentHTML(position, DOMString)
+        첫 번째 인자는 우리가 작성한 DOMString을 어느 위치에 넣을지 판단한다.
+        position에는 4가지 문자열이 존재한다.
+        - beforebegin
+        - afterbegin
+        - beforeend
+        - afterend
+
+        innerHTML 지정할 위치에 넣는 것이 불가능하다.
+        단, HTML 문자열을 파싱하므로 아까와 같은 공격은 가능하다.
+    </pre>
+
+    <div id="area">insertAdjacentHTML 테스트</div>
+
+    <script>
+        const $area = document.getElementById('area');
+
+        $area.insertAdjacentHTML('beforebegin', '<h1>beforebegin 테스트</h1>');
+        $area.insertAdjacentHTML('afterbegin', '<h1>afterbegin 테스트</h1>');
+        $area.insertAdjacentHTML('beforeend', '<h1>beforeend 테스트</h1>');
+        $area.insertAdjacentHTML('afterend', '<h1>afterend 테스트</h1>');
+    </script>
+</body>
+</html>
