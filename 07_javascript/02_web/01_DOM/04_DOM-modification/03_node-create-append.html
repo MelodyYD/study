@@ -8,9 +8,12 @@
 <body>
     <h1>03. 노드의 생성과 추가</h1>
     <pre>
-        createElement(tagName) : 인수로 전달받은 태그 이름에 해당하는 요소 노드 생성 후 반환
-        createTextNode(text) : 인수로 전달받은 텍스트 값으로 텍스트 노드 생성 후 반환
-        appendChild(childNode) : 인수로 전닯다은 노드를 appendChild를 호출한 노드의 마지막 자식에 추가
+    createElement(tagName) : 인수로 전달받은 태그 이름에 해당하는
+    요소 노드 생성 후 반환
+    createTextNode(text) : 인수로 전달받은 텍스트 값으로 텍스트 노드
+    생성 후 반환
+    appendChild(childNode) : 인수로 전달 받은 노드를 appendChild 를
+    호출한 노드의 마지막 자식에 추가
     </pre>
     <ul id="bread">
         <li>소보루</li>
@@ -27,10 +30,9 @@
         // 만든 요소와 텍스트 결합
         $li.appendChild(text);
 
-        // 결합시킨 노드를 DOM에 추가
-        $bread.appendChild($li);
+        // 결합 시킨 노드를 DOM 에 추가
+        $bread.append($li);
     </script>
-
     <h3>복수의 노드 생성과 추가</h3>
     <ul id="food">
         <li>김치찌개</li>
@@ -38,30 +40,43 @@
     <script>
         const $food = document.getElementById('food');
 
+        
+
+
         // createDocumentFragment();
-        // 별도의 서브 DOM을 만들어서 요소들을 채운 후 기존의 DOM에 추가
+        // 별도의 서브 DOM 을 만들어서 요소들을 채운 후
+        // 기존의 DOM 에 추가
         // 보이지 않는 또 하나의 html 페이지를 만들었다.
         const $fragment = document.createDocumentFragment();
 
         // 여러가지 메뉴 생성
         const menuList = ['된장찌개', '순두부찌개', '순대국', '뚝불'];
-        // menu라는 매개변수는 배열의 요소 한 개를 의미
+        // menu 라는 매개변수는 배열의 요소 한 개를 의미
         menuList.forEach(menu => {
+            
             // li 태그 생성
             const $li = document.createElement('li');
+
             $li.textContent = menu;
 
             /*
-                굳이 가상의 돔에 만들어진 4개의 li+text를 담은 후 실제 돔에 추가하는 방식을 쓰는 이유는
-                DOM은 변경이 감지되면 리플로우, 리페인트가 진행되기 때문이다.
-                반복문이 돌 때마다 실제 돔에 append하면 반복문 요소만큼의 리플로우/리페인트가 진행된다.
-                따라서 속도 향상을 위해 가상 돔을 생성해 여기에 배열의 크기만큼의 요소를 생성한 뒤,
-                실제 돔에는 1번만 append를 진행한다.
+                굳이 가상의 돔에 만들어진 4개의 li+text 를 담은 후
+                실제 돔에 추가하는 방식을 쓰는 이유는
+                DOM 은 변경이 감지되면 리플로우, 리페인트가
+                진행이 된다.
+                우리가 반복문이 돌 때마다 실제 돔에 append 를
+                하게 되면 반복문 요소 만큼 리플로우와 리페인트가
+                진행되게 된다. ex) 배열 크기 5 --) 5번 실행
+                가상 돔을 생성해서 여기에 배열의 크기 만큼
+                요소를 생성 한 뒤, 실제 돔에는 1번 append 를
+                진행한다.
             */
 
             $fragment.appendChild($li);
-        })
+        });
+
         $food.appendChild($fragment);
+        
     </script>
 </body>
 </html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .white {
+            color: white;
+        }
+        .black {
+            color: black;
+        }
+        .red {
+            color: red;
+        }
+        .blue { 
+            color : blue
+        }
+    </style>
+</head>
+<body>
+    <h1>05.HTMLCollection 과 NodeList</h1>
+    <pre>
+        HTMLCollection 과 NodeList 는
+        여러 개의 결과 값을 담기 위한
+        DOM 컬렉션 객체의 종류이다.
+        이 두 가지는 모두 유사 배열 객체이면서
+        이터러블이다.
+        노드 객체의 상태 변화를 실시간으로 반영하는
+        살아있는 DOM 컬렉션 객체이다.
+    </pre>
+    <h3>HTMLCollection 확인하기</h3>
+    <ul>
+        <li class="white">착한 사람 눈에만 보이는 1번째 글</li>
+        <li class="white">착한 사람 눈에만 보이는 2번째 글</li>
+        <li class="white">착한 사람 눈에만 보이는 3번째 글</li>
+    </ul>
+    <script>
+        const $whiteList = document.getElementsByClassName('white');
+        console.log($whiteList);
+        for(let i = 0; i < $whiteList.length; i++) {
+            $whiteList[i].className = 'black';
+        }
+
+        /*
+            HTMLCollection 객체는 실시간으로 노드 객체
+            상태 변경을 반영하여 요소를 제거할 수 있기
+            때문에 첫 번째 반복문(i == 0) 을 통해
+            "첫 번째 글" 노드가 제거 되어
+            length 가 3 -> 2 로 줄게 되고
+            두번 쨰 반복문(i == 1) 을 통해 접근한
+            1번 인덱스는 "세번째 글이" 되어
+            두 번째 글의 className 이 변경이 안 되게 된다.
+
+            HTMLCollection 은 실시간으로 변경을 감지하기
+            때문에 for문을 사용해서 객체의 상태를 바꾸는
+            것은 예기치 못한 상황을 발생시킨다.
+
+            따라서 HTMLCollection 객체를 스프레드 연산자로
+            배열로 만든 뒤 작업을 해야 실시간 반영으로
+            인한 예기치 못 한 에러를 방지할 수 있다.
+        */
+    </script>
+    <h3>NodeList 확인하기</h3>
+    <pre>
+        querySelectorAll() 메소드가 반환하는
+        컬렉션 객체이다.
+        HTMLCollection 과는 다르게
+        실시간으로 객체의 상태를 변경하지 않는다.
+        따라서 HTMLCollection 이 가지는 부작용
+        해결 가능
+    </pre>
+    <ul id="lists">
+        <li class="red">파란휴지 줄까 빨간휴지 줄까~</li>
+        <li class="red">파란휴지 줄까 빨간휴지 줄까~</li>
+        <li class="red">파란휴지 줄까 빨간휴지 줄까~</li>
+    </ul>
+    <script>
+        const $redList = document.querySelectorAll('.red');
+        // NodeList 객체는 forEach 함수를 프로퍼티로 가지고 있다.
+        console.log($redList);
+
+        $redList.forEach(red => red.className = 'blue');
+    </script>
+
+    <pre>
+        대부분의 NodeList 객체는 non-live(실시간 반영 x)
+        <b>
+            하지만, childNodes 프로퍼티가 반환하는
+            NodeList 객체는 HTMLCollection 객체와
+            같이 실시간으로 변경이 되기 때문에
+            주의가 필요하다.
+        </b>
+    </pre>
+    <script>
+        const $lists = document.getElementById('lists');
+        console.log($lists);
+
+        const childNodes = $lists.childNodes;
+        console.log(childNodes);
+
+        for(let i = 0; i < childNodes.length; i++) {
+            // removeChild 메소드가 호출 될 때마다
+            // childNodes 가 실시간 변경이 되어
+            // 홀수번째 1, 3, 5, 7 요소만 삭제가 된다.
+            $lists.removeChild(childNodes[i]);
+        }
+
+        console.log(childNodes);
+    </script>
+    <pre>
+        여러분들은 알고 싶지 않은 정보를 들어버렸다.
+        따라서 HTMLCollection 의 문제와 NodeList 특정
+        문제를 겪고 싶지 않다면
+        스프레드 문법을 통해서 배열로 바꿔서 써라
+        [...변수]
+    </pre>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>01. 비동기</h1>
+    <pre>
+    <b>
+    자바스크립트는 자바와는 다르게 한 번에 하나의 태스크(과정)만 실행할 수 있는
+    싱글 스레드 방식으로 동작한다.
+    </b>
+    때문에 처리에 시간이 걸리는 태스크를 실행하는 경우
+    블로킹(작업 중단)이 발생하게 된다.
+    </pre>
+
+    <h3>동기 처리</h3>
+    <pre>
+    현재 실행 중인 태스크가 종료될 때까지 다음에 실행될 태스크가 대기하는 방식
+
+    장점 : 작업을 순서대로 하나씩 처리하기 때문에 실행 순서를 보장한다.
+    단점 : 앞선 작업이 끝날 때까지 뒤의 작업 불가능 (블로킹)
+    </pre>
+    <script>
+        function sleep(func, delay) {
+            // 현재 시간 리턴
+            const delayUntil = Date.now() + delay;
+
+            // 루프로 시간 끌기
+            while(Date.now() < delayUntil);
+
+            func();
+        }
+
+        function delay() {
+            console.log('실행 시간을 늦추고 싶어요');
+        }
+
+        function start() {
+            console.log('바로 실행되고 싶어요');
+        }
+
+        // sleep 함수는 3초 이상 실행이 된다.
+        // sleep(delay, 3000);
+        // start 함수는 먼저 실행이 되고 싶어도 sleep 함수가 끝날 때까지 대기할 수밖에 없다.
+        // start();
+    </script>
+
+    <h3>비동기 처리</h3>
+    <pre>
+    현재 실행 중인 태스크가 종료되지 않은 상태라고 해도
+    다음 실행할 태스크를 곧바로 실행하는 방식
+    
+    장점 : 작업이 블로킹되지 않는다.
+    단점 : 실행 순서를 보장할 수 없다.
+    </pre>
+    <script>
+        /*
+            setTimeout, setInterval, 이벤트 핸들러
+            HTTP 요청 등은 비동기 처리 방식으로 동작한다.
+
+            타이머 함수는 일정 시간이 지나고 콜백함수인 delay를 실행한다.
+            타이머 함수는 일반 start 함수를 블로킹하지 않는다.
+        */
+        setTimeout(delay, 3000);
+        start();
+
+        /*
+            태스크 큐
+            setTimeout 함수나 interval 함수와 같은 비동기 함수의 콜백 함수
+            또는 이벤트 핸들러들이 일시적으로 보관되는 공간이다.
+        */
+
+        /*
+            이렇게 대기했다가 들어가는 과정을 이벤트 루프라고 한다.
+            이벤트 루프는 콜 스택에 현재 실행중인 실행 컨텍스트가 있는지,
+            그리고 태스크 큐에 대기 중인 함수가 있는지를 반복해서 확인한다.
+            
+            만약 콜 스택 영역이 비어있고 태스크 큐에 대기중인 함수가 있으면
+            순차적(FIFO)으로 태스크 큐에 대기중인 함수를 콜 스택으로 이동시켜 실행한다.
+        */
+    </script>
+</body>
+</html>

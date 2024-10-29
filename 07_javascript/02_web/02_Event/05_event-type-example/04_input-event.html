@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .lightgray {
+            background-color: lightgray;
+        }
+
+        .focused {
+            outline : 3px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <h1>04. 사용자의 입력 관련 이벤트</h1>
+    <form name="join">
+        <label for="username">이름 : </label>
+        <input type="text" name="name" id="username" value="melody">
+        <br>
+        <label>성별 : </label>
+        <input type="radio" name="gender" id="male" value="m">
+        <label for="male">남성</label>
+        <input type="radio" name="gender" id="female" value="f" checked>
+        <label for="female">여성</label>
+        <input type="radio" name="gender" id="none" value="n">
+        <label for="none">기타</label>
+        <br>
+        <label>나이 : </label>
+        <select name="age" id="age">
+            <option value="10">10대 이하</option>
+            <option value="20">20대</option>
+            <option value="30">30대</option>
+            <option value="40">40대</option>
+            <option value="50">50대</option>
+            <option value="60">60대 이상</option>
+        </select>
+        <br>
+        <label>자기소개 문구</label><br>
+        <textarea name="introduce" id="introduce" rows="5" cols="30">저를 소개합니다!!</textarea>
+        <span>0</span>/5000자
+        <br>
+        <input type="submit" value="제출">
+    </form>
+    <br><hr>
+    <h3>폼 요소 값 다루기</h3>
+    <pre>
+    input, textarea : input.value 또는 input.checked
+    select.options : option 하위 요소들을 담고 있는 컬렉션
+    select.value : 현재 선택이 된 option 값
+    select.selectedIndex : 현재 선택된 option의 index 번호
+    </pre>
+    <script>
+        // 폼 태그에 우리가 입  력할 양식을 모아두었다.
+        // 폼 태그 추출
+        console.log(document.forms);
+        console.log(document.forms.join);   // name 속성
+        console.log(document.forms[0]);     // index 값
+
+        const $form = document.forms.join;
+
+        // 요소 취득
+        const $username = $form.username;
+        console.log(`$username.value : ${$username.value}`);
+        $username.value = 'koala';
+
+        const $gender = $form.gender;
+        console.log(`$gender[1].checked : ${$gender[1].checked}`);
+        $gender[2].checked = true;
+
+        const $age = $form.age;
+        console.log($age);
+        console.log($age.options);
+        $age.options[1].selected = true;
+
+        const $introduce = $form.introduce;
+        console.log($introduce.value);
+        $introduce.value = '안녕하세요';
+    </script>
+    <h3>focus, blur 이벤트</h3>
+    <pre>
+    focus : 사용자가 폼 요소를 클릭하거나 
+            tab 키를 눌러 요소로 이동했을 때 발생하는 이벤트
+     blur : 사용자가 다른 곳을 선택하거나 
+            tab 키를 눌러 다른 폼 요소로 이동했을 때 발생하는 이벤트
+    </pre>
+    <script>
+        $username.onfocus = e => {
+            e.target.classList.toggle('lightgray');
+        }
+        $username.onblur = e => {
+            e.target.classList.toggle('lightgray');
+        }
+    </script>
+    <h3>focusin, focusout 이벤트</h3>
+    <pre>
+    focus 이벤트는 해당 입력 필드에만 동작하고 버블링되지 않는다.
+    버블링이 필요하다면 focusin, focusout 이벤트를 사용한다.
+    </pre>
+    <script>
+        // $form.addEventListener('focus', (e) => {
+        //     e.target.classList.add('focused');
+        // });
+        // $form.addEventListener('blur', (e) => {
+        //     e.target.classList.remove('focused');
+        // });
+        $form.addEventListener('focusin', (e) => {
+            e.target.classList.add('focused');
+        });
+        $form.addEventListener('focusout', (e) => {
+            e.target.classList.remove('focused');
+        });
+    </script>
+    <h3>change 이벤트</h3>
+    <pre>
+    텍스트 입력 요소는 변경 후 포커스를 잃었을 때 발생한다.
+    </pre>
+    <script>
+        $age.addEventListener('change', () => {
+            alert('age 변경됨!!!!!!');
+        })
+        $introduce.addEventListener('change', () => {
+            alert('text 박스 값 변경됨!!!!!!');
+        })
+    </script>
+    <h3>input 이벤트</h3>
+    <pre>
+    input 이벤트는 값을 변경할 때 발생한다.
+    </pre>
+    <script>
+        $introduce.addEventListener('input', e => {
+            // console.log(e.target.value);
+            let len = e.target.value.trim().length;
+            console.log(len);
+            // span 태그 추출
+            $form.querySelector('span').textContent = len;
+        });
+    </script>
+</body>
+</html>

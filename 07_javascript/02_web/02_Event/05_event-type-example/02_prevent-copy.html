@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>02. 선택 막기, 복사 막기</h1>
+    <pre>
+    브라우저의 기본 동작을 막아 선택과 복사를 막아보기.
+    mousedown, mousemove 이벤트를 사용해서
+    글씨 선택 및 복사를 막자.
+    </pre>
+
+    <span>이 영역은 드래그, 더블클릭을 해도 선택이 안 된다.</span>
+    <div>
+        이 편지는 영국에서 최초로 시작되어 일년에 한 바퀴
+        돌면서 받는 사람에게 행운을 전달합니다.
+        당신은 이 편지를 4일 안에 7명에 사람에게 보내주어야
+        하며 복사는 안 됩니다.
+    </div>
+    <script>
+        const $span = document.querySelector('span');
+        $span.onmousedown = e => e.preventDefault();
+        $span.onmousemove = e => e.preventDefault();
+        /*
+        브라우저의 기본 동작을 막는 방법은 preventDefault()
+        사용하는 방법과, 이벤트 핸들러 함수 반환 값을
+        false 로 하는 방법이 존재한다.
+        */ 
+
+        const $div = document.querySelector('div');
+        $div.oncopy = () => {
+            alert('복사 불가능!!!!!!!!!!');
+            return false;
+        }
+    </script>
+</body>
+</html>

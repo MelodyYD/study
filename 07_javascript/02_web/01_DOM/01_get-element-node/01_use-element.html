@@ -13,17 +13,15 @@
     </style>
 </head>
 <body>
-    <h1>01. id를 이용한 요소 노드 취득하기</h1>
+    <h1>01. id 를 이용한 요소 노드 취득하기</h1>
     <pre>
         Document 객체가 가진 getElementById 메소드 활용
-        <b>인자로 전달하는 id 어트리뷰트 값을 가진 요소 노드를 반환해준다.</b>
+        <b>
+            인자로 전달하는 id 어트리뷰트 값을 가진 요소 노드를
+            반환해준다.
+        </b>
     </pre>
-    <!--
-        아이디 #
-        클래스 .
-        내부 값 {}
-        갯수 마지막에 *n
-    -->
+    <!-- 아이디 (#), 클래스 (.), {텍스트} -->
     <div id="area1" class="area">
         div영역
         <p id="area2">p 태그 영역</p>
@@ -31,25 +29,27 @@
     <div id="area1" class="area">
         div영역
     </div>
-
-    <!--
-        스크립트 태그는 자바스크립트 언어를 작성하는 공간이다.
+    <!--   
+         스크립트 태그는 자바스크립트 언어를
+        작성하는 공간이다.
     -->
     <script>
-        // $ 로 나타낸 이유는 DOM 요소라고 하는 것을 알려주기 위한 암묵적인 규칙이 있어서다.
+        // $ 로 나타낸 이유는 DOM 요소라고 하는 것을
+        // 알려주기 위해 암묵적인 규칙이 있다.
 
         // 1. 돔(document) 요소 취득
         // 해당 아이디를 가진 요소들 중 첫 번째 요소만 적용된다.
         const $element = document.getElementById('area1');
         console.log($element);
-        
         // 2. 돔 요소의 스타일 프로퍼티를 조작하여 값 변경
-        $element.style.backgroundColor = 'darkgreen';
+        $element.style.backgroundColor = 'red';
 
         // 3. 해당하는 아이디가 없는 요소 취득
         const $noElement = document.getElementById('area3');
-        // 4. DOM 에서 없는 요소를 가져오는 경우 null 반환
+        // 4. DOM 에서 없는 요소를 가져오는 경우 null 을 반환
         console.log($noElement);
     </script>
 </body>
 </html>
+    
+   

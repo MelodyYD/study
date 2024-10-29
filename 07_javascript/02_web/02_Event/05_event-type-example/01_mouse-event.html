@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area {
+            background: lightcoral;
+            border: 1px solid black;
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>01. 마우스 관련 이벤트</h1>
+    <h3>마우스 이벤트 대표적 예시</h3>
+    <ul>
+        <li>mousedown/up</li>
+        <li>mouseover/out</li>
+        <li>mousemove</li>
+        <li>click</li>
+        <li>contextmenu</li>
+    </ul>
+    <hr>
+    <button>클릭</button>
+    <div class="area"></div>
+    <script>
+        const $btn = document.querySelector('button');
+        const $div = document.querySelector('.area');
+        // e 객체의 button 프로퍼티 
+        // 0 : 왼쪽클릭
+        // 1 : 휠 클릭
+        // 2 : 오른쪽 클릭
+        // $btn.onmousedown = e => {
+        //     $div.insertAdjacentHTML('beforeend', 'mousedown button=' + e.button + "<br>");
+        // }
+
+        // $btn.onmouseup = e => {
+        //     $div.insertAdjacentHTML('beforeend', 'mouseup button=' + e.button + "<br>");
+        // }
+        // 이 두 개는 다른 것 테스트를 위해 주석
+        // $btn.onmouseover = e => {
+        //     $div.insertAdjacentHTML('beforeend', 'mouseover button=' + e.button + "<br>");
+        // }
+
+        // $btn.onmouseout = e => {
+        //     $div.insertAdjacentHTML('beforeend', 'mouseover button=' + e.button + "<br>");
+        // }
+        // $btn.onclick = e => {
+        //     $div.insertAdjacentHTML('beforeend', 'onmouseclick button=' + e.button + "<br>");
+        // }
+
+        $btn.oncontextmenu = e => {
+            $div.insertAdjacentHTML('beforeend', 'oncontextmenu button=' + e.button + "<br>");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area {
+            background: lightcoral;
+            border: 1px solid black;
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>03. 키보드 관련 이벤트</h1>
+    <ul>
+        <li>keydown</li>
+        <li>keyup</li>
+    </ul>
+    <input type="text" placeholder="아무거나 입력">
+    <div class="area"></div>
+    <script>
+        const $message = document.querySelector('input[type=text]');
+        const $area = document.querySelector('.area');
+
+        $message.onkeydown = e => {
+            $area.insertAdjacentHTML('beforeend', 'key=' + e.key + ', code=' + e.code + '<br>');
+        }
+
+        $message.onkeyup = e => {
+            $area.insertAdjacentHTML('beforeend', 'key=' + e.key + ', code=' + e.code + '<br>');
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>01. timeout</h1>
+    <h3>setTimeout</h3>
+    <pre>
+    setTimeout(fuc|code [, delay, param1, param2, ...])
+    setTimeout 함수는 두 번째 인자로 전달한 식나으로 단 한 번 동작하는 타이머를 생성한다.
+    이후 타이머가 만료되면 첫 번째 인자로 전달 받은 콜백함수를 호출한다.
+    콜백함수에 전달할 인자가 존재하는 경우 이후 세 번째 인자로 전달할 수 있다.
+    </pre>
+    <script>
+        // 2번째 인자 : ms 단위, 1000ms = 1s
+        setTimeout(() => console.log('1초 지났어 ㅎ'), 1000);
+
+        setTimeout((msg) => console.log(`1..2..3..4..${msg}`), 4000, '기다렸니?');
+    </script>
+    
+    <h3>clearTimeout</h3>
+    <pre>
+    setTimeout 함수는 생성된 타이머를 식별할 수 있는 id를 가지고 있다.
+    반환한 아이디를 clearTimeout 함수의 인자로 전달하게되면 타이머를 취소할 수 있다.
+    </pre>
+    <script>
+        const timeoutId = setTimeout(
+            () => console.log('취소될 함수'), 2000
+        );
+        console.log(timeoutId);
+        clearTimeout(timeoutId);
+    </script>
+</body>
+</html>

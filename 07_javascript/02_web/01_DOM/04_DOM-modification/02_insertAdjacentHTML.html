@@ -8,19 +8,19 @@
 <body>
     <h1>02. insertAdjacentHTML</h1>
     <pre>
-        insertAdjacentHTML(position, DOMString)
-        첫 번째 인자는 우리가 작성한 DOMString을 어느 위치에 넣을지 판단한다.
-        position에는 4가지 문자열이 존재한다.
-        - beforebegin
-        - afterbegin
-        - beforeend
-        - afterend
+    insertAdjacentHTML(position, DOMString)
+    첫번째 인자 는 우리가 작성한 DOMString 을 어느
+    위치에 넣을 지 판단한다.
+    position 에는 4가지 문자열이 존재한다.
+    'beforebegin', 'afterbegin', 'beforeend', 'afterend'
 
-        innerHTML 지정할 위치에 넣는 것이 불가능하다.
-        단, HTML 문자열을 파싱하므로 아까와 같은 공격은 가능하다.
+    innerHTML 지정할 위치에 넣는 것이 불가능하다.
+    단, HTML 문자열을 파싱하므로 아까와 같은 공격은 가능하다.
     </pre>
 
-    <div id="area">insertAdjacentHTML 테스트</div>
+    <div id="area">
+        insertAdjacentHTML 테스트
+    </div>
 
     <script>
         const $area = document.getElementById('area');
@@ -30,5 +30,6 @@
         $area.insertAdjacentHTML('beforeend', '<h1>beforeend 테스트</h1>');
         $area.insertAdjacentHTML('afterend', '<h1>afterend 테스트</h1>');
     </script>
+
 </body>
 </html>

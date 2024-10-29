@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>02. HTML 어트리뷰트와 DOM 프로퍼티</h1>
+
+    <pre>
+    HTML 어트리뷰트(속성) : HTML 요소의 초기 상태를 지정하며
+    변하지 않는 특성을 가지고 있다.
+    어트리뷰트 노드에서 관리 되며, 값을 얻거나 변경하기 위해서는
+    getAttribute, setAttribute 메소드를 사용한다.
+    DOM 프로퍼티 : 사용자가 입력한 최신의 상태를 관리한다.
+    사용자의 입력에 의한 상태 변화에 반응하여 최신상태 유지.
+    </pre>
+    <label for="username">유저명 : </label>
+    <input type="text" id="username" value="user01"><br>
+    <label for="nickname">별칭 : </label>
+    <input type="text" id="nickname" value="raccoon">
+
+    <script>
+        const $user = document.getElementById('username');
+
+        console.log($user);
+
+        $user.oninput = () => {
+            console.log('value 프로퍼티 값 :', $user.value);
+            console.log('value 어트리뷰트 값 :', $user.getAttribute('value'));
+        }
+    </script>
+
+    <pre>
+    getAttribute 메소드로 추출한 어트리뷰트 값은 항상 문자열이다.
+    하지만 우리가 DOM 프로퍼티로 취득한 최신 상태 값은 문자열이
+    아닐 수 있다.
+    checkbox 요소의 checked 어트리뷰트 값은 문자열 이지만,
+    checked 프로퍼티 값은 불리언 타입이다.
+    </pre>
+
+    <label for="check">확인</label>
+    <input type="checkbox" id="check" checked>
+
+    <script>
+        const $check = document.querySelector('input[type=checkbox]')
+        console.log($check.getAttribute('checked'));
+        console.log($check.checked);
+    </script>
+
+</body>
+</html>

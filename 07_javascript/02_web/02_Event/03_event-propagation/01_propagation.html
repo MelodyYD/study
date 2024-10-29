@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {background: rebeccapurple;}
+        li {background: burlywood;}
+    </style>
+</head>
+<body>
+    <h1>01. 이벤트의 전파</h1>
+    <pre>
+    생성 된 이벤트 객체는 이벤트를 발생 시킨
+    DOM 요소인 이벤트 target 을 중심으로 DOM 트리를
+    통해 전파된다.
+    1. 캡처링 단계(capturing phase): 상위요소에서 하위요소로 전파
+    2. 타깃 단계(target phase) : 이벤트가 이벤트 타겟에 도달
+    3. 버블링 단계(bubbling phase) : 이벤트가 하위요소에서 상위요소로 전파
+    </pre>
+
+    <ul id="drink">
+        <li>맥콜</li>
+        <li>사이다</li>
+        <li>제로콜라</li>
+    </ul>
+    <script>
+        const $drink = document.getElementById('drink');
+        // 이벤트 객체는 항상 숨어있다.
+        $drink.addEventListener('click', e => {
+            // ul 영역을 클릭 시
+            // 2 : 타겟 단계, 타겟과 현재 타겟도 ul 출력
+
+            // li 영역을 클릭 시
+            // 3 : 버블링, 타겟 li, 현재 타겟 ul 출력
+            console.log(e.eventPhase);
+            console.log(e.target);
+            console.log(e.currentTarget);
+        })
+    </script>
+    <pre>
+    이벤트 핸들러 어트리뷰트/프로퍼티 방식으로 등록한 이벤트는
+    타깃 단계와 버블링 단계의 이벤트만 캐치할 수 있지만,
+    addEventListener 방식은 3번째 인자로 true 를 전달하게 되면
+    캡처링 단계의 이벤트도 캐치할 수 있다.
+    </pre>
+    <ul id="food">
+        <li>김치찌개</li>
+        <li>된장찌개</li>
+        <li>부대찌개</li>
+    </ul>
+    <script>
+        const $food = document.getElementById('food');
+
+        $food.addEventListener('click', e => {
+            console.log(e.eventPhase);
+            console.log(e.target);
+            console.log(e.currentTarget);
+        }, true);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>04. CSS 선택자를 이용한 요소 노드 취득</h1>
+    <pre>
+        querySelector()
+        인자로 전달한 CSS선택자 를 만족하는 하나의
+        요소를 반환한다.
+    </pre>
+    <div class="area">
+        <p>test1</p>
+    </div>
+    <div class="area">
+        <p>test2</p>
+    </div>
+    <script>
+        // css 선택자를 이용해서 돔 요소를 취득
+        // querySelector 는 1개의 요소만을 반환한다.
+        const $area = document.querySelector('.area');
+        console.log($area);
+    </script>
+    <hr>
+    <pre>
+        querySelectorAll()
+        인자로 전달한 CSS 선택자를 만족시키는 모든
+        DOM 요소를 반환한다.
+    </pre>
+    <ul id="lists">
+        <li class="red">빨간색~파란색~</li>
+        <li class="red">빨간색~파란색~</li>
+        <li class="red">빨간색~파란색~</li>
+    </ul>
+    <script>
+        const $redList = document.querySelectorAll('ul > li');
+        // querySelectorAll -> NodeList 반환
+        console.log($redList);
+        // NodeList 객체는 forEach 메소드를 프로퍼티로
+        // 가지고 있기 때문에 스프레드 문법을 모르더라도
+        // 바로 사용이 가능하다.
+        $redList.forEach(red => red.style.color = 'gray')
+
+    </script>
+</body>
+</html>

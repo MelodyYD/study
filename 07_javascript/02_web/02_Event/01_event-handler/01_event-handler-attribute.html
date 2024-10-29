@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>01. 이벤트 핸들러 어트리뷰트 방식</h1>
+
+    <h3>이벤트 핸들러 등록</h3>
+    <pre>
+    이벤트 핸들러
+    - 이벤트가 발생했을 때 브라우저에 호출을 위임한
+    함수.
+    이벤트가 발생 했을 때 브라우저에게 이벤트 호출을
+    위임하는 것을 이벤트 핸들러 등록이라고 하며,
+    이벤트 핸들러를 등록하는 방법은 3가지가 있다.
+    </pre>
+    <h3>이벤트 핸들러 어트리뷰트 방식</h3>
+    <pre>
+    HTML 이벤트 핸들러 어트리뷰트(on 접두사 + 이벤트 타입) 값으로
+    함수 호출문을 할당하여 이벤트 핸들러를 등록하는 방식이다.
+    주의점은 함수 참조가 아닌, 함수 호출문을 할당하는 것이다.
+    </pre>
+    <button onclick="alert('이걸 클릭하네 ㅋㅋ'); console.log('hi')">클릭해보슈~~~~~</button>
+    <button onmouseover="hello('조평훈');">마우스를 올려보슈</button>
+    <script>
+        function hello(name) {
+            alert(`${name}씨, 마우스 올리는 거 검거완료`);
+        }
+    </script>
+    <pre>
+    어트리뷰트 방식으로 이벤트 핸들러를 등록하게 되면
+    HTML/CSS 요소 뿐 아니라 JavaScript 언어도 추가되게
+    된다. 따라서 javaScript 언어를 모르는 기획자나
+    퍼블리셔들은 혼란에 빠질 수 있다.  
+    
+    HTML 정적인 요소, javaScript 동적으로 바꿀 수 있는 요소
+    이 친구들을 따로 분리해두는 것을 추천을 하지만
+    나중에 배울 SPA 리액트에서는 이벤트 핸들러를
+    어트리뷰트 방식으로 처리를 해두기 때문에 알아두는 것이
+    좋다.
+    </pre>
+</body>
+</html>

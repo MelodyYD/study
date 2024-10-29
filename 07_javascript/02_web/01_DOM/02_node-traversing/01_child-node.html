@@ -9,32 +9,34 @@
     <h1>01. 자식 노드 탐색</h1>
     <h3>노드 탐색</h3>
     <pre>
-        요소 노드를 취득한 후 취득한 요소를 기점으로 부모 or 형제 or 자식을 탐색해야 하는 경우가 존재할 수 있다.
+    요소 노드를 취득한 후 취득한 요소를 기점으로
+    부모 or 형제 or 자식을 탐색해야 하는 경우가
+    존재할 수 있다.
     </pre>
 
-    <h3>공백 텍스트 노트</h3>
+    <h3>공백 텍스트 노드</h3>
     <pre>
-        HTML 요소 사이의 스페이스, 탭 , 줄바꿈 등등의 공백 문자는 텍스트 노드를 생성한다.
+        HTML 요소 사이의 스페이스, 탭, 줄바꿈
+        등등의 공백 문자는 텍스트 노드를 생성한다.
     </pre>
     <h3>자식 노드 탐색하기</h3>
     <ol id="node">
         <li>childNodes : 자식 노드(요소, 텍스트)를 탐색해서 NodeList 객체 반환</li>
         <li>firstChild : 첫 번째 자식 노드(요소, 텍스트) 반환</li>
-        <!-- ㄱㄴㄷㄹ -->
-        <li>lastChild : 마지막 자식 노드(요소, 텍스트) 반환</li>
+        <li>lastChild : 마지막 번째 자식 노드(요소, 텍스트) 반환</li>
     </ol>
     <script>
         const $node = document.getElementById('node');
         console.log($node);
-        // NodeList 객체 반환, 요소(태그)뿐 아니라 텍스트까지 반환
+        // NodeList 객체 반환, 요소(태그) 뿐 아니라 텍스트 반환
         console.log($node.childNodes);
         console.log($node.firstChild);
         console.log($node.lastChild);
     </script>
     <ol id="element">
         <li>children : 자식 노드 중 요소(태그)만 탐색하여 HTMLCollection 객체 반환</li>
-        <li>firstElementChild : 첫 번째 자식의 요소 노드 반환</li>
-        <li>lastElementChild : 마지막 자식의 요소 노드 반환</li>
+        <li>firstElementChild : 첫번째 자식의 요소 노드 반환</li>
+        <li>lastElementChild : 마지막 번째 자식의 요소 노드 반환</li>
     </ol>
     <script>
         const $element = document.getElementById('element');

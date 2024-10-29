@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>02. interval</h1>
+    <pre>
+    setInterval(func|code [, delay, param1, param2, ...])
+    전달 받은 시간으로 반복적으로 동작하는 타이머 함수
+    이후 타이머가 만료될 때까지 계속된다.
+    </pre>
+    <script>
+        let count = 1;
+        const timerID = setInterval(
+            () => {
+                console.log(count);
+                if(count++ === 5) {
+                    clearInterval(timerID);
+                }
+            }, 1000
+        );
+    </script>
+</body>
+</html>

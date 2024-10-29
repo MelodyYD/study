@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>05. 노드 복사, 교체, 삭제</h1>
+    <pre>
+    clonNode([deep : true | false])
+    노드의 사본을 생성하여 반환을 해준다.
+    매개변수에 true 를 전달하면 
+    노드를 깊은 복사하여
+    모든 자손 노드가 포함 된 사본을 반환해주고
+    false 를 전달하면
+    얕은 복사를 하여 노드 자신만의 사본을 생성한다.
+    </pre>
+    <ul class="copy">
+        ul 영역
+        <li>li 영역</li>
+    </ul>
+    <script>
+        const $ul = document.querySelector('.copy');
+        const $li = $ul.firstElementChild;
+
+        // 얕은 복사
+        // 텍스트 노드는 복사하지 않고 자신(element) 만 복제
+        const $shallow = $li.cloneNode(false);
+        $ul.appendChild($shallow);
+
+        // 깊은 복사
+        // 자손 노드들도 다 복사를 해준다.
+        const $deep = $ul.cloneNode(true);
+        $ul.appendChild($deep);
+    </script>
+    <h3>노드 교체</h3>
+    <pre>
+    replaceChild(newChild, oldChild)
+    </pre>
+    <ul id="drink">
+        <li>커피</li>
+        <li>사이다</li>
+    </ul>
+    <script>
+        const $drink = document.getElementById('drink');
+
+        const $coffee = $drink.firstElementChild;
+
+        // 새로운 li 생성
+        const $newChild = document.createElement('li');
+        $newChild.textContent = '콜라';
+
+        $drink.replaceChild($newChild, $coffee);
+    </script>
+    <h3>노드 삭제</h3>
+    <pre>
+    removeChild(child)
+    인자로 전달한 노드를 DOM 에서 삭제한다.
+    </pre>
+    <ul id="pooh">
+        <li>푸바오</li>
+        <li>아이바오</li>
+        <li>러바오</li>
+    </ul>
+    <script>
+        const $pooh = document.getElementById('pooh');
+        $pooh.removeChild($pooh.firstElementChild);
+    </script>
+</body>
+</html>

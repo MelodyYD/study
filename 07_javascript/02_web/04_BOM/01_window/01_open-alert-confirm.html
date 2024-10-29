@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>01. open, alert, confirm, prompt 메소드</h1>
+    <pre>
+    자바스크립트 언어는 브라우저 상에서 동작하는 언어이다.
+    자바스크립트가 web 상에서 동작할 때 사용할  수 있는 기능이 있다.
+    web 상에서 가장 최상위 객체는 window 객체이다.
+
+    window
+        - DOM (document 등)
+        - BOM (location, navigator 등)
+        - JavaScript (Array, Function, Object 등)
+    
+    최상단의 windows 객체는 브라우저 창을 대변하고,
+    브라우저를 제어할 수 있는 메소드를 제공한다.
+    window는 전역 객체이기 때문에 생략이 가능하다.
+    ex) window.alert() -> alert()
+    </pre>
+    <h3>open</h3>
+    <pre>
+    window.open(url, name, params) 메소드로 새로운 창을 열 수 있다.
+    </pre>
+    <button id="btn1">새로운 창 열기</button>
+    <button id="btn2">새로운 창 열기</button>
+    <script>
+        document.getElementById('btn1').onclick = () => window.open(
+            'https://www.naver.com', '네이버', 'width=800, height=800'
+        );
+        document.getElementById('btn2').onclick = () => window.open(
+            'https://www.nexon.com', '넥슨'
+        );
+    </script>
+    <h3>alert</h3>
+    <pre>
+    windows.alert(message) 메소드는 확인 버튼을 가지며,
+    메세지를 지정할 수 있는 경고 상자를 띄워준다.
+    </pre>
+    <script>
+        // window.alert('알러트 창 등장~~');
+    </script>
+    <h3>confirm</h3>
+    <pre>
+    windows.confirm(message) 메소드는 확인과 취소 두 버튼을 가지고 있으며,
+    메세지를 지정할 수 있게 된다.
+    반환값이 존재하며, 확인을 누르면 true, 취소나 ESC를 누르면 false 를 반환한다.
+    </pre>
+    <script>
+        const answer = 
+        window.confirm('계속 하시겠습니까?');
+        console.log(answer);
+        if(answer) {
+            console.log('8시간 풀강의 가시죠')
+        } else {
+            console.log('다음시간까지만 하시죠')
+        }
+    </script>
+    <h3>prompt</h3>
+    <pre>
+    window.prompt(message, default)
+    message : 사용자가 어떤 값을 입력해야 하는지 안내 문구
+    default : 텍스트 입력 필드의 기본 값(문자열)
+    반환값은 사용자가 입력한 값이며, 취소를 누르거나 ESC 키를 누르면 null 값이 리턴된다.
+    </pre>
+    <script>
+        const likeNumber = window.prompt('좋아하는 숫자를 입력해주세요', 7);
+        console.log(likeNumber);
+        if(likeNumber) {
+            alert(`당신이 좋아하는 숫자는 ${likeNumber} 이군요!`)
+        } else {
+            alert(`반드시 숫자를 입력해야 합니다.`);
+        }
+    </script>
+</body>
+</html>

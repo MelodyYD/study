@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>01. location</h1>
+
+    <h3>BOM(Browser Object Model)</h3>
+    <pre>
+    DOM(문서) 이외의 모든 것들을 제어하기 위해 브라우저가 제공하는 추가적인 객체
+    </pre>
+    <h3>location</h3>
+    <pre>
+    location 객체는 현재 URL을 읽게 해주며, 새로운 URL로 변경할 수 있게 해준다.
+    </pre>
+    <button id="btn1">새 페이지로 이동하기</button>
+    <button id="btn2">새 페이지로 이동하기</button>
+    <button id="btn3">새 페이지로 이동하기</button>
+    <button id="btn4">새 페이지로 이동하기(뒤로가기 불가)</button>
+    <button id="btn5">서버로부터 현재 페이지 리로드</button>
+    <button id="btn6">서버로부터 현재 페이지 리로드</button>
+    <script>
+        document.getElementById('btn1').onclick = () => location.assign("https://www.naver.com");
+        document.getElementById('btn2').onclick = () => location = "https://www.google.com";
+        document.getElementById('btn3').onclick = () => location.href = "https://www.daum.net";
+        document.getElementById('btn4').onclick = () => location.replace("https://www.nexon.com");
+        document.getElementById('btn5').onclick = () => location.reload();
+        document.getElementById('btn6').onclick = () => location = location;
+    </script>
+</body>
+</html>

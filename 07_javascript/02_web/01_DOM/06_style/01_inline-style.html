@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>01. inline-style</h1>
+    <pre>
+    style 프로퍼티는 setter getter 가 모두 존재하는 접근자
+    프로퍼티로서 요소 노드의 인타인 스타일을 취득하거나,
+    추가 또는 변경하는 것에 사용이 될 수 있다.
+    </pre>
+    <div style="color: white;">AREA</div>
+    <script>
+        const $area = document.querySelector('div');
+        console.log($area.style);
+        // 인라인 스타일 추가
+        // 단위 지정이 필요한 프로퍼티 값은 단위를 지정해야 한다.
+        $area.style.height = '100px';
+        $area.style.width = '100px';
+        // 프로퍼티 키는 카멜케이스로 적용이 되어 있기 때문에
+        // 항상 프로퍼티 key 값을 까서 확인 후 적용을 하자.
+        $area.style.backgroundColor = 'black';
+
+    </script>
+</body>
+</html>

@@ -13,14 +13,16 @@
     </ol>
     <script>
         const $node = document.getElementById('node');
-        
-        /*
-            구조분해 할당
-            변수 명이랑 접근할 프로퍼티가 동일한 경우 {} 자바스크립트 표현식을 사용해서 생략 가능하다.
-        */
+        // 구조분해 할당
+        // 변수 명이랑 접근 할 프로퍼티가 동일한 경우
+        // {} 자바스크립트 표현식을 사용해서 생략 가능
         // const firstChild = $node.firstChild;
         const {firstChild} = $node;
         console.log(firstChild);
+
+        // int x = 10
+        // int y = x;
+        // $ 암묵적 표현 -> 돔 요소를 취득
 
         const {nextSibling} = firstChild;
         console.log(nextSibling);
@@ -29,7 +31,8 @@
         console.log(previousSibling);
 
         // 태그 요소 노드만 취득하고 싶으면
-        // previousElementSibling, nextElementSibling 을 쓰면 된다.
+        // previousElementSibling
+        // nextElementSibling 을 사용하면 된다.
     </script>
 </body>
 </html>

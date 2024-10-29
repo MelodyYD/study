@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>02. 이벤트 핸들러 내부의 this</h1>
+    <h3>어트리뷰트 방식</h3>
+    <pre>
+    이벤트 핸들러 어트리뷰트 방식의 경우, 이벤트 핸들러에
+    의해 일반 함수로 호출이 되고, 일반 함수 내부의 this는
+    전역 객체인 window 를 가리킨다.
+    이벤트 핸들러 호출 시 인수로 전달한 this 는
+    이벤트를 가지고 있는 DOM 요소를 가리킨다.
+    </pre>
+    <button onclick="handleClick1()">클릭</button>
+    <button onclick="handleClick2(this)">클릭</button>
+    <script>
+        function handleClick1() {
+            console.log(this);
+        }
+
+        function handleClick2(dom) {
+            console.log(dom);
+        }
+    </script>
+    <h3>프로퍼티 방식과 addEventListener 방식</h3>
+    <pre>
+    이 두 가지 방식은 모두 이벤트 핸들러 내부의 this 는
+    DOM 요소를 가리키게 되어 우리가 걱정하는 문제가
+    발생하지 않을 수 있다.
+    </pre>
+    <button id="btn1">클릭</button>
+    <button id="btn2">클릭</button>
+
+    <script>
+        const $btn1 = document.getElementById('btn1');
+        const $btn2 = document.getElementById('btn2');
+
+        // 프로퍼티 방식
+        $btn1.onclick = function(e) {
+            console.log(this);
+            console.log(e.currentTarget);
+            console.log(this === e.currentTarget);
+        }
+
+        // add
+        $btn2.addEventListener('click', function(e) {
+            console.log(this);
+            console.log(e.currentTarget);
+        })
+
+    </script>
+    <h3>화살표 함수를 사용할 때</h3>
+    <pre>
+    화살표 함수로 정의한 이벤트 핸들러 내부의 this는
+    나 자신을 가리키는 것이 아닌 상위 객체를 가리킨다.
+    화살표 함수는 함수 자체의 this 를 갖지 않는다를
+    명심해야 한다.
+    </pre>
+    <button id="btn3">클릭</button>
+    <button id="btn4">클릭</button>
+    <script>
+        const $btn3 = document.getElementById('btn3');
+        const $btn4 = document.getElementById('btn4');
+
+        // 프로퍼티
+        $btn3.onclick = e => {
+            console.log(this);
+            console.log(e.currentTarget);
+        }
+
+        // add
+        $btn4.addEventListener('click', e => {
+            console.log(this);
+            console.log(e.currentTarget);
+        })
+
+    </script>
+</body>
+</html>
