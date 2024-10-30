@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>투두 리스트</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .frame {
+            display: flex;
+            flex-direction: column;
+            width: 80%; /* 전체 프레임 너비 설정 */
+            overflow-y: auto; /* 스크롤 가능 */
+            border: 1px solid #ccc; /* 테두리 추가 */
+            padding: 10px;
+        }
+
+        .todo-column {
+            flex: 1; /* 열 너비 균등 분배 */
+            min-width: 200px; /* 최소 열 너비 설정 */
+            margin: 5px; /* 열 간격 */
+            display: flex;
+            flex-direction: column; /* 열 내부 아이템을 세로로 배치 */
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px;
+            border: 1px solid #ccc; /* 각 리스트 항목의 테두리 */
+            margin-bottom: 5px; /* 항목 간격 */
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .delete-button {
+            display: none;
+            background: none;
+            border: none;
+            color: red;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .todo-item:hover .delete-button {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <div class="frame">
+        <header>TO-DO LIST</header>
+        <div class="inputTodo" id="inputTodo">
+            <input type="text" class="input" id="myTodo" placeholder="무엇을 할까요?" autofocus>
+            <button class="add" id="addTodo">ADD</button>
+        </div>
+        <div class="todo-column" id="addedTodo"></div> <!-- 리스트 항목을 추가할 영역 -->
+    </div>
+
+    <script>
+        const $myTodo = document.getElementById('myTodo');
+        const $addedTodo = document.getElementById('addedTodo');
+        const $addTodo = document.getElementById('addTodo');
+
+        $addTodo.addEventListener('click', function() {
+            const $todoValue = $myTodo.value.trim();
+
+            if ($todoValue !== '') {
+                const $list = document.createElement('div');
+                $list.classList.add('todo-item'); // 리스트 항목 클래스 추가
+
+                const $checkbox = document.createElement('input');
+                $checkbox.type = 'checkbox';
+
+                $checkbox.addEventListener('change', function() {
+                    if ($checkbox.checked) {
+                        $list.classList.add('completed');
+                    } else {
+                        $list.classList.remove('completed');
+                    }
+                });
+
+                const $text = document.createElement('span');
+                $text.textContent = $todoValue;
+
+                const $deleteButton = document.createElement('button'); // 삭제 버튼 생성
+                $deleteButton.textContent = '✖'; // x 표시
+                $deleteButton.classList.add('delete-button'); // 버튼 클래스 추가
+
+                // 삭제 버튼 클릭 시 해당 항목 삭제
+                $deleteButton.addEventListener('click', function() {
+                    $addedTodo.removeChild($list);
+                });
+
+                // 리스트 항목에 요소 추가
+                $list.appendChild($checkbox);
+                $list.appendChild($text);
+                $list.appendChild($deleteButton); // 삭제 버튼 추가
+
+                // 높이를 확인하고 새 열로 추가
+                if ($addedTodo.scrollHeight >= $addedTodo.clientHeight) {
+                    const newColumn = document.createElement('div');
+                    newColumn.classList.add('todo-column');
+                    $addedTodo.appendChild(newColumn);
+                }
+
+                // 새로 추가된 열에 리스트 항목 추가
+                const columns = $addedTodo.querySelectorAll('.todo-column');
+                columns[columns.length - 1].appendChild($list); // 가장 마지막 열에 추가
+
+                $myTodo.value = '';
+                $myTodo.focus();
+            }
+        });
+    </script>
+</body>
+</html>

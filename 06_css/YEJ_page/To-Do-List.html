@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @font-face {
+            font-family: 'HakgyoansimDoldamB';
+            src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimDoldamB.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        .frame {
+            width: 100%;
+            height: 100%;
+            border-width: 30px;
+            border-style: solid;
+            border-image-source: url(img/나무\ 결.jpg);
+            border-image-slice: 30;
+            box-sizing: border-box;
+            background-image: url(img/board.png);
+        }
+
+        header {
+            font-family: 'HakgyoansimDoldamB';
+            font-weight: 700;
+            color: whitesmoke;
+            font-size: 4em;
+            padding-top: 10%;
+            padding-left: 10%;
+        }
+
+        .inputTodo {
+            display: flex;
+            padding-top: 1%;
+            padding-left: 10%;
+            margin-bottom: 20px;
+        }
+
+        .input {
+            background-color: rgba(255, 255, 255, 0.116);
+            color: whitesmoke;
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #cccccc96;
+            border-radius: 30px;
+            margin-right: 10px;
+        }
+
+        input::placeholder {
+            color: rgba(245, 245, 245, 0.726);
+            opacity: 1;
+        }
+
+        .input:focus {
+            border-color: whitesmoke;
+            outline: none
+        }
+
+        .add {
+            width: 62px;
+            height: 40px;
+            /* padding: 10px 25px; */
+            border: 2px solid #cccccc96;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            color: whitesmoke;
+            /* 버튼 디자인 이따 찾아보기~ */
+            /* background-color: rgba(255, 255, 255, 0.116);
+            color: whitesmoke; */
+        }
+
+        .btn-2 {
+            background-color: rgba(255, 255, 255, 0.082);
+        }
+        .btn-2:after {
+            position: absolute;
+            content: "";
+            top: 5px;
+            left: 3px;
+            width: 86%;
+            height: 70%;
+            border: 1px solid #cccccc96;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .btn-2:hover:after {
+            opacity: 1;
+        }
+
+        .todo {
+            font-family: 'HakgyoansimDoldamB';
+            font-size: 22px;
+            padding-left: 11%;
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            max-height: 50vh;
+            overflow: hidden;
+            flex-wrap: wrap;
+        }
+
+        .todoRow {
+            display: flex;
+            width: 25%;
+        }
+
+        .myList {
+            color: whitesmoke;
+            padding: 7px;
+            margin: 5px;
+            width: calc(50% - 10px);
+            box-sizing: border-box;
+        }
+
+        .deleteBtn {
+            display: none;
+            cursor: pointer;
+            margin-left: 10px;
+            background: none;
+            border: none;
+            color: whitesmoke;
+            font-size: 13px;
+        }
+
+        .myList:hover .deleteBtn {
+            display: inline;
+        }
+
+        .completed span {
+            text-decoration: line-through;
+        }
+
+        input[type="checkbox"] {
+            appearance: none;
+            vertical-align: middle;
+            width: 13px;
+            height: 13px;
+            margin-right: 5px;
+            background-color: transparent;
+            border: 2px solid whitesmoke;
+            accent-color: whitesmoke;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: transparent;
+            position: relative;
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: '✔';
+            color: whitesmoke;
+            font-size: 13px;
+            position: absolute;
+            left: -1px;
+            top: -6px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <!-- 화면 영역 -->
+    <div class="frame">
+        <header>TO-DO LIST</header>
+        <div class="inputTodo" id="inputTodo">
+            <input type="text" class="input" id="myTodo" placeholder="무엇을 할까요?" autofocus>
+            <button class="add custom-btn btn-2" id="addTodo">추가</button>
+        </div>
+        <ul class="todo" id="addedTodo"></ul>
+    </div>
+
+    <script>
+        // 복사 방지
+        const $header = document.querySelector('header')
+        $header.onmousedown = e => e.preventDefault();
+        $header.onmousemove = e => e.preventDefault();
+
+        // 리스트 추가하기
+        const $myTodo = document.getElementById('myTodo')           // 입력 텍스트
+        const $addedTodo = document.getElementById('addedTodo')     // 투두 리스트
+        const $addTodo = document.getElementById('addTodo')         // 버튼 동작(추가)
+
+        let currentRow = 0;
+        const maxHeight = 500;
+
+        function addTodo() {
+            const $todoValue = $myTodo.value.trim();
+
+            if ($todoValue !== '') {
+                const $row = document.createElement('div');
+                $row.classList.add('todoRow');
+
+                const $list = document.createElement('li');
+                const $checkbox = document.createElement('input');
+                $checkbox.type = 'checkbox';
+                const $text = document.createElement('span');
+                $text.textContent = $todoValue;
+                $list.classList.add('myList');
+                $list.appendChild($checkbox);
+                $list.appendChild($text);
+
+                $checkbox.addEventListener('change', function() {
+                    if ($checkbox.checked) {
+                        $list.classList.add('completed');
+                    } else {
+                        $list.classList.remove('completed');
+                    }
+                });
+
+                const $deleteBtn = document.createElement('button');
+                $deleteBtn.textContent = 'X';
+                $deleteBtn.classList.add('deleteBtn');
+                $deleteBtn.addEventListener('click', function() {
+                    $addedTodo.removeChild($row);
+                });
+                $list.appendChild($deleteBtn);
+                $row.appendChild($list);
+
+                $addedTodo.appendChild($row);
+
+                const rowHeight = $row.offsetHeight;
+                if (currentRow * rowHeight < maxHeight) {
+                    currentRow++;
+                } else {
+                    currentRow = 0;
+                    const $newRow = document.createElement('div');
+                    $newRow.classList.add('todoRow');
+                    $addedTodo.appendChild($newRow);
+                    $newRow.appendChild($list);
+                }
+
+                $myTodo.value = '';
+                $myTodo.focus();
+            }
+        }
+
+        $addTodo.addEventListener('click', addTodo);
+        $myTodo.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                addTodo();
+            }
+        });
+    </script>
+</body>
+</html>

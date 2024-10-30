@@ -123,7 +123,6 @@ section {
 section.ContactMAINPAGE {
     font-family: 'BookkMyungjo-Bd';
     display: flex;
-    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     padding: 2rem;
@@ -170,6 +169,10 @@ section.ContactMAINPAGE {
 
 .info ul li:first-child {
     background-color: #eeeaf18b;
+}
+
+.menuTitleSection {
+    text-align: center;
 }
 
 section.MAINPAGE {
@@ -241,10 +244,19 @@ h3 {
 }
 
 .video-container {
-    margin-top: 220px;
+    margin-top: 240px;
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
+    position: fixed;
+}
+
+#modalVideo {
+    width: 40%;
+    aspect-ratio: 16 / 9;
+    max-width: 150vw;
+    max-height: 150vh;
 }
 
 .book-image {
@@ -252,12 +264,6 @@ h3 {
     height: auto;
     padding: 5%;
 }
-
-/* .song-image {
-    max-width: 50%;
-    height: 50%;
-    padding: 12%;
-} */
 
 .drama-image {
     max-width: 80%;
@@ -267,7 +273,7 @@ h3 {
 
 .modal-title {
     font-family: 'HANBatang';
-    font-size: 2rem; /* 타이틀 폰트 사이즈 */
+    font-size: 2rem;
     font-weight: bold;
     text-align: center;
 }
@@ -275,14 +281,14 @@ h3 {
 .modal-writer, .modal-airDate {
     font-family: 'HANBatang';
     font-weight: 400;
-    font-size: 1rem; /* 작가/방영일 폰트 사이즈 */
+    font-size: 1rem;
     text-align: center;
 }
 
 .modal-description {
     font-family: 'HANBatang';
     font-weight: 400;
-    font-size: 1.2rem; /* 설명 폰트 사이즈 */
+    font-size: 1.2rem;
     text-align: center;
 }
 
@@ -326,22 +332,22 @@ h3 {
     text-align: center;
 }
 
-.bookintruduce {
+.bookintruduce, .songintruduce, .dramaintruduce {
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
     background-position: center center;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     position: relative;
     padding: 2rem;
-    /* background-color: rgb(234, 248, 230); */
-    background-image: url(img/green.jpg);
     background-size: cover;
 }
 
-.books {
+.books, .songs, .dramas {
     font-family: 'HANBatang';
     flex: 1 1 calc(33.33% - 1rem);
     margin: 0.5rem;
@@ -353,38 +359,11 @@ h3 {
     text-decoration: none;
 }
 
-.books img {
+.books img, .dramas img {
     width: 200px;
     height: 300px;
     display: block;
     margin: 0 0 5px 0;
-}
-
-.songintruduce {
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-    padding: 2rem;
-    /* background-color :beige; */
-    background-image: url(img/orange.jpg);
-    background-size: cover;
-}
-
-.songs {
-    font-family: 'HANBatang';
-    flex: 1 1 calc(33.33% - 1rem);
-    margin: 0.5rem;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    text-decoration: none;
 }
 
 .songs img {
@@ -394,38 +373,16 @@ h3 {
     margin: 0 0 5px 0;
 }
 
+.bookintruduce {
+    background-image: url(img/green.jpg);
+}
+
+.songintruduce {
+    background-image: url(img/orange.jpg);
+}
+
 .dramaintruduce {
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-    padding: 2rem;
-    /* background-color:lightsteelblue; */
     background-image: url(img/blue.jpg);
-    background-size: cover;
-}
-
-.dramas {
-    font-family: 'HANBatang';
-    flex: 1 1 calc(33.33% - 1rem);
-    margin: 0.5rem;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    text-decoration: none;
-}
-
-.dramas img {
-    width: 200px;
-    height: 300px;
-    display: block;
-    margin: 0 0 5px 0;
 }
 
 @media (max-width: 768px) {

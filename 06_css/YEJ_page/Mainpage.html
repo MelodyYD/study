@@ -28,7 +28,7 @@
         </ul>
     </nav>
     <header>
-         <ul class="menu align-center expanded text-center eff1">
+        <ul class="menu align-center expanded text-center eff1">
             <li>
                 <a href="#main" class="circle"><img src="icon/home.png" alt="HOME"></a>
             </li>
@@ -46,7 +46,9 @@
     
     <section id="book">
         <section class="bookintruduce">
-            <h2 class="menutitle">도서 추천 목록</h2>
+            <div class="menuTitleSection">
+                <h2 class="menutitle">도서 추천 목록</h2>
+            </div>
             <div class="image-container">
                 <a href="javascript:void(0);" class="books" 
                     onclick="openModalbook(
@@ -88,16 +90,18 @@
                 </a>
                 
                 <a href="javascript:void(0);" class="books" onclick="openModalbook(
-                        'https:/\/i.namu.wiki/i/hmdMeb4-Qjsx8o8wlJZS6-MGrKZDgA1ZZuRcUjm7zI2rijy57aHjLv6OXwkBEl0P_rKX5Pd6yQ2xd1hP_K4YdffhwjJnTX6lpowWj-KIW84kMZFMKg4FxWsTC0ayTQ25r32twxn3RHcRZF-bV-WJ3Q.webp', 
+                        'img/어바등.webp', 
                         '어두운 바다의 등불이 되어', '연산호', '죽음이 역설적으로 삶을 존중하기도 한다. 자기가 원할 때 죽을 수 있다는 것이 얼마나 큰 자기 존중이면서 자유인지 몰랐다. 살아야 하기에. 사는 게 당연해서. 죽음이 가치가 있다고 생각을 못 해봤다.');">
-                    <img src="https://i.namu.wiki/i/hmdMeb4-Qjsx8o8wlJZS6-MGrKZDgA1ZZuRcUjm7zI2rijy57aHjLv6OXwkBEl0P_rKX5Pd6yQ2xd1hP_K4YdffhwjJnTX6lpowWj-KIW84kMZFMKg4FxWsTC0ayTQ25r32twxn3RHcRZF-bV-WJ3Q.webp" alt="어두운 바다의 등불이 되어">
+                    <img src="img/어바등.webp" alt="어두운 바다의 등불이 되어">
                     <p class="title">어두운 바다의 등불이 되어</p>
                     <p class="writer">연산호</p>
                 </a>
             </div>
-            <button class="w-btn-outline w-btn-blue-outline" type="button">
-                Learn More
-            </button>
+            <div class="button-container">
+                <button class="w-btn-outline w-btn-blue-outline" type="button">
+                    Learn More
+                </button>
+            </div>
         </section>
     </section>
     <div id="bookModal" class="modal" onclick="closeModal()">
@@ -109,7 +113,9 @@
     
     <section id="music">
         <section class="songintruduce">
-            <h2 class="menutitle">음악 추천 목록</h2>
+            <div class="menuTitleSection">
+                <h2 class="menutitle">음악 추천 목록</h2>
+            </div>
             <div class="image-container">
                 <a href="javascript:void(0);" class="songs" 
                     onclick="openModalsong(
@@ -158,46 +164,50 @@
                     <p class="writer">DAY6</p>
                 </a>
             </div>
-            <button class="w-btn-outline w-btn-blue-outline" type="button">
-                Learn More
-            </button>
+            <div class="button-container">
+                <button class="w-btn-outline w-btn-blue-outline" type="button">
+                    Learn More
+                </button>
+            </div>
         </section>
     </section>
     <div id="songModal" class="modal" onclick="closeModal()">
         <span class="close" onclick="closeModal()">&times;</span>
         <div class="video-container">
-            <iframe class="modal-content" id="modalVideo" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+            <iframe class="modal-content" id="modalVideo" src="" frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="modal-caption" id="captionSong"></div>
     </div>
     
     <section id="DRAMA">
         <section class="dramaintruduce">
-            <h2 class="menutitle">극 추천 목록</h2>
+            <div class="menuTitleSection">
+                <h2 class="menutitle">극 추천 목록</h2>
+            </div>
             <div class="image-container">
                 <a href="javascript:void(0);" class="dramas" 
                     onclick="openModaldrama(
-                        'https:/\/i.namu.wiki/i/MWJl-95sNQdDYsQxXZNgWjFy47oqBtR985ybGzmYYFPni6aXrUhs3lqMbEolQ2dWd27j89WQmNwSvHV-7odagBZJ1bFZx4AfJGaEt0g6hxf5HYybaCuzjsn6z8UD2eXZIfzeMrbPiDn94npBe8nomg.webp', 
+                        'img/보건교사안은영.webp', 
                         '보건교사 안은영', '드라마<br>방영 : 2020년 9월 25일<br>스트리밍 : NETFLEX', '알면서도 피할 수 없는 일을 어쩌겠어, 당해야지.');">
-                    <img src="https://i.namu.wiki/i/MWJl-95sNQdDYsQxXZNgWjFy47oqBtR985ybGzmYYFPni6aXrUhs3lqMbEolQ2dWd27j89WQmNwSvHV-7odagBZJ1bFZx4AfJGaEt0g6hxf5HYybaCuzjsn6z8UD2eXZIfzeMrbPiDn94npBe8nomg.webp" alt="보건교사 안은영">
+                    <img src="img/보건교사안은영.webp" alt="보건교사 안은영">
                     <p class="title">보건교사 안은영</p>
                     <p class="airDate">드라마<br>방영 : 2020년 9월 25일<br>스트리밍 : NETFLEX<br>15세 이상 관람가</p>
                 </a>
                 <a href="javascript:void(0);" class="dramas" 
                     onclick="openModaldrama(
-                        'https:/\/i.namu.wiki/i/SjyhoRTkTjKglAuadUvM64OghDo74B-AwA9FEPszsyTb7TNsBVTNPJ9V-XYMB8ofgtiV1AbCgceP76SkmdnS7Zq2G5VBjJL1I13lQV5sDBt3grr6LBYqtAxO9VZzD8MY6JnoA8d6F91LGnBL1plhHA.webp', 
+                        'img/선업튀.jpg', 
                         '선재 업고 튀어', 
                         '드라마<br>방영 : 2024년 4월 8일<br>채널 : tvN<br>15세 이상 관람가', 
                         '고마워요, 살아있어줘서.<br>그러니까 오늘은 살아봐요. 날이 너무 좋으니까.<br><br>내일은 비가 온대요.<br>그러면 그 비가 그치길 기다리면서, 또 살아봐요.<br><br>그러다보면 언젠간 사는게 괜찮아질 날이 올지도 모르잖아요.');">
-                    <img src="https://i.namu.wiki/i/SjyhoRTkTjKglAuadUvM64OghDo74B-AwA9FEPszsyTb7TNsBVTNPJ9V-XYMB8ofgtiV1AbCgceP76SkmdnS7Zq2G5VBjJL1I13lQV5sDBt3grr6LBYqtAxO9VZzD8MY6JnoA8d6F91LGnBL1plhHA.webp" alt="선재 업고 튀어">
+                    <img src="img/선업튀.jpg" alt="선재 업고 튀어">
                     <p class="title">선재 업고 튀어</p>
                     <p class="airDate">드라마<br>방영 : 2024년 4월 8일<br>채널 : tvN<br>15세 이상 관람가    </p>
                 </a>
                 <a href="javascript:void(0);" class="dramas" 
                     onclick="openModaldrama(
-                        'https:/\/i.namu.wiki/i/vP31qfsAHXMPkS7vPBfylGnPjGgYwzIsSxuGUDcHR3H7DRHfJdH5ms5pUfaA77J2y8eqro70btzZ7Z1rmgdBTdpqJzY2v1Kmqki4WcF6QyjGIJljXdvJuErkHPk4lbVZ3nHNO-HQWcxO6Oh7DpRK3Q.webp', 
+                        'img/미스터 션샤인.webp', 
                         '미스터 션샤인', '드라마<br>방영 : 2018년 7월 7일<br>채널 : tvN<br>15세 이상 관람가', '그대는 나아가시오. 난 한 걸음 물러나니.');">
-                    <img src="https://i.namu.wiki/i/vP31qfsAHXMPkS7vPBfylGnPjGgYwzIsSxuGUDcHR3H7DRHfJdH5ms5pUfaA77J2y8eqro70btzZ7Z1rmgdBTdpqJzY2v1Kmqki4WcF6QyjGIJljXdvJuErkHPk4lbVZ3nHNO-HQWcxO6Oh7DpRK3Q.webp" alt="미스터 션샤인">
+                    <img src="img/미스터 션샤인.webp" alt="미스터 션샤인">
                     <p class="title">미스터 션샤인</p>
                     <p class="airDate">드라마<br>방영 : 2018년 7월 7일<br>채널 : tvN<br>15세 이상 관람가</p>
                 </a>
@@ -211,28 +221,30 @@
                 </a>
                 <a href="javascript:void(0);" class="dramas" 
                     onclick="openModaldrama(
-                        'https:/\/i.namu.wiki/i/1HjeJHzZ0L6tHdPNjYHhIQphPSJHyv4qbBKBmOqzbVkWspCjIXBHMMlzjW1pxnp-ShDu5jHOhwZh6nJJy7ICeQcwV9pYzLTw4Fw5Z4-TN3TnilpQD1oxKCcz3RpKV-Sylh-RFl9w038B7m3RqkSGsA.webp', 
+                        'img/랭보.jpg', 
                         '랭보', 
                         '뮤지컬<br>공연일 : 2024년 9월 17일~2024년 12월 8일<br>제작 : 더블케이 엔터테이먼트<br> 13세이상 (중학생 이상) 관람가', 
                         '너그러운 태양이 알 수 없는 내 꿈에<br>한 줄기 빛을 비추어 주기를');">
-                    <img src="https://i.namu.wiki/i/1HjeJHzZ0L6tHdPNjYHhIQphPSJHyv4qbBKBmOqzbVkWspCjIXBHMMlzjW1pxnp-ShDu5jHOhwZh6nJJy7ICeQcwV9pYzLTw4Fw5Z4-TN3TnilpQD1oxKCcz3RpKV-Sylh-RFl9w038B7m3RqkSGsA.webp" alt="렝보">
+                    <img src="img/랭보.jpg" alt="랭보">
                     <p class="title">랭보</p>
                     <p class="airDate">뮤지컬<br>공연일 : 2024년 9월 17일~2024년 12월 8일<br>제작 : 더블케이 엔터테이먼트<br> 13세이상 (중학생 이상) 관람가</p>
                 </a>
                 <a href="javascript:void(0);" class="dramas" 
                     onclick="openModaldrama(
-                        'https:/\/i.namu.wiki/i/xvLYvoa6bpoAFayGhabhuKWbsQV0xEe_n9T95N7umlWZut-MDyFLdIWvDlB1NcMj5x7CghnsBYNZSkT-jX1hrmt-NiiSTVWmFqC9cUEdiFvdMFelgJnffF6F7Xdqu7y8RWHfGjXs0CYqaXF9lVIe-g.webp', 
+                        'img/킹키부츠.webp', 
                         '킹키부츠', 
                         '뮤지컬<br>공연일 : 2024년 9월 7일~2024년 11월 10일<br>제작 : (주)CJ ENM<br>8세 이상 관람가', 
                         '네가 힘들 때 곁에 있을게<br>삶이 지칠 때 힘이 돼줄게<br>인생 꼬일 때 항상 네 곁에 함께<br>함께해');">
-                    <img src="https://i.namu.wiki/i/xvLYvoa6bpoAFayGhabhuKWbsQV0xEe_n9T95N7umlWZut-MDyFLdIWvDlB1NcMj5x7CghnsBYNZSkT-jX1hrmt-NiiSTVWmFqC9cUEdiFvdMFelgJnffF6F7Xdqu7y8RWHfGjXs0CYqaXF9lVIe-g.webp" alt="킹키부츠">
+                    <img src="img/킹키부츠.webp" alt="킹키부츠">
                     <p class="title">킹키부츠</p>
                     <p class="airDate">뮤지컬<br>공연일 : 2024년 9월 7일~2024년 11월 10일<br>제작 : (주)CJ ENM<br>8세 이상 관람가</p>
                 </a>
             </div>
-            <button class="w-btn-outline w-btn-blue-outline" type="button">
-                Learn More
-            </button>
+            <div class="button-container">
+                <button class="w-btn-outline w-btn-blue-outline" type="button">
+                    Learn More
+                </button>
+            </div>
         </section>
     </section>
     <div id="dramaModal" class="modal" onclick="closeModal()">
