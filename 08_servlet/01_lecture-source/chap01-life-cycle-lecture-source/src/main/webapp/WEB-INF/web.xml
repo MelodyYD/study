@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <!--
+        xml 방식은 우리가 만든 Servlet 을 등록해야 한다.
+        name 태그는 사용할 이름 지정
+        load-on-startup 태그 : tomcat start 시 로딩할 순서
+    -->
+    <servlet>
+        <servlet-name>xmlmapping</servlet-name>
+        <servlet-class>com.ohgiraffers.lifecycle.xml.LifeCycleTestServlet</servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+    <!--
+        servlet-mapping : 우리가 등록한 servlet 을 어떤 url 과 매칭할 것인지 지정하는 태그
+    -->
+    <servlet-mapping>
+        <servlet-name>xmlmapping</servlet-name>
+        <url-pattern>/xml-lifecycle</url-pattern>
+    </servlet-mapping>
+</web-app>
