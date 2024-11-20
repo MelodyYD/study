@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <style>
+        .header {
+            color: red;
+        }
+        .footer {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<!--
+comment.
+    th:replace 는 해당 영역에 있는 코드를 대체하는
+    Fragment 를 호출하는 문법이다.
+    기존의 코드를 지우고 불러온 Fragment 로 대체한다.
+-->
+<header th:replace="~{/common/header :: headerFragment}">
+    <h1>Header 영역</h1>
+</header>
+<aside th:replace="~{/common/aside :: asideFragment(${test}, ${test2})}"></aside>
+<main>
+    <aticle>
+        <section>
+            <h1>메인 내용 작성 영역</h1>
+        </section>
+    </aticle>
+</main>
+<!--
+    th:insert 문법은 해당 영역에 삽입하고자 하는 Fragment 를 삽입하는 문법으로
+    블록 내에 정의되어 있는 내용에 불러온 내용을 추가(삽입)한다.
+-->
+<footer th:insert="~{/common/footer :: footerFragment}">
+    <h2>Footer 영역</h2>
+</footer>
+</body>
+</html>
