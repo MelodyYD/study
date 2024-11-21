@@ -6,6 +6,13 @@
     <title>list</title>
 </head>
 <body>
+    <script>
+        const message = `[[${successMessage}]]`;
+        if (message) {
+            alert(message);
+        }
+    </script>
+    <h1 align="center">전체 메뉴</h1>
     <table border="1" align="center" style="text-align: center">
         <tr>
             <th>메뉴번호</th>
@@ -14,7 +21,7 @@
             <th>카테고리코드</th>
             <th>판매상태</th>
         </tr>
-        <tr th:each="menu : ${menuList}">
+        <tr th:each="menu : ${menuList}" th:onclick="|location.href='@{/menu/detail(code=${menu.code})}'|">
             <td th:text="${menu.code}"></td>
             <td th:text="${menu.name}"></td>
             <td th:text="${menu.price}"></td>

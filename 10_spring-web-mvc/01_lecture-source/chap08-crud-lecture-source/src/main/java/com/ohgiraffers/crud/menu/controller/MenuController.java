@@ -3,22 +3,26 @@ package com.ohgiraffers.crud.menu.controller;
 import com.ohgiraffers.crud.menu.model.dto.CategoryDTO;
 import com.ohgiraffers.crud.menu.model.dto.MenuDTO;
 import com.ohgiraffers.crud.menu.model.service.MenuService;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Locale;
 
 @Controller
 @RequestMapping("/menu/*")
 public class MenuController {
 
     private final MenuService menuService;
+    // bean 으로 등록한 메세지 소스 사용
+    private final MessageSource messageSource;
 
-    public MenuController(MenuService menuService) {
+    public MenuController(MenuService menuService, MessageSource messageSource) {
         this.menuService = menuService;
+        this.messageSource = messageSource;
     }
 
     @GetMapping("list")
@@ -37,6 +41,16 @@ public class MenuController {
 
     }
 
+    @GetMapping("/detail")
+    public String findMenuDetail(Model model, @RequestParam int code) {
+
+        MenuDTO menu = menuService.menuDetail(code);
+        model.addAttribute("menu", menu);
+
+        return "/menu/menuDetail";
+
+    }
+
     @GetMapping("regist")
     public void registPage() {}
 
@@ -51,6 +65,20 @@ public class MenuController {
     public List<CategoryDTO> findCategoryList() {
 
         return menuService.findAllCatetory();
+
+    }
+
+    @PostMapping("regist")
+    public String registMenu(@ModelAttribute MenuDTO newMenu, RedirectAttributes rttr, Locale locale) {
+        /*
+        *   @ModelAttribute : form 태그로 묶어서 넘어오는 값을 클래스 자료형에 담기 위한 어노테이션
+        *   RedirectAttributes : 리다이랙트 시 저장할 값이 있으면 사용하는 객체
+        * */
+        menuService.registMenu(newMenu);
+        rttr.addFlashAttribute("successMessage",
+                messageSource.getMessage("regist", new Object[]{newMenu.getName(), newMenu.getPrice()}, locale));
+
+        return "redirect:/menu/list";
 
     }
 

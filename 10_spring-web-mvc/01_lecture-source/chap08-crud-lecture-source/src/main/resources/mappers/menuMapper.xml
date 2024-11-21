@@ -8,7 +8,7 @@
         <id property="code" column="menu_code"/>
         <result property="name" column="menu_name"/>
         <result property="price" column="menu_price"/>
-        <result property="categoryCode" column="catetory_code"/>
+        <result property="categoryCode" column="category_code"/>
         <result property="orderableStatus" column="orderable_status"/>
     </resultMap>
 
@@ -29,9 +29,32 @@
         ORDER BY MENU_CODE
     </select>
 
+    <select id="menuDetail" resultMap="menuResultMap">
+        SELECT *
+          FROM TBL_MENU
+         WHERE MENU_CODE = #{code}
+    </select>
+
     <select id="findAllCategory" resultMap="categoryResultMap">
         SELECT *
           FROM TBL_CATEGORY
     </select>
+
+    <insert id="registNewMenu" parameterType="com.ohgiraffers.crud.menu.model.dto.MenuDTO">
+        INSERT INTO TBL_MENU
+             (
+               MENU_NAME
+             , MENU_PRICE
+             , CATEGORY_CODE
+             , ORDERABLE_STATUS
+             )
+         VALUE
+             (
+               #{name}
+             , #{price}
+             , #{categoryCode}
+             , #{orderableStatus}
+             )
+    </insert>
 
 </mapper>
