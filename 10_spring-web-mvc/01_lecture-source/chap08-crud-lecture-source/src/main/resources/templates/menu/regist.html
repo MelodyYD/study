@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>rigist</title>
+</head>
+<body>
+    <h3>신규 메뉴 등록 폼</h3>
+    <form action="/menu/regist" method="post">
+        <label>메뉴 이름 : <input type="text" name="name"></label><br>
+        <label>메뉴 가격 : <input type="number" name="price" step="1000"></label><br>
+        <label>카테고리 코드 : </label>
+        <select name="categoryCode" id="categoryCode"></select><br>
+        <label>판매상태 : </label>
+        <select name="orderableStatus">
+            <option value="Y" selected>Y</option>
+            <option value="N">N</option>
+        </select> <br>
+        <input type="submit" value="전송">
+        <script>
+            // 비동기처리 화면이 로딩될 때 미리 데이터를 불러와 화면에 뿌려줌
+            // fetch 란? 강제로 잡아채다.
+            /*
+            *   fetch 는 regist.html 페이지가 요청되는 순간 동작한다.
+            *   즉, 우리가 물리적인 버튼을 누르거나, 페이지 이동 등의 작업이 없더라도
+            *   요청을 보낸다는 의미이다.
+            *   /menu/category 요청이 끝나면 돌아오는 값은 json 형식의 문자열 데이터이다.
+            *   ex) {code: 3, name : 한식}
+            *   따라서 자바스크립트 객체로 쓰기 위해서는 문자열 데이터를 객체 형태로 변환해야 한다.
+            * */
+            fetch("/menu/category")
+                // json 형식의 문자열 값을 자바스크립트 객체 형식으로 변환
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    // select 태그 가져옴
+                    const $categoryCode = document.getElementById("categoryCode");
+                    // for in 반복문 : 변수에 data 에 있는 프로퍼티 키 대입
+                    for(let index in data) {
+                        const $option = document.createElement("option");
+                        $option.value = data[index].code;
+                        $option.textContent = data[index].name;
+                        $categoryCode.appendChild($option);
+                    }
+                })
+        </script>
+    </form>
+</body>
+</html>
