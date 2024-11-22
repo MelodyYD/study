@@ -7,9 +7,12 @@
 </head>
 <body>
     <script>
-        const message = `[[${successMessage}]]`;
-        if (message) {
-            alert(message);
+        const registMessage = `[[${successMessage}]]`;
+        const deleteMessage = `[[${deleteSuccessMessage}]]`
+        if (registMessage) {
+            alert(registMessage);
+        } else if (deleteMessage) {
+            alert (deleteMessage);
         }
     </script>
     <h1 align="center">전체 메뉴</h1>
@@ -29,5 +32,9 @@
             <td th:text="${menu.orderableStatus}"></td>
         </tr>
     </table>
+    <br>
+    <div style="text-align: center">
+        <input type="button" onclick="location.href='finMenu'" value="판매 종료 메뉴">
+    </div>
 </body>
 </html>
