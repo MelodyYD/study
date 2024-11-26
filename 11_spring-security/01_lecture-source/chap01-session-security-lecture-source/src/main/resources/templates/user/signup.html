@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>signup</title>
+</head>
+<body style="text-align: center;">
+    <h1>회원 가입</h1>
+    <form action="/user/signup" method="post">
+        아이디 : <input type="text" name="userID"><br>
+        이름 : <input type="text" name="userName"><br>
+        비밀번호 : <input type="password" name="userPass"><br>
+        권한 :
+        <select name="role">
+            <option value="USER">일반 회원</option>
+            <option value="ADMIN">관리자</option>
+        </select><br>
+        <button>회원가입</button>
+    </form>
+</body>
+</html>
