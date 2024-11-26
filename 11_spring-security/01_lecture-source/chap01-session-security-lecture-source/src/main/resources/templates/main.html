@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,10 +7,22 @@
 </head>
 <body>
     <h1 align="center">Spring-Security-Session</h1>
+    <div sec:authorize="hasAnyAuthority('ADMIN')">
+        <p>ADMIN 권한을 가진 사람만 볼 수 있는 영역</p>
+    </div>
+    <div sec:authorize="hasAnyAuthority('USER')">
+        <p>USER 권한을 가진 사람만 볼 수 있는 영역</p>
+    </div>
     <div>
         <h2>로그인 기능</h2>
         <a href="/auth/login">로그인</a>
         <a href="/user/signup">회원가입</a>
+        <form action="/auth/logout" method="post">
+            <button>로그아웃</button>
+        </form>
     </div>
+    <hr>
+    <a href="/admin/page">관리자 전용 페이지 이동</a>
+    <a href="/user/page">일반유저 전용 페이지 이동</a>
 </body>
 </html>
