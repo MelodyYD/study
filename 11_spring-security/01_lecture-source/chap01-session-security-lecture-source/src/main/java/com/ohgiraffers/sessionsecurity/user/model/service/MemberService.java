@@ -13,6 +13,8 @@ public class MemberService {
 
     @Autowired
     private PasswordEncoder encoder;
+
+    @Autowired
     private UserMapper userMapper;
 
     @Transactional

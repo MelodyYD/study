@@ -4,7 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ohgiraffers.sessionsecurity.user.model.dao.UserMapper">
 
-    <resultMap id="login" type="com.ohgiraffers.sessionsecurity.">
+    <resultMap id="login" type="com.ohgiraffers.sessionsecurity.user.model.dto.LoginUserDTO">
         <id property="userCode" column="user_no"/>
         <result property="userId" column="user_id"/>
         <result property="userName" column="user_name"/>
@@ -26,6 +26,6 @@
         INSERT INTO TBL_USER
         (USER_ID, USER_NAME, PASSWORD, USER_ROLE)
         VALUES
-        (#{userId}, #{userName}, #{userPass}, #{role})
+        (#{userID}, #{userName}, #{userPass}, #{role})
     </insert>
 </mapper>
