@@ -1,13 +1,17 @@
 package com.ohgiraffers.associationmapping.section01.manytoone;
 
+
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity(name = "menu_and_category")
 @Table(name = "tbl_menu")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter         // 엔티티는 DB에 들어가는 것이기 때문에 함부로 값을 수정하는 걸 방지하기 위해 Setter 를 지양한다.
+@Getter
 @ToString
 public class Menu {
 
@@ -24,8 +28,11 @@ public class Menu {
 
     /* comment.
     *   [영속성 전이]
-    *   특정 엔터티를 영속화(관리)할 때, 연관관계에 있는 엔티티도 같이 영속화한다는 의미이다.
-    *   이 클래스에서 예를 들면 1번 메뉴를 영속화할 때, 포함하는 Category 엔티티도 같이 영속화한다는 의미이다.
+    *   특정 엔티티를 영속화(관리) 할 때, 연관관계에 있는
+    *   엔티티도 같이 영속화 한다는 의미이다.
+    *   이 클래스에서 예를 들면
+    *   1번 메뉴를 영속화 할 때, 포함하는 Category 엔티티도
+    *   같이 영속화 한다는 의미이다.
     *  */
 
     @ManyToOne(cascade = CascadeType.PERSIST)

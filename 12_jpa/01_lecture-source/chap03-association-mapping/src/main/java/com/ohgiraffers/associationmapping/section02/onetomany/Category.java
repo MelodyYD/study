@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+//import lombok.ToString;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@ToString
+//@ToString
 public class Category {
 
     @Id
@@ -30,4 +31,13 @@ public class Category {
     @JoinColumn(name = "category_code")
     private List<Menu> menuList;
 
+//    @Override
+//    public String toString() {
+//        return "Category{" +
+//                "categoryCode=" + categoryCode +
+//                ", categoryName='" + categoryName + '\'' +
+//                ", refCategoryCode=" + refCategoryCode +
+////                ", menuList=" + menuList +
+//                '}';
+//    }
 }
