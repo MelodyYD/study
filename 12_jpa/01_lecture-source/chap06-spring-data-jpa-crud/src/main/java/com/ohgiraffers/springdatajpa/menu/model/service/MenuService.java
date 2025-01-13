@@ -1,18 +1,93 @@
 package com.ohgiraffers.springdatajpa.menu.model.service;
 
+import com.ohgiraffers.springdatajpa.menu.entity.Category;
+import com.ohgiraffers.springdatajpa.menu.entity.Menu;
+import com.ohgiraffers.springdatajpa.menu.model.dao.CategoryRepository;
+import com.ohgiraffers.springdatajpa.menu.model.dao.MenuRepository;
+import com.ohgiraffers.springdatajpa.menu.model.dto.CategoryDTO;
 import com.ohgiraffers.springdatajpa.menu.model.dto.MenuDTO;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class MenuService {
 
+    private final MenuRepository repository;
+    // Bean 으로 등록한 modelmapper 의존성 주입
+    private final ModelMapper modelMapper;
+    private final CategoryRepository categoryRepository;
+
     /* 1. 메뉴 코드로 특정 메뉴 조회하기 */
     public MenuDTO findMenuByMenuCode(int menuCode) {
 
+        Optional<Menu> foundMenu = repository.findById(menuCode);
+                                   // 잘못된 파라미터가 넘겨왔을 때 예외처리 필수
+//                                   .orElseThrow(IllegalAccessError::new);
 
-
+        // entity -> DTO 로 변환
+        // map(변환 대상, 변환할 타입)
+        return modelMapper.map(foundMenu, MenuDTO.class);
     }
 
+    /* 2. 페이징 처리하지 않은 메뉴 리스트 조회하기 */
+    public List<MenuDTO> findMenuList() {
+        // 정렬 없는 find
+        // List<Menu> menulist = repository.findAll();
+        List<Menu> menulist = repository.findAll(Sort.by("menuPrice").descending());
+        // stream : 컬렉션(List 등) 데이터를 처리하기 위해 나열
+        return menulist.stream()
+                       .map(menu -> modelMapper.map(menu, MenuDTO.class))
+                       .collect(Collectors.toList());
+    }
+
+    public Page<MenuDTO> findMenuListByPaging(Pageable pageable) {
+
+        pageable = PageRequest.of(
+                pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber() -1,
+                pageable.getPageSize(),
+                Sort.by("menuCode").descending()
+        );
+
+        Page<Menu> menuList = repository.findAll(pageable);
+
+        return menuList.map(menu -> modelMapper.map(menu, MenuDTO.class));
+    }
+
+    public List<MenuDTO> findByMenuPrice(int menuPrice) {
+        List<Menu> menuList = repository.findByMenuPriceGreaterThanOrderByMenuPrice(menuPrice);
+        return menuList.stream()
+                .map(menu -> modelMapper.map(menu, MenuDTO.class))
+                .collect(Collectors.toList());
+    }
+
+    public List<CategoryDTO> findAllCategory() {
+        List<Category> categoryList = categoryRepository.findAllCategory();
+        for (Category c : categoryList) {
+            System.out.print(c + ", ");
+        }
+        return categoryList.stream()
+                .map(category -> modelMapper.map(category, CategoryDTO.class))
+                .collect(Collectors.toList());
+    }
+
+    public void registMenu(MenuDTO menu) {
+        Menu addMenu = new Menu(
+                menu.getMenuCode(),
+                menu.getMenuName(),
+                menu.getMenuPrice(),
+                menu.getCategoryCode(),
+                menu.getOrderableStatus());
+
+        repository.save(addMenu);
+    }
 }
