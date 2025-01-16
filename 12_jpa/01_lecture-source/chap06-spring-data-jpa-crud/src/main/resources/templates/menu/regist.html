@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>regist</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
 </head>
 <body>
     <h1>신규 메뉴 등록</h1>
-    <form action="/menu/regist" method="post">
+    <form action="/menu/regist" method="post" class="formSection">
         <label>메뉴 이름 : </label>
         <input type="text" name="menuName"><br>
         <label>메뉴 가격 : </label>

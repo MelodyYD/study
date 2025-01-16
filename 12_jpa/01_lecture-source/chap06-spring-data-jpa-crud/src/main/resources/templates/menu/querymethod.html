@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>query method</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
 </head>
 <body>
     <h1>JPA 에서 제공하는 Query Method</h1>
     <h3>입력한 가격을 초과하는 메뉴 조회하기 TEST</h3>
-    <form action="/menu/search" method="get">
+    <form action="/menu/search" method="get" class="formSection">
         <input type="number" name="menuPrice">
         원을 초과하는 메뉴 목록 조회
         <input type="submit">

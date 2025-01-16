@@ -1,0 +1,26 @@
+.tableSection, .formSection {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+h1, h3 {
+    text-align: center;
+}
+
+h1 {
+    color: cadetblue;
+}
+
+.buttonSection {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}

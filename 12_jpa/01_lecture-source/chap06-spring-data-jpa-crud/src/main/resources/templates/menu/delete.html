@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>delete</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+</head>
+<body>
+    <h1>메뉴 삭제</h1>
+    <form action="/menu/delete" method="post" class="formSection">
+        <label>삭제할 메뉴 번호 : </label>
+        <input type="number" name="menuCode">
+        <input type="submit" value="삭제 요청">
+    </form>
+</body>
+</html>

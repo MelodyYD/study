@@ -85,9 +85,31 @@ public class MenuController {
     }
 
     @PostMapping("/regist")
-    public void registMenu(@ModelAttribute(name = "menu") MenuDTO menu) {
+    public String registMenu(@ModelAttribute(name = "menu") MenuDTO menu) {
         System.out.println("menu = " + menu);
         menuService.registMenu(menu);
+        return "redirect:/menu/list";
+    }
+
+    @GetMapping("/modify")
+    public void modifyPage() {}
+
+    @PostMapping("/modify")
+    public String modifyMenu(@ModelAttribute(name = "modifyMenu") MenuDTO modifyMenu) {
+        System.out.println("modifyMenu = " + modifyMenu);
+        menuService.modifyMenu(modifyMenu);
+        return "redirect:/menu/" + modifyMenu.getMenuCode();
+    }
+
+    @GetMapping("/delete")
+    public void deletePage() {}
+
+    @PostMapping("/delete")
+    public String deleteMenu(@RequestParam(name = "menuCode") int menuCode) {
+
+        menuService.deleteMenu(menuCode);
+
+        return "redirect:/menu/list";
     }
 
 }

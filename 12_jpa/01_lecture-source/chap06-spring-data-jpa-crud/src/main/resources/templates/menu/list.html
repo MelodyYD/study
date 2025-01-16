@@ -4,26 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Menu Detail</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
 </head>
 <body>
     <h1>메뉴 전체 조회</h1>
-    <table>
-        <tr>
-            <th>메뉴번호</th>
-            <th>메뉴이름</th>
-            <th>메뉴가격</th>
-            <th>카테고리코드</th>
-            <th>판매상태</th>
-        </tr>
-        <tr th:each="result : ${menus}">
-            <td th:text="${result.getMenuCode()}"></td>
-            <td th:text="${result.getMenuName()}"></td>
-            <td th:text="${result.getMenuPrice()}"></td>
-            <td th:text="${result.getCategoryCode()}"></td>
-            <td th:text="${result.getOrderableStatus()}"></td>
-        </tr>
-    </table>
-    <div id="paging">
+    <div class="tableSection">
+        <table>
+            <tr>
+                <th>메뉴번호</th>
+                <th>메뉴이름</th>
+                <th>메뉴가격</th>
+                <th>카테고리코드</th>
+                <th>판매상태</th>
+            </tr>
+            <tr th:each="result : ${menus}">
+                <td th:text="${result.getMenuCode()}"></td>
+                <td th:text="${result.getMenuName()}"></td>
+                <td th:text="${result.getMenuPrice()}"></td>
+                <td th:text="${result.getCategoryCode()}"></td>
+                <td th:text="${result.getOrderableStatus()}"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="paging" class="buttonSection">
         <!-- 맨 앞 페이지 이동하는 버튼 -->
         <button
                 th:onclick="'location.href=\'/menu/list?page=' + ${paging.startPage} + '\''"

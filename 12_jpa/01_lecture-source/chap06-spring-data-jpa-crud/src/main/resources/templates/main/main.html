@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>main</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
 </head>
 <body>
-    <h1 style="text-align: center; color: cadetblue">🍽하이미디어 레스토랑💙</h1>
-    <button onclick="location.href='/menu/13'">특정 메뉴 조회하기 버튼</button>
-    <button onclick="location.href='/menu/list'">전체 메뉴 조회 버튼</button>
-    <button onclick="location.href='/menu/querymethod'">쿼리메소드 버튼</button>
-    <button onclick="location.href='/menu/regist'">메뉴 등록</button>
+    <h1>하이미디어 레스토랑💙</h1>
+    <div class="buttonSection">
+        <button onclick="location.href='/menu/13'">특정 메뉴 조회하기 버튼</button>
+        <button onclick="location.href='/menu/list'">전체 메뉴 조회 버튼</button>
+        <button onclick="location.href='/menu/querymethod'">쿼리메소드 버튼</button>
+        <button onclick="location.href='/menu/regist'">메뉴 등록</button>
+        <button onclick="location.href='/menu/modify'">메뉴 수정</button>
+        <button onclick="location.href='/menu/delete'">메뉴 삭제</button>
+    </div>
 </body>
 </html>

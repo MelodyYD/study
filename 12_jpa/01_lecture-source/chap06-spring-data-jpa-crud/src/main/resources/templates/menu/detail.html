@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Menu Detail</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
 </head>
 <body>
     <h1>PathVariable 로 전달 받은 메뉴 상세 조회</h1>
-    <table>
-        <tr>
-            <th>메뉴번호</th>
-            <th>메뉴이름</th>
-            <th>메뉴가격</th>
-            <th>카테고리코드</th>
-            <th>판매상태</th>
-        </tr>
-        <tr>
-            <td th:text="${result.menuCode}"></td>
-            <td th:text="${result.menuName}"></td>
-            <td th:text="${result.menuPrice}"></td>
-            <td th:text="${result.categoryCode}"></td>
-            <td th:text="${result.orderableStatus}"></td>
-        </tr>
-    </table>
+    <div class="tableSection">
+        <table>
+            <tr>
+                <th>메뉴번호</th>
+                <th>메뉴이름</th>
+                <th>메뉴가격</th>
+                <th>카테고리코드</th>
+                <th>판매상태</th>
+            </tr>
+            <tr>
+                <td th:text="${result.menuCode}"></td>
+                <td th:text="${result.menuName}"></td>
+                <td th:text="${result.menuPrice}"></td>
+                <td th:text="${result.categoryCode}"></td>
+                <td th:text="${result.orderableStatus}"></td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
