@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class EventComponent extends React.Component {
+
+            state = {
+                inputMessage : ''
+            };
+
+            /*
+                함수가 호출될 때 this 는 호출부에 따라 결정된다.
+                따라서 클래스의 함수가 특정 HTML 요소의 이벤트 핸들러가 되는 순간,
+                함수와 this의 관계가 끊어져서 this를 모르는 상태가 된다.
+                
+                따라서 함수를 constructor에 this와 바인딩을 하는 작업이 필요하다.
+                바인딩을 하지 않으면 this는 undefined가 된다.
+            */
+
+            constructor(props) {
+                super(props);       // 필수
+                
+                // 컴포넌트에 등록
+                this.onChangeHandler = this.onChangeHandler.bind(this);
+                this.onClickHandler = this.onClickHandler.bind(this);
+            }
+            
+            onChangeHandler(e) {
+                this.setState({
+                    inputMessage: e.target.value
+                })
+            }
+            
+            onClickHandler() {
+                alert(this.state.inputMessage);
+                this.setState({
+                    inputMessage: ''
+                })
+            }
+            
+            render() {
+
+                return(
+                    <>
+                        <h1>이벤트 핸들링</h1>
+                        <input 
+                            type="text"
+                            placeholder='텍스트를 입력해주세요'
+                            onChange={onChangeHandler}
+                            value={this.state.inputMessage}
+                        />
+                        <button onClick={onClickHandler}>제출</button>
+                    </>
+                )
+            }
+
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<EventComponent/>);
+        
+    </script>
+</body>
+</html>

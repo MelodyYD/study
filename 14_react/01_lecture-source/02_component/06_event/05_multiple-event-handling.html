@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // js 의 spread 연산자 및 rest parameter 복습
+
+        // 1. spread 연산자란?
+        let obj = {
+            p1: 'p1',
+            p2: 'p2',
+            p3: 'p3',
+            p2: 'p4'
+        };
+
+        // 프로퍼티 키가 중복되는 경우 가장 마지막에 있는 값으로 덮여진다.
+
+        console.log('obj', obj);
+
+        // 객체를 복사할 때 사용된다.
+        // 프로퍼티 키가 일치하지 않는 나머지만 spread를 통해서 부분 복사할 수 있다.
+        let objCopy = {...obj, p1:'modify'};
+        console.log('copy', objCopy);
+
+        // 2. rest parameter
+        let[a, ...rest] = [1, 2, 3];
+        console.log(a);
+        console.log(rest);
+
+        let {p1, ...restobj} = {p1: 'a', p2: 'b', p3: 'c'};
+        console.log(restobj)
+
+        //===========================================================================
+        class Login extends React.Component {
+
+            state = {
+                userId: '',
+                userPwd: ''
+            }
+
+            // 1. 관리할 값에 따라 각각의 핸들러 메소드 작성하는 방법
+            // 단점 : 필드가 늘어남에 따라 핸들러의 갯수가 늘어난다.
+            // onChangeHandler1 = e => {
+            //     this.setState({
+            //         userId: e.target.value
+            //     })
+            // }
+            // onChangeHandler2 = e => {
+            //     this.setState({
+            //         userPwd: e.target.value
+            //     })
+            // }
+
+            // 2. Change 관련 이벤트를 하나로 통합
+            onChangeHandler = e => {
+                console.log('e', e.target.name);
+                this.setState({
+                    // [] 표기법은 프로퍼티 키를 변수 등으로 동적으로 결정한다.
+                    // 해당 변수의 값을 키로 쓴다.
+                    // 프로퍼티 복습이 필요.
+                    [e.target.name] : e.target.value
+                })
+                console.log('state', this.state);
+            }
+
+            onClickHandler = () => {
+                alert(`아이디 : ${this.state.userId} \n 비밀번호 : ${this.state.userPwd}`);
+                this.setState({
+                    userId: '',
+                    userPwd: ''
+                })
+            }
+
+            render() {
+
+                return(
+                    <>
+                        <h1>로그인</h1>
+                        <label>아이디 : </label>
+                        <input type="text" name='userId' onChange={this.onChangeHandler} value={this.state.userId}/><br/>
+                        <label>비밀번호 : </label>
+                        <input type="password" name='userPwd' onChange={this.onChangeHandler} value={this.state.userPwd}/><br/>
+                        <button onClick={this.onClickHandler}>로그인</button>
+                    </>
+                )
+            }
+
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Login/>);
+        
+    </script>
+</body>
+</html>

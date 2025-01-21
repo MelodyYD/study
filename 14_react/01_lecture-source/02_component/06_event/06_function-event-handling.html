@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // 앞서 만든 Login 컴포넌트를 함수형으로 교체
+
+        // 상태 관리를 위한 State 선언
+        const {useState} = React;
+
+        function Login() {
+
+            const [userId, setUserId] = useState('');
+            const [userPwd, setUserPwd] = useState('');
+
+            const onChangeUserId = e => setUserId(e.target.value);
+            const onChangeUserPwd = e => setUserPwd(e.target.value);
+
+            const onClickHandler = () => {
+                alert(`아이디 : ${userId} \n 비밀번호 : ${userPwd}`)
+                // 초기화
+                setUserId('');
+                setUserPwd('');
+            }
+
+            return (
+                <>
+                    <h1>함수형 로그인 상태 관리</h1>
+                    <label>아이디 : </label>
+                    <input type="text" name="userId" value={userId} onChange={onChangeUserId}/><br/>
+                    <label>비밀번호 : </label>
+                    <input type="password" name="userPwd" value={userPwd} onChange={onChangeUserPwd}/><br/>
+                    <button onClick = {onClickHandler}>로그인</button>
+                </>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Login/>);
+        
+    </script>
+</body>
+</html>
