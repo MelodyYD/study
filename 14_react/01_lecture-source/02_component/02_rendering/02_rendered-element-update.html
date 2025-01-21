@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        function tick() {
+            const element = (
+                <>
+                    <h1>현재 시간은??</h1>
+                    <h3>It is {new Date().toLocaleTimeString()}</h3>
+                </>
+            );
+            root.render(element);
+        }
+
+        setInterval(tick, 1000);
+
+        /*
+            1초마다 tick 함수를 호출해서 새로운 엘리먼트를 생성하고 rendering한다.
+            매 초마다 새로운 엘리먼트를 생성해서 다시 랜더링하지만, 개발자 도구를 통해 본 결과 변경점만 갱신되는 것이 확인되었다.
+
+            리액트 엘리먼트는 실제 DOM과 달리 메모리상에서 동작하는 가상의 DOM(virtual DOM)이다.
+
+            가상 DOM은 실제 DOM과 동일한 구조(DOM Tree)를 가지고 있다.
+            엘리먼트를 새롭게 만들게 되면 render() 호출시 가장DOM에 새로운 엘리먼트를 생성하고
+            실제 DOM과 비교 후 바뀐 곳만 update를 해준다.
+        */
+
+    </script>
+</body>
+</html>

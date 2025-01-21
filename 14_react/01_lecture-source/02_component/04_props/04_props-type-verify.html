@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function PropsVerify({name, favoriteNumber, children}) {
+            return(
+                <>
+                    <h1>제 이름은 {name}입니다.</h1>
+                    <h3>제가 좋아하는 숫자는 {favoriteNumber}입니다.</h3>
+                    <h3>제가 가진 자식은 {children}입니다.</h3>
+                </>
+            );
+        }
+
+        /* 
+            propTypes 사용해보기
+            정상적으로 동작을 하지만, 콘솔을 보면 경고가 나오고 있다.
+            이는 큰 규모의 프로젝트를 진행하거나, 다른 개발자와 협업을 하게 될 때,
+            해당 컴포넌트에 어떤 props가 필요한지 기술함으로써 마치 주석처럼 props 타입, 필요여부 등을 기술할 수 있다.
+        */
+        PropsVerify.propTypes = {
+            name: PropTypes.string,     // name props 속성은 string이어야 한다.
+            favoriteNumber: PropTypes.number.isRequired     // favoriteNumber는 숫자이면서 반드시 입력해야 한다.
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            [
+                <PropsVerify name='홍길동' favoriteNumber={7}>텍스트</PropsVerify>,
+                <PropsVerify name={3}>텍스트</PropsVerify>
+            ]
+        );
+
+    </script>
+</body>
+</html>

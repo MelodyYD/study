@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class Counter extends React.Component {
+            
+            // 클래스 속성(필드)으로 state를 추가하는 것도 가능하다.
+            // 생성자가 아닌 필드!!
+            // 단, 이때는 this. 사용 불가하다.
+
+            state = {
+                number: 0
+            };
+
+            render() {
+
+                const {number} = this.state;
+
+                return(
+                    <>
+                        <h1 style={(number<0)?{color:'red'}:{color:'blue'}}>Count : {number}</h1>
+                        <button onClick={() => this.setState({number : number - 1})}>-1</button>
+                        <button onClick={() => {
+                            /*
+                                비동기 방식으로 state를 백그라운드에서 업데이트하기 때문에 상태를 변경하는 것이 이 함수 내에서 반영이 되지 않는다.
+                                메모리에서만 임시로 변경된 상태를 가지고 해당 함수가 종료되면 마지막 setState 함수만 변경된 내역으로 반영된다.
+                            */
+                            // console.log(`setState 이전 number 값 : ${this.state.number}`);
+                            // this.setState({number : number + 1});
+                            // console.log(`setState 이후 number 값 : ${this.state.number}`);
+                            // this.setState({number: this.state.number+1});
+                            // console.log(`setState 최종 number 값 : ${this.state.number}`);
+
+                            /*
+                                state 변화를 누적해서 감지하기 위해서는 setState에 콜백함수를 넘기고 prevState를 이용하면 된다.
+                                prevState는 이전 결과를 가지고 있는 것으로서 값의 변화를 누적해서 반영할 수 있다.
+                            */
+                            this.setState((prevState, props) => {
+                                console.log('prev? ', prevState);
+                                console.log('props? ', props);
+                                return {
+                                    number: prevState.number + 1
+                                }; 
+                            });
+                            this.setState((prevState, props) => {
+                                console.log('prev? ', prevState);
+                                console.log('props? ', props);
+                                return {
+                                    number: prevState.number + 1
+                                }; 
+                            });
+                            this.setState((prevState, props) => {
+                                console.log('prev? ', prevState);
+                                console.log('props? ', props);
+                                return {
+                                    number: prevState.number + 1
+                                }; 
+                            });
+                        }}>+1</button>
+                    </>
+                );
+            }
+
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Counter/>);
+
+    </script>
+</body>
+</html>

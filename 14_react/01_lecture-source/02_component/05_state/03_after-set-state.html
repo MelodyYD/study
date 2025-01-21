@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        
+        /*
+            setState 상태를 변경한 이후에 특정 작업 실행하기
+            state를 변경 후 특정 작업을 실행하고 싶을 때,
+            두 번째 인자로 콜백함수를 전달하여 처리할 수 있다.
+        */
+
+        class Light extends React.Component {
+
+            state = {
+                isOn : false
+            }
+
+            render() {
+
+                const {isOn} = this.state;
+                const style = {
+                    width: 200,
+                    height : 200,
+                    backgroundColor : isOn ? 'green' : 'red',
+                    transition: '2s'
+                }
+
+                return(
+                    <>
+                        <div style = {style}></div>
+                        <button
+                            onClick={() => {
+                                this.setState(
+                                    {isOn : !isOn},
+                                    () => alert(!isOn ? '불이 켜졌다!!!' : '불이 꺼졌다!!!')
+                                )
+                            }}>{isOn ? 'ON' : 'OFF'}</button>
+                    </>
+                );
+            }
+
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Light/>);
+
+    </script>
+</body>
+</html>

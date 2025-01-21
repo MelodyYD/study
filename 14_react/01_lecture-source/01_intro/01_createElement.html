@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- React 기술을 사용하기 위한 CDN 링크 삽입 -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script>
+
+        /*
+            React.createElement 함수를 사용해서 h1 태그 엘리먼트 생성.
+            첫 번째 인자 : 만드려는 엘리먼트의 타입을 문자열로 정의
+            두 번째 인자 : 만드는 엘리먼트의 프로퍼티(attribute)를 표현
+            세 번째 인자 : 엘리먼트의 자식 노드 표현
+
+            렌더링하는 과정에서 React는 생성한 엘리먼트를 실제 DOM 엘리먼트로 변환한다.
+            리액트로 만드는 엘리먼트는 리액트에게 DOM 엘리먼트를 구성하는 방법을 알려주는 자바스크립트 객체에 불과하다.
+        */
+
+        const helloElement = React.createElement("h1", {classname: 'hi', id: "hi"}, 'hello world!!!');
+        const textElement = React.createElement("h3", {id: "hi"}, '안녕하세요!');
+        ReactDOM.createRoot(document.getElementById('root')).render([helloElement, textElement]);
+
+    </script>
+</body>
+</html>

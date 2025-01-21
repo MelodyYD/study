@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>childrem-props</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        function ChildrenPrinter(props) {
+            console.log('props : ' + props);
+            return(
+                <>
+                    <h1>자식 노드가 가지고 있는 값은??</h1>
+                    <h3>children : {props.children}</h3>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            [
+                <ChildrenPrinter>텍스트</ChildrenPrinter>,
+                <ChildrenPrinter><div>div 텍스트</div></ChildrenPrinter>,
+                <ChildrenPrinter><div>1</div><div>2</div><div>3</div></ChildrenPrinter>
+            ]
+        );
+
+    </script>
+</body>
+</html>

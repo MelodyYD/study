@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <!--
+        root div에 들어가는 모든 엘리먼트들을 ReactDOM이 관리한다.
+        그래서 이것을 root dom 혹은 root node 라고 부른다.
+        일반적으로 ReactApp 환경에서는 하나의 root dom을 가진다.
+    -->
+    <div id="root"></div>
+    <script type="text/babel">
+        const element = (
+            <>
+                <h1>현재 시간은?</h1>
+                <h3>지금은 {new Date().toLocaleTimeString()} 이야.</h3>
+            </>
+        );
+
+        // 위에 만든 element를 root dom node에 포함시켜야 보인다.
+        ReactDOM.createRoot(document.getElementById('root')).render(element);
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>props-type-verify</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script scr="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        function PropsVerity({name,favoriteNumber,children}){
+            return(
+                <>
+                    <h1>제 이름은 {name}입니다.</h1>
+                    <h3>제가 좋아하는 숫자는 {favoriteNumber} 입니다</h3>
+                    <h3>제가 가진 자식은 {children} 입니다.</h3>
+                </>
+            );
+        }
+
+        /* 
+             propTypes 사용해보기
+                정상적으로 동작을 하지만, 콘솔창을 보면 경고 표시가 나오고 있다.
+                이는 큰 규모의 프로젝트를 진행하거나 , 다른 개발자와 협업을 하게 될 때,
+                해당 컴포넌트에 어떤 props 가 필요한지를 기술함으로서
+                마치 주석처럼 props 타입, 필요여부등을 기술 할 수 있다.
+         */
+        PropsVerity.propTypes = {
+            name : PropTypes.string, // name props 속성은 string 이여야 한다.
+            favoriteNumber : PropTypes.number.isRequired // favoriteNumber는 숫자이면서 , 반드시 입력해야한다.
+        }
+
+        ReactDOM.createRoot(document.getElementById('root'))
+                .render(
+                    [
+                        <PropsVerity name='홍길동' favoriteNumber={7}>텍스트</PropsVerity>,
+                        <PropsVerity name={3}>텍스트</PropsVerity>
+                    ]
+                );
+
+    </script>
+
+</body>
+</html>

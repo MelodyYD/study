@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+     <div id="root"></div>
+     <script>
+        /*
+            Element
+             : 요소 노드(h1, p, a), 어트리뷰트 노드(id, class, style), 텍스트 노드로 만들어지는 가상의 DOM 개념
+
+            Component
+             : 엘리먼트를 반환하는 개념을 가지는 화면의 구성 단위
+        */
+
+        /* 클래스형 컴포넌트 */         // 잘 안 쓴다
+        // class HelloWorld extends React.Component {
+        //     render() {
+        //         return React.createElement(
+        //             'hi',
+        //             {className: 'hello'},
+        //             'HelloWorld!!'
+        //         )
+        //     }
+        // }
+
+        /* 함수형 컴포넌트 */
+        function HelloWorld() {
+            return React.createElement(
+                'h1',
+                {className: 'hi'},
+                'hello World Function!!'
+            );
+        }
+
+        /*
+            엘리먼트의 의미와 컴포넌트는 필수로 알아야 한다.
+            
+            class 형 컴포넌트를 만드는 것은 사용하지 않는다.
+            다만, 컴포넌트의 생명주기 메소드와 훅스를 설명하기 위해서는 클래스 문법으로만 할 수 있기 때문에 알아만 두면 된다.
+        */
+
+        ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(HelloWorld));
+        // render() 함수는 엘리먼트만 들어갈 수 있다.
+     </script>
+</body>
+</html>

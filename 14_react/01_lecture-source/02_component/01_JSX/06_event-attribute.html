@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        /*
+            이벤트 처리는 뒤에서 더 다루지만, 미리 맛보기
+            1. 인라인으로 이벤트 함수 정의
+            2. 이벤트 동작시 사용할 이벤트 함수 사전에 정의
+        */
+
+        // 1. 인라인으로 이벤트 함수 정의
+        // const element = (
+        //     <>
+        //         <h1>Event attribute</h1>
+        //         <button onClick={() => alert('해~위')}>클릭해보슈</button>
+        //     </>
+        // )
+
+        // 2. 이벤트 동작시 사용할 이벤트 함수 사전에 정의
+        const onClickHandler = () => {
+            alert('까꿍');
+        }
+        const element = (
+            <>
+                <h1>Event attribute</h1>
+                <button onClick={onClickHandler}>클릭해보슈</button>
+            </>
+        )
+
+        ReactDOM.createRoot(document.getElementById('root')).render(element);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // 조건부 렌더링
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        // prompt 로 넘어오는 값은 문자열이기 때문에 정수로 파싱
+        const answer = parseInt(prompt('리액트가 재밌나요? \n1. 재미있다. \n2. 어렵다'));
+
+        console.log(answer);
+
+        // 1. 랜더링 시 조건 비교 후 조건부 렌더링하기(조건식이 간단할 때 사용)
+        // const positive = <h1>앞으로 더 짜릿할 겁니다.ㅎㅎㅎㅎ</h1>
+        // const negative = <h1>복습만이 살 길입니다. 파이팅!</h1>
+
+        // root.render(
+        //     (answer === 1) ? positive : negative
+        // )
+
+        // 2. JSX 내에서 조건부 엘리먼트 생성하기 (특정 상황에 따라 다른 엘리먼트 생성)
+        // 2-1. if 문으로 조건부 생성 - 안 쓴다고 생각하기. why? let 을 사용하기 때문!
+        // let element;
+        // if(answer === 1) {
+        //     element = <h1>앞으로 더 재밌어진다!!!!!!</h1>
+        // } else {
+        //     element = <h1>천천히 해봅시다!!!!!!!!</h1>
+        // }
+
+        // 2-2. 삼항연산자로 조건부 엘리먼트 생성(const의 장점, 삼항연산자 때문에 많이 사용)
+        // const element = (answer === 1) ? (
+        //     <h1>안전벨트 꽉 매십쇼</h1>
+        // ) : (
+        //     <h1>천천히 가겠습니다~~</h1>
+        // );
+
+        // 2-3. && 연산자를 이용한 조건부 엘리먼트 생성(조건이 맞을 때만 엘리먼트 보여줄 때)
+        // const element = answer === 1 && <h1>앞으로도 재밌을 겁니다~~~~~</h1>
+
+        // console.log("element", element);
+
+        /*
+            주의점
+            false 조건을 가지고 렌더링을 하는 경우 조건에 일치하지 않으면 렌더링되는 요소가 없지만,
+            0의 경우에는 Falsy한 값임에도 조건부 엘리먼트 생성을 하게되면 0을 반환하게 된다.
+            Falsy 란?
+            - null, undefined, 0, NaN, '' 등등
+        */
+
+        const num = 0;
+        // 확실하게 false or true 방법이 !! 부정을 2번 하게 되면 값을 논리형으로 확실히 바꿀 수 있다.
+        console.log(!!num);
+        const element = num && <h1>Truthy일 때만 보이는 엘리먼트</h1>
+
+        root.render(element);
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // 주의할 점은 카멜 케이스로 스타일을 정의해야 된다는 점이다.
+        // 속성 값은 문자열 혹은 숫자 형태로 작성한다. 객체는 안됨.
+        const style = {
+            backgroundColor: 'black',
+            color: 'white',
+            cursor: 'pointer',
+            textAlign: 'center'
+        }
+
+        const element = (
+            <>
+                <h1 style={style}>안뇨옹</h1>
+                <h3>Hello World!!!</h3>
+            </>
+        );
+
+        ReactDOM.createRoot(document.getElementById('root')).render(element);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>props-basic</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        /*
+            props란?
+            properties의 약자로, 컴포넌트의 속성을 설정할 때 사용하는 요소이다.
+            props 값은 해당 컴포넌트를 사용하는 부모 컴포넌트에서 설정할 수 있다.
+            props는 읽기 전용 객체이기 때문에 값을 수정해서는 안된다.
+
+            리액트의 규칙
+            "모든 React 컴포넌트는 자신의 props를 다룰 때 반드시 순수 함수처럼 동작해야 한다."
+
+            순수 함수란?
+            동일한 입력값에 대해 동일한 결과를 반환하는 것을 순수 함수라고 한다.
+        */
+
+        const name1 = '홍길동';
+        const name2 = '홍동길';
+
+        function Name(props) {
+            console.log('props : ', props);
+            return <h1>안녕하세요 {props.name} 님</h1>;
+        }
+
+        // props.name 이 존재하지 않는 경우 기본값을 설정할 수 있다.
+        Name.defaultProps = {
+            name: '기본값'
+        };
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            [    
+                <Name name = {name1}/>,
+                <Name name = {name2}/>,
+                <Name name = '길동홍'/>,
+                <Name/>
+            ]
+        );
+
+    </script>
+</body>
+</html>

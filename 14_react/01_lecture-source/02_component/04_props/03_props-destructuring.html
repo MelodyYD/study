@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // function PropsPrint(props) {
+        //     console.log(props)
+
+        //     // props 객체에서 name과 children이라는 key를 가진 프로퍼티 값을 꺼내 동일한 이름의 변수에 할당
+        //     // 이것을 구조분해 할당이라고 한다.
+        //     const {name, children} = props;
+        //     // const name = props.name;
+        //     // const children = props.children;
+
+        //     return(
+        //         <>
+        //             <h1>제 이름은 {name}입니다.</h1>
+        //             <h3>제가 가진 children은 {children}입니다.</h3>
+        //         </>
+        //     );
+        // }
+        
+        // 2. 매개변수 선언부에서 바로 구조분해 할당
+        function PropsPrint({name, children}) {
+            
+            return(
+                <>
+                    <h1>제 이름은 {name}입니다.</h1>
+                    <h3>제가 가진 children은 {children}입니다.</h3>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <PropsPrint name='홍길동'>텍스트</PropsPrint>
+        );
+
+    </script>
+</body>
+</html>
