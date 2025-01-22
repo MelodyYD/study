@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            /* display: flex; */
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: auto;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            height: 6rem;
+            color: white;
+            background-color: black;
+        }
+
+        h4 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: lightskyblue;
+            width: 100%;
+        }
+
+        article {
+            border: 1px solid;
+            background-color: white;
+            height: 600px;
+            width: 50%;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        footer {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+            height: 5rem;
+            color: white;
+            background-color: black;
+        }
+
+        ul {
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            gap: 10px;
+            list-style: none;
+            padding: 10px;
+            margin: 0;
+        }
+
+        li {
+            display: flex;
+            /* align-items: center; */
+            gap: 15px;
+        }
+
+        li > input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        li > button {
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            font-size: 10px;
+        }
+
+        ul, li {
+            list-style-type: none;
+        }
+
+        li input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            color: grey;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const {useState} = React;
+
+        function Todo() {
+
+            const [lists, setLists] = useState([]);
+            const [todo, setTodo] = useState('');
+            const [nextId, setNextId] = useState(1);
+            
+            const today = new Date();
+            const formatDate = today.toLocaleDateString(today);
+
+            const onChangeHandLer = (e) => setTodo(e.target.value);
+            const onClickHandler = () => {
+                const changeTodo = lists.concat({
+                    id: nextId,
+                    name: todo
+                });
+                setNextId(nextId+1);
+                setLists(changeTodo);
+                setTodo('');
+            }
+
+            const onRemove = id => {
+                const filter = lists.filter(list => list.id !== id);
+                setLists(filter);
+            }
+
+            const checkTodo = id => {
+                setLists(lists.map(list => list.id === id ? {...list, checked: !list.checked} : list));
+            };
+
+            const todoList = lists.map(list => 
+                <li key={list.id}>
+                    <input type="checkbox" checked={list.checked || false} onChange={()=>checkTodo(list.id)}/>
+                    <span>{list.name}</span>
+                    <button onClick={() => onRemove(list.id)}>X</button>
+                </li>
+            )
+
+            return (
+                <>
+                    <header><h1>{formatDate} 오늘의 할일!</h1></header>
+                    <section>
+                        <h4>Todo-List</h4>
+                        <article>
+                            <ul>
+                                {todoList}
+                            </ul>
+                        </article>
+                        <input type="text" value={todo} onChange={onChangeHandLer}/>
+                        <button onClick={onClickHandler}>추가하기</button>
+                    </section>
+                    <footer><p>Copyright 2022. team-greedy all rights reserved.</p></footer>
+                </>
+            )
+
+        }        
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Todo/>);
+    </script>
+</body>
+</html>

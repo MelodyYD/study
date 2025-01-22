@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        
+        class Hi extends React.Component {
+            render() {
+                return <h1>Hello?</h1>
+            }
+
+            /*
+                컴포넌트가 화면 상에서 사라지기 직전에 호출되는 메소드
+            */
+            componentWillUnmount() {
+                // 화면에서 사라지기 전에 이벤트, 타이머 등등이 있다면 여기서는 제거하는 작업을 한다.
+                console.log('componentWillUnmount 호출됨');
+            }
+
+        }
+
+        root.render(<Hi/>);
+
+        // 5초 뒤에 render(null) 전달해서 unmount 연출
+        window.setTimeout( () => {root.render(null)}, 5000);
+
+    </script>
+</body>
+</html>
