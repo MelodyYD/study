@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const {useState, useEffect} = React;
+
+        function Timer() {
+
+            useEffect(() => {
+                console.log('타이머 시작됨!!!!!');
+                const timer = setInterval(() => {
+                    console.log(new Date().toLocaleTimeString());
+                }, 1000);
+
+                // 정리함수는 useEffect 를 리턴함으로서 실행 할 수 있다.
+                return () => {
+                    clearInterval(timer);
+                    console.log('종료됩니다!!!!');
+                }
+
+            }, []);
+
+            return <h1>타이머 시작됩니다!!!</h1>
+        }
+
+        function App() {
+
+            const [isShow, setIsShow] = useState(false);
+
+            return(
+                <>
+                    <button onClick={() => setIsShow(!isShow)}>타이머 토글!!</button>
+                    { isShow && <Timer/>}
+                </>
+            );
+
+        }
+
+        ReactDOM.createRoot(document.getElementById('root'))
+                .render(<App/>);
+    </script>
+
+</body>
+</html>

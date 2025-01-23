@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const {useState, useEffect} = React;
+
+        function Counter() {
+
+            const [number, setNumber] = useState(0);
+
+            useEffect(()=>{
+                console.log('effect 동작함!!!');
+
+                // useEffect return 되는 함수를 정리 함수라고 한다.
+                return () => console.log('청소기 동작~!');
+            })
+
+            return(
+                <>
+                    <h1>Number: {number}</h1>
+                    <button onClick={() => setNumber(number + 1)}>+1</button>
+                </>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Counter/>);
+    </script>
+</body>
+</html>

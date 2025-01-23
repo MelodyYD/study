@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const {useState, useEffect} = React;
+
+        function LoginForm() {
+
+            const [form, setForm] = useState({
+                userId: '',
+                userPwd: ''
+            });
+
+            const onChangeHandler = (e) => {
+                setForm({
+                    ...form, [e.target.name]: e.target.value
+                });
+            }
+
+            //useEffect를 감지 대상의 값 변화에 따라 동작하게 설정
+            useEffect(() => {
+                console.log('ID 업데이트 감지!!')
+            }, [form.userId])
+            // useEffect는 마운트 시점에 동작을 하고 원하는 값의 변경 시점에만 동작을 하게 만들 수 있다.
+
+            useEffect(() => {
+                console.log('Pwd 업데이트 감지!!')
+            }, [])
+
+            return(
+                <>
+                    <label>아이디: </label>
+                    <input type="text" name="userId" onChange={onChangeHandler}/>
+                    <br/>
+                    <label>비밀번호: </label>
+                    <input type="password" name="userPwd" onChange={onChangeHandler}/>
+                    <br/>
+                    <h3>ID: {form.userId}</h3>
+                    <h3>PWD: {form.userPwd}</h3>
+                </>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<LoginForm/>);
+    </script>
+</body>
+</html>

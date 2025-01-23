@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!--
+        useEffect는 기본적으로 마운트 시점, 업데이트 시점 두 가지 모두 동작을 할 수 있다.
+        마운트 될 때에만 동작하고 업데이트 시에는 동작하지 않게 할 수도 있다.
+    -->
+
+    <script type="text/babel">
+
+        const {useState, useEffect} = React;
+        function TimePrinter() {
+
+            console.log('render 동작함')
+
+            const [time, setTime] = useState(
+                new Date().toTimeString()
+            );
+
+            // 2가지 인자를 가진다. 1번째 실행 함수, 2번째는 의존성 배열
+            useEffect(() => {
+                console.log('마운트 시점에만 동작하기')
+            }, [])      // 두 번째 인자에 빈 배열을 넣으면 업데이트 시점에는 더이상 동작하지 않는다. (마운트 시점에만 동작함!)
+
+            return(
+                <>
+                    <h1>{time}</h1>
+                    <button onClick={() => setTime(new Date.toTimeString())}>현재 시간 확인하기</button>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<TimePrinter/>);
+    </script>
+</body>
+</html>

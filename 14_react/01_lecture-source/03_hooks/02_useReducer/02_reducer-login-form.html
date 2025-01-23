@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const {useReducer} = React;
+
+        function reducer(state, action) {
+            console.log('state?', state);
+            console.log('action?', action);
+
+            return {...state, [action.name] : action.value}
+        }
+
+        function LoginForm() {
+
+            const [state, dispatch] = useReducer(
+                reducer,
+                {name: '', nickName: ''}
+            );
+
+            const onChangeHandler = (e) => dispatch(e.target);
+
+            return(
+                <>
+                    <label>이름: </label>
+                    <input type="text" name="name" value={state.name} onChange={onChangeHandler}/>
+                    <br/>
+                    <label>닉네임: </label>
+                    <input type="text" name="nickName" value={state.nickName} onChange={onChangeHandler}/>
+                    <br/>
+                    <h3>이름: {state.name}</h3>
+                    <h3>닉네임: {state.nickName}</h3>
+                </>
+            )
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<LoginForm/>);
+    </script>
+</body>
+</html>
