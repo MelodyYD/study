@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        /*
+            일부러 시간이 오래 걸리는 계산기 만들어보기!
+        */
+
+        const {useState} = React;
+
+        const hardCalculator = (num) => {
+            console.log('오래 걸리는 계산기 호출됨...');
+            // 의미없는 반복문으로 시간 끌기
+            for(let i = 0; i < 999999999; i++) {
+
+            }
+
+            return num + 10000;
+        }
+
+        function App() {
+            const [hardNum, setHardNum] = useState(0);
+
+            // 계산해주는 함수
+            const hardSum = hardCalculator();
+
+            // input 태그에 변화가 생길 때마다 update 시점에 리랜더링이 되면서 지역변수부터 return 구문까지 재실행이 된다.
+            // 따라서 지역변수는 state가 변할 때마다 초기화가 되면서 오래 걸리는 함수가 계속 동작을 하게 되어 화면이 지연된다.
+
+            return(
+                <>
+                    <h3>시간이 오래 걸리는 계산기</h3>
+                    <input 
+                        type="number"
+                        value={hardNum}
+                        onChange={(e) => setHardNum(parseInt(e.target.value))}
+                    />
+                    <span>+ 10000 = {hardSum}</span>
+                </>
+            );
+        }
+
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+</body>
+</html>

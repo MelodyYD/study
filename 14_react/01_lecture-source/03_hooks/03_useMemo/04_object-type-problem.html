@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!--
+        useMemo는 state의 값에 따라 저장(캐싱)한 값을 쓸지, 다시 연산한 값을 쓸지 정하게 되는데,
+        지역변수에 대입되는 객체의 경우 매번 새로운 객체를 생성해서 대입하게 된다.
+    -->
+
+    <script  type="text/babel">
+
+        const {useState, useEffect, useMemo} = React;
+
+        function App() {
+            console.log('랜더링 확인...')
+
+            const [isKorea, setIsKorea] = useState(true);
+            const [num, setNum] = useState(0);
+
+            // useEffect가 mount 시점 및 location이 변할 때만 동작하도록 설정
+            useEffect(() => {
+                console.log('useEffect 동작함...')
+            }, [location]);
+
+            /*
+                1. 지역 변수에 문자열로 초기화
+                문자열은 자바스크립트에서 기본자료형이다.
+                location 값이 변하지만 useEffect가 동작하지 않는다.
+            */
+            // const location = isKorea ? '한국' : '외국';
+            
+            /* 2. 지역 변수에 객체로 초기화 */
+            // const location = {country : isKorea ? '한국' : '외국'};
+
+            /* 
+                3. 지역 변수에 useMemo의 반환값으로 초기화 
+                number state 변환 시 location 변화가 없게 된다.
+                왜냐? isKorea는 동일하기 때문!
+            */
+            const location = useMemo(() => {
+                return {
+                    country : isKorea ? '한국' : '외국'
+                }
+            }, [isKorea])
+
+            return(
+                <>
+                    <h2>지금 당신이 있는 국가는??</h2>
+                    <p>국가 : {location.country}</p>
+                    <button onClick={() => setIsKorea(!isKorea)}>국가 토글 버튼</button>
+                </>
+            );
+        }
+
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+</body>
+</html>

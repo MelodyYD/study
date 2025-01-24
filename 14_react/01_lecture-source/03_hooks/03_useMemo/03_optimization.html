@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        /*
+            일부러 시간이 오래 걸리는 계산기 만들어보기!
+        */
+
+        const {useState, useMemo} = React;
+        console.log('useMemo?', useMemo);
+
+        const hardCalculator = (num) => {
+            console.log('오래 걸리는 계산기 호출됨...');
+            // 의미없는 반복문으로 시간 끌기
+            for(let i = 0; i < 999999999; i++) {
+
+            }
+
+            return num + 10000;
+        }
+
+        const easyCalculator = (num) => {
+            console.log('시간이 오래 걸리지 않는 계산기 호출됨...')
+            return num + 10000;
+        }
+
+        function App() {
+            const [hardNum, setHardNum] = useState(0);
+            const [easyNum, setEasyNum] = useState(0);
+
+            // 리랜더링시마다 지역변수 초기화로 인한 지연 상황 발생
+
+            /*
+                간단한 작업을 할 때도 시간이 오래 걸리는 작업과 함께 수행하기에는 비효율적이기 때문에
+                hardCal 연산을 통해 나온 값을 메모리상에 저장(캐싱)해두고,
+                그 값이 변경되지 않을 때에는 다시 랜더링(연산)이 되지 않도록 한다.
+                    
+                연산으로 얻은 값 자체를 메모라이즈(메모리 상에 저장)하기 위해 사용되는 hooks가 useMemo이다.
+            */
+            const hardSum = useMemo(() => {
+                console.log('useMemo 어려운 계산기');
+                return hardCalculator(hardNum);
+            }, [hardNum]);
+            const easySum = useMemo(() => {
+                console.log('useMemo 쉬운 계산기');
+                return easyCalculator(easyNum);
+            }, [easyNum]);
+
+            // input 태그에 변화가 생길 때마다 update 시점에 리랜더링이 되면서 지역변수부터 return 구문까지 재실행이 된다.
+            // 따라서 지역변수는 state가 변할 때마다 초기화가 되면서 오래 걸리는 함수가 계속 동작을 하게 되어 화면이 지연된다.
+
+            return(
+                <>
+                    <h3>시간이 오래 걸리는 계산기</h3>
+                    <input 
+                        type="number"
+                        value={hardNum}
+                        onChange={(e) => setHardNum(parseInt(e.target.value))}
+                    />
+                    <span>+ 10000 = {hardSum}</span>
+                    <h3>시간이 오래 걸리지 않는 계산기</h3>
+                    <input 
+                        type="number"
+                        value={easyNum}
+                        onChange={(e) => setEasyNum(parseInt(e.target.value))}
+                    />
+                    <span>+ 10000 = {easySum}</span>
+                </>
+            );
+        }
+
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+</body>
+</html>
