@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        .page {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        .footer {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        /*
+            context 는 React 컴포넌트의 트리 안에서 전역적으로 데이터를 공유할 수 있도록
+            고안 된 방법이다.
+            트리 구조가 복잡해 질수록 하위 컴포넌트로 props 를 전달하기 위해 drilling 이
+            발생되게 되고, 유지보수성의 악화와 생산성 저하로 이루어질 수 있다.
+            따라서 Context (컨테이너의 개념) 를 사용하게 되면 하위 컴포넌트에게
+            props 를 전달하지 않아도 되고, 중앙에서 제어함으로서 유지보수성 향상이 된다.
+
+        */
+
+        // useContext 를 사용하기 위해서 create 즉 생성하는 녀석도 필요하다.
+        const {useState, useContext, createContext} = React;
+
+        // console.log(useContext);
+        // console.log(createContext);
+
+        /*
+            context 객체를 create 로 생성하게 되고, defaultValue 가
+            없는 경우에는 null 로 설정할 수 있다.
+            context 객체를 구독 하고 있는 컴포넌트를 렌더링 할 때
+            React 는 트리 상위에서 가장 가까이 있는 Provider 로 부터
+            현재 값을 읽어들인다. 이 때 적절한 provider 를 찾지 못 할 때
+            사용하는 값이 defaultValue 이다.
+        */
+        const DarkModeContext = createContext(null);
+
+        function App() {
+
+            const [isDark, setIsDark] = useState(false);
+
+            return (
+                /* Provider 란?
+                    value 라고 하는 프로퍼티를 이용해서 하위 컴포넌트에게
+                    값을 전달(제공)하는 역할을 한다.
+                    이 때 값을 전달 받을 수 있는 컴포넌트 수에는 제한이 없다.
+                    해당 값을 쓰고 싶은 컴포넌트는 Context 의 이름으로부터
+                    useContext 를 사용하여 필요한 순간 가져다 쓸 수 있다.
+                */
+                <DarkModeContext.Provider value={{isDark, setIsDark}}>
+                    <Page/>
+                </DarkModeContext.Provider>
+                
+            );
+        }
+
+        function Page() {
+            return(
+                <div className="page">
+                      <Header/>
+                      <Content/>
+                      <Footer/>  
+                </div>
+            );
+        }
+
+        function Header() {
+
+            const context = useContext(DarkModeContext);
+            // console.log('context', context);
+
+            // const isDark = context.isDark;
+            const {isDark} = context;
+            return(
+                <header 
+                    className="header"
+                    style={{
+                        backgroundColor: isDark ? 'black' : 'lightgray',
+                        color: isDark ? 'white' : 'black'
+                    }}
+                >
+                    <h1>하이미디어 다크모드</h1>
+                </header>
+            );
+        }
+
+        function Content() {
+
+            const context = useContext(DarkModeContext);
+            const {isDark} = context;
+
+            return(
+                <div
+                    className="content"
+                    style={{
+                        backgroundColor: isDark ? 'black' : 'brown',
+                        color: isDark ? 'white' : 'black'
+                    }}
+                >
+                    <h2>내용이 들어갈 영역</h2>
+                </div>
+            );
+        }
+
+        function Footer() {
+
+            const context = useContext(DarkModeContext);
+            const {isDark, setIsDark} = context;
+
+            // 부모로 부터 전달받은 setter 함수
+            const lightButtonHandler = () => setIsDark(!isDark);
+
+            return(
+                <footer
+                    className="footer"
+                    style={{
+                        backgroundColor: isDark ? 'black' : 'lightgray',
+                        color: isDark ? 'white' : 'black'
+                    }}
+                >
+                    <button onClick={lightButtonHandler}>
+                         {isDark ? '라이트모드' : '다크모드'}   
+                    </button>
+                    <h3>하이미디어 저작권. 주소 : 신촌 하이미디어 7층</h3>
+                </footer>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+
+</body>
+</html>

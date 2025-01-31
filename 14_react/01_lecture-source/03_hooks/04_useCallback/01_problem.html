@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const {useState, useEffect} = React;
+
+        function App() {
+            const [number, setNumber] = useState(0);
+            const [toggle, setToggle] = useState(false);
+
+            const printNumber = () => {
+                console.log('현재 number state : ', number);
+            }
+
+            // 랜더링 이후 시점에 동작
+            // number or toggle state가 변경될 때마다 print 함수가 재할당되어 로그가 계쏙 발생하고 있다.
+            // 하지만 매번 함수가 생성되어 반환되고, useEffect에서는 해당 지역 변수에 변화가 있다고 인지한다.
+            useEffect(() => {
+                console.log('printNumber 값 변화 인지됨');
+            }, [printNumber]);
+
+            return(
+                <>
+                    <input type="number" value={number} onChange={e => setNumber(e.target.value)}/>
+                    {/* jsx 문법 내 주석 표기법 
+                        boolean 타입의 값은 문자열로 변경해야 화면상에 JSX 문법으로 노출이 된다.
+                    */}
+                    <button onClick={() => setToggle(!toggle)}>{String(toggle)}</button>
+                    <br/>
+                    <button onClick={printNumber}>PrintNumberState</button>
+                </>
+            );
+        }
+        
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+</body>
+</html>

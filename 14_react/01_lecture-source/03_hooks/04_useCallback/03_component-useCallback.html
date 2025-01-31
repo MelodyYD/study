@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const {useState, useEffect, useCallback} = React;
+
+        function App() {
+
+            const [size, setSize] = useState(200);
+            const [isDark, setIsDark] = useState(false);
+
+            // 자식 컴포넌트 전달해줄 값
+            // const squareStyle = {
+            //     backgroundColor: 'red',
+            //     width: `${size}px`,
+            //     height: `${size}px`
+            // }
+
+            const squareStyle = useCallback(
+                () => {
+                    return {
+                        backgroundColor: 'red',
+                        width: `${size}px`,
+                        height: `${size}px`
+                    }
+                }, [size]
+            );
+
+            return(
+                <div style={{backgroundColor: isDark ? 'black' : 'white'}}>
+                    <input type="range" min="100" max="300" onChange={(e) => setSize(e.target.value)}/>
+                    <button onClick={() => setIsDark(!isDark)}>{isDark.toString()}</button>
+                    <Square squareStyle={squareStyle}/>
+                </div>
+            );
+        }
+
+        function Square({squareStyle}) {
+            const [style, setStyle] = useState({});
+
+            /*
+                부모인 APP 컴포넌트가 업데이트되어 자식인 Square도 리렌더링이 될 때,
+                부모가 주는 props에 변화가 생길 때 자시곧 어쩔 수 없이 리렌더링이 된다.
+            */
+            useEffect(() => {
+                console.log('style 변경')
+                setStyle(squareStyle);
+            }, [])
+
+            return(
+                <div style={style}></div>
+            );
+        }
+        
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+    <style>
+        .page {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        .footer {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const {useState} = React;
+
+        function App() {
+
+            const [isDark, setIsDark] = useState(false);
+            
+            return <Page isDark={isDark} setIsDark={setIsDark}/>
+        }
+
+        function Page({isDark, setIsDark}) {
+            return(
+                <div className="page">
+                    <Header isDark={isDark}/>
+                    <Content isDark={isDark}/>
+                    <Footer isDark={isDark} setIsDark={setIsDark}/>
+                </div>
+            );
+        }
+
+        function Header({isDark}) {
+            return (
+                <header className="header" style={{
+                    backgroundColor: isDark ? 'black' : 'rightgray',
+                    color: isDark ? 'white' : 'black'
+                }}>
+                    <h1>하이미디어 다크모드</h1>
+                </header>
+            )
+        }
+
+        function Content({isDark}) {
+            return(
+                <div className="content" style = {{
+                    backgroundColor: isDark ? 'black' : 'white',
+                    color: isDark ? 'white' : 'black'
+                }}>
+                    <h2>내용이 들어갈 영역</h2>
+                </div>
+            );
+        }
+        
+        function Footer({isDark, setIsDark}) {
+            const lightButtonHandler = () => setIsDark(isDark);
+            return(
+                <footer className="footer" style = {{
+                    backgroundColor: isDark ? 'black' : 'rightgray',
+                    color: isDark ? 'white' : 'black'
+                }}>
+                <button onClick = {lightButtonHandler}>{isDark ? '라이트 모드' : '다크 모드'}</button>
+                <h3>하이미디어 저작권. 주소: 신촌동 하이미디어 7층</h3>
+                </footer>
+            );
+        }
+        
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+</body>
+</html>

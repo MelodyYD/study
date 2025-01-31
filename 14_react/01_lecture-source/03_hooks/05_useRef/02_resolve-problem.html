@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const {useState, useRef} = React;
+        // console.log(useRef);
+
+        function App() {
+            console.log('App 컴포넌트 렌더링됨!');
+
+            /*
+                state의 변화
+                지역 변수의 변화
+                useRef의 변화
+            */
+            const [num, setNum] = useState(0);
+            let variable = 0;
+            const numRef = useRef(0);
+
+            const increaseNumber = () => setNum(num+1);
+
+            /*
+                지역변수에 변화를 주더라도 Update에 해당하지는 않기 때문에
+                언마운트 및 마운트가 일어나지 않아 화면 상에 변화가 존재할 수 없다.
+            */
+            const increaseVariable = () => {
+                variable += 1;
+                console.log('variable?', variable);
+            };
+
+            /*
+                useRef에 변화를 주더라도 Update에 해당하지 않기 때문에
+                언마운트 및 마운트가 일어나지 않아 화면에 변화는 없다.
+            */
+            const increaseRef = () => {
+                // console.log(numRef.current);
+                numRef.current = numRef.current +1;
+                console.log('currentValue : ', numRef.current);
+            };
+
+            return(
+                <>
+                    <h1>Number : {num}</h1>
+                    <h1>Variable : {variable}</h1>
+                    <h1>NumberRef : {numRef.current}</h1>
+                    <button onClick={increaseNumber}>넘버 증가</button>
+                    <button onClick={increaseVariable}>Variable 증가</button>
+                    <button onClick={increaseRef}>Ref 증가</button>
+                </>
+            );
+        }
+        
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+</body>
+</html>
