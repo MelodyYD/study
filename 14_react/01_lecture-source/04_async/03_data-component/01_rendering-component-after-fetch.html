@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        .user {
+            background-color: bisque;
+            border: 1px solid gray;
+            width: 400px;
+            display: inline-block;
+            margin: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const {useEffect, useState} = React;
+
+        function App() {
+            return(
+                <>
+                    <Title/>
+                    <UserList/>
+                </>
+            )
+        }
+
+        function Title() {
+            return <h1>회원 목록</h1>
+        }
+
+        function UserList() {
+            // 관리할 유저 데이터
+            const [users, setUsers] = useState([]);
+            console.log('users?', users);
+
+            useEffect(() => {
+                console.log(useEffect);
+                fetch('https://jsonplaceholder.typicode.com/users')
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('data?', data);
+                        setUsers(data);
+                    })
+            }, [])      // useEffect의 두 번째 인자인 [](의존성 배열)는 마운트 시점에만 동작하게 된다.
+                        // 지금은 마운트 시점에만 동작하게 하기 위해 비워둔다.
+
+            return(
+                <div>
+                    {users.map(user => <User key={user.id} user = {user}/>)}
+                </div>
+            );
+        }
+
+        function User({user}) {
+            console.log('user?', user);
+            return(
+                <div className='user'>
+                    <h4>{user.name}</h4>
+                    <p>
+                        id : {user.id}<br/>
+                        email : {user.email}<br/>
+                        phone : {user.phone}<br/>
+                    </p>
+                </div>
+            );
+        }
+        
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+</body>
+</html>

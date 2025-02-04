@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*
+            
+        */
+        function increase(num) {
+
+            const promise = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const result = num + 10;
+
+                    if(result > 50) {
+                        const error = new Error("숫자가 너무 큽니다!!!");
+                        // 비동기 처리가 실패했을 때 사용하는 reject(거절)
+                        return reject(error);
+                    }
+
+                    // 성공 시에 사용하는 resolve(해소, 성공)
+                    resolve(result);
+
+                }, 1000)
+            });
+
+            return promise;
+        }
+
+        /*
+            await 의 기능
+            1. await 가 달린 함수의 결과인 promise에 담긴 resolve 결과를 반환하게 된다.
+            2. await 가 달린 비동기 처리들은 동기식으로 동작하게 된다.
+        */
+        async function run() {
+            try {
+                let result = await increase(0);
+                console.log(result);
+
+                result = await increase(result);
+                console.log(result);
+
+                result = await increase(result);
+                console.log(result);
+
+                result = await increase(result);
+                console.log(result);
+
+                result = await increase(result);
+                console.log(result);
+
+                result = await increase(result);
+                console.log(result);
+            } catch(e) {
+                console.log(e, '발생!!!');
+            }
+        }
+
+    </script>
+</body>
+</html>

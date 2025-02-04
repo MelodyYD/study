@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        /*
+            JS를 활용해서 서버에 요청을 보내고 응답을 받을 수 있다.
+            fetch api 를 대표적으로 사용을 해보았다.
+
+            fetch(url, [options])
+            url : 우리가 접근하고자 하는 요청 URL
+            options : 선택적으로 작성 가능하며, httpMethod, header, body 등을 작성할 수 있다.
+
+            [] 대괄호의 의미는 생략이 가능하다는 의미이며, 생략시에는 default로 GET 메소드가 된다.
+        */
+
+        async function callAPI() {
+            const promise = fetch('https://jsonplaceholder.typicode.com/users');
+            console.log('promise?', promise);
+            // 대괄호 표기법으로 promise 객체의 프로퍼티 접근하기
+            // console.log(promise['[[PromiseResult]]']);
+
+            // 1. await 를 활용하여 응답 객체 꺼내기
+            const response = await promise;
+            console.log(response);
+            
+            console.log(`응답 상태 : ${response.status}`);
+
+            // 2. response 객체의 json() 메소드 : 결과로 넘어오는 json 문자열을 파싱
+            const json = await response.json();
+            console.log(json);
+
+            // 아래 결과와 async await 결과가 같다!
+            // promise.then(res => res.json())
+            //        .then(data => console.log(data));
+        }
+       
+        function App() {
+
+            const onClickHandler = () => {
+               callAPI();
+            }
+
+           return <button onClick={onClickHandler}>API 요청!!</button>
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+</body>
+</html>

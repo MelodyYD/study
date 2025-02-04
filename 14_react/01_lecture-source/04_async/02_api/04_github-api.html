@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        /*
+            1. 관리할 상태값
+               - input 검색어
+               - image
+
+            2. 발생하는 이벤트
+               - input change 이벤트
+               - button click 이벤트
+
+            3. 컴포넌트
+               - App
+               - searchBox
+               - imageBox
+
+            4. 시점
+               - 검색 버튼 누를 시 이미지 경로 set
+        */
+
+        const {useState} = React;
+
+        function App() {
+
+            const [imgUrl, setImgUrl] = useState('');
+
+            return(
+                <>
+                    <SearchBox setImgUrl={setImgUrl}/>
+                    <br/>
+                    <ImageBox imgUrl={imgUrl}/>
+                </>
+            )
+        }
+
+        function SearchBox({setImgUrl}) {
+            
+            // input 창에 입력할 이미지 이름 관리
+            const [imgName, setImgName] = useState('');
+
+            const onChangeHandler = e => {
+                setImgName(e.target.value);
+            };
+
+            const onClickHandler = () => {
+                // 버튼 클릭시 api 로부터 이모지 데이터를 조회한다.
+                
+                // 1. fetch
+                // fetch('https://api.github.com/emojis')
+                //     .then(res => res.json())
+                //     .then(data => {
+                //         console.log(data);
+                //         setImgUrl(data[imgName])
+                //     })
+
+                // 2. axios 방식
+                // axios.get('https://api.github.com/emojis')
+                //      .then(res => {
+                //         console.log(res);
+                //         console.log(res.data);
+                //         setImgUrl(res.data[imgName])
+                //     });
+
+                // 3. async / await 방식 
+            };
+            
+            return(
+                <>
+                    <input type="text" onChange={onChangeHandler}/>
+                    <button onClick={onClickHandler}>검색</button>
+                </>
+            )
+        }
+
+        function ImageBox({imgUrl}) {
+
+            return !!imgUrl ? <img src={imgUrl}/> : <h1>검색 결과 없음!</h1>
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    </script>
+</body>
+</html>
