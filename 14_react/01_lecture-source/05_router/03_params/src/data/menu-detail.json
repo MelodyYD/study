@@ -1,0 +1,233 @@
+[
+    {
+       "menuCode":1,
+       "menuName":"열무김치라떼",
+       "menuPrice":4500,
+       "categoryName":"쥬스",
+       "isOrderable":true,
+       "detail": {
+           "description": "갓 담근 열무김치를 착즙한 순도 100% 열무김치와 대관령 목장에서 방금 짜낸 싱싱한 우유의 조합",
+           "image": "/images/1.PNG"
+       }
+    },
+    {
+       "menuCode":2,
+       "menuName":"우럭스무디",
+       "menuPrice":5000,
+       "categoryName":"쥬스",
+       "isOrderable":true,
+       "detail": {
+           "description": "태안 바다에서 갓 잡아올린 싱싱한 우럭을 이용한 상큼한 스무디",
+           "image": "/images/2.PNG"
+       }
+    },
+    {
+       "menuCode":3,
+       "menuName":"생갈치쉐이크",
+       "menuPrice":6000,
+       "categoryName":"쥬스",
+       "isOrderable":true,
+       "detail": {
+           "description": "목포 밤바다를 누비는 생갈치를 이용한 고단백 쉐이크 음료",
+           "image": "/images/3.PNG"
+       }
+    },
+    {
+       "menuCode":4,
+       "menuName":"갈릭미역파르페",
+       "menuPrice":7000,
+       "categoryName":"기타",
+       "isOrderable":true,
+       "detail": {
+           "description": "향균작용이 뛰어난 생마늘과 혈행개선에 도움을 주는 미역을 이용한 건강한 디저트 파르페",
+           "image": "/images/4.PNG"
+       }
+    },
+    {
+       "menuCode":5,
+       "menuName":"앙버터김치찜",
+       "menuPrice":13000,
+       "categoryName":"한식",
+       "isOrderable":true,
+       "detail": {
+           "description": "남녀노소 불문 좋아하는 앙버터를 이용한 전통 방식의 김치찜",
+           "image": "/images/5.PNG"
+       }
+    },
+    {
+       "menuCode":6,
+       "menuName":"생마늘샐러드",
+       "menuPrice":12000,
+       "categoryName":"한식",
+       "isOrderable":true,
+       "detail": {
+           "description": "흡혈귀에게 물리지 않기 위해 하루 한 끼는 꼭 먹어야 할 생마늘 샐러드",
+           "image": "/images/6.PNG"
+       }
+    },
+    {
+       "menuCode":7,
+       "menuName":"민트미역국",
+       "menuPrice":15000,
+       "categoryName":"한식",
+       "isOrderable":true,
+       "detail": {
+           "description": "미역국의 텁텁한 맛을 상쾌한 민트를 이용해 밸런스를 맞춘 신개념 미역국",
+           "image": "/images/7.PNG"
+       }
+    },
+    {
+       "menuCode":8,
+       "menuName":"한우딸기국밥",
+       "menuPrice":20000,
+       "categoryName":"한식",
+       "isOrderable":true,
+       "detail": {
+           "description": "한우 국밥의 구수함과 제철 딸기의 오묘한 조합으로 이끌어낸 최고의 한 끼 메뉴",
+           "image": "/images/8.PNG"
+       }
+    },
+    {
+       "menuCode":9,
+       "menuName":"홍어마카롱",
+       "menuPrice":9000,
+       "categoryName":"서양",
+       "isOrderable":true,
+       "detail": {
+           "description": "매니아라면 자다가도 벌떡 일어나는 홍어를 이용한 마카롱 삼합",
+           "image": "/images/9.PNG"
+       }
+    },
+    {
+       "menuCode":10,
+       "menuName":"코다리마늘빵",
+       "menuPrice":7000,
+       "categoryName":"동양",
+       "isOrderable":true,
+       "detail": {
+           "description": "마늘빵의 알싸한 향을 코다리의 담백함으로 채운 한 끼 식사로도 충분한 영양 만점 디저트",
+           "image": "/images/10.PNG"
+       }
+    },
+    {
+       "menuCode":11,
+       "menuName":"정어리빙수",
+       "menuPrice":10000,
+       "categoryName":"기타",
+       "isOrderable":true,
+       "detail": {
+           "description": "뼈 째 넣은 정어리의 칼슘이 더해진 성장기 어린이들이 좋아하는 정어리 빙수",
+           "image": "/images/11.PNG"
+       }
+    },
+    {
+       "menuCode":12,
+       "menuName":"날치알스크류바",
+       "menuPrice":2000,
+       "categoryName":"기타",
+       "isOrderable":true,
+       "detail": {
+           "description": "톡톡 튀는 식감을 가지고 베베 꼬아 만든 스크류 바",
+           "image": "/images/12.PNG"
+       }
+    },
+    {
+       "menuCode":13,
+       "menuName":"직화구이젤라또",
+       "menuPrice":8000,
+       "categoryName":"기타",
+       "isOrderable":true,
+       "detail": {
+           "description": "젤라또는 차갑게 먹는다는 편견을 깬 800도씨 화덕에 직접 구운 직화구이 젤라또",
+           "image": "/images/13.PNG"
+       }
+    },
+    {
+       "menuCode":14,
+       "menuName":"과메기커틀릿",
+       "menuPrice":13000,
+       "categoryName":"일식",
+       "isOrderable":true,
+       "detail": {
+           "description": "포항의 유명한 과메기를 남녀노소 누구나 먹을 수 있도록 신선한 기름에 튀겨낸 커틀릿",
+           "image": "/images/14.PNG"
+       }
+    },
+    {
+       "menuCode":15,
+       "menuName":"죽방멸치튀김우동",
+       "menuPrice":11000,
+       "categoryName":"일식",
+       "isOrderable":true,
+       "detail": {
+           "description": "죽방멸치 튀김과 일본 큐슈의 전통 우동 육수 비법을 조합한 죽방멸치 튀김우동",
+           "image": "/images/15.PNG"
+       }
+    },
+    {
+       "menuCode":16,
+       "menuName":"흑마늘아메리카노",
+       "menuPrice":9000,
+       "categoryName":"커피",
+       "isOrderable":true,
+       "detail": {
+           "description": "국내산 흑마늘 100%를 로스팅하여 핫브루 방식으로 추출한 아메리카노",
+           "image": "/images/16.PNG"
+       }
+    },
+    {
+       "menuCode":17,
+       "menuName":"아이스가리비관자육수",
+       "menuPrice":6000,
+       "categoryName":"쥬스",
+       "isOrderable":true,
+       "detail": {
+           "description": "가리비 관자의 깊은 맛을 잘 살린 한 여름 인기 메뉴 아이스 가리비 관자 육수",
+           "image": "/images/17.PNG"
+       }
+    },
+    {
+       "menuCode":18,
+       "menuName":"붕어빵초밥",
+       "menuPrice":35000,
+       "categoryName":"일식",
+       "isOrderable":true,
+       "detail": {
+           "description": "초밥 어디까지 먹어봤니? 밥도 먹고 빵도 먹고 일석이조 붕어빵초밥",
+           "image": "/images/18.PNG"
+       }
+    },
+    {
+       "menuCode":19,
+       "menuName":"까나리코코넛쥬스",
+       "menuPrice":9000,
+       "categoryName":"쥬스",
+       "isOrderable":true,
+       "detail": {
+           "description": "코코넛 쥬스에 까나리 액젓을 첨가하여 깊은 맛을 표현해 낸 대표 음료",
+           "image": "/images/19.PNG"
+       }
+    },
+    {
+       "menuCode":20,
+       "menuName":"마라깐쇼한라봉",
+       "menuPrice":22000,
+       "categoryName":"쥬스",
+       "isOrderable":true,
+       "detail": {
+           "description": "마라 매니아층을 겨냥한 한라봉 쥬스",
+           "image": "/images/20.PNG"
+       }
+    },
+    {
+       "menuCode":21,
+       "menuName":"돌미나리백설기",
+       "menuPrice":5000,
+       "categoryName":"한식",
+       "isOrderable":true,
+       "detail": {
+           "description": "거름이 풍성한 미나리깡에서 수확한 국내산 돌미나리를 이용한 백설기",
+           "image": "/images/21.PNG"
+       }
+    }
+ ]

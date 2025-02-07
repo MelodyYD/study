@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+    <script src="https://unpkg.com/redux@4.2.0/dist/redux.js"></script>
+    <script src="https://unpkg.com/react-redux@8.0.4/dist/react-redux.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const {Provider, useSelector, useDispatch} = ReactRedux;
+        const {combineReducers, createStore} = Redux;
+
+        // 관리할 3가지의 state 초기값 설정
+        const countInitState = {count : 5};
+        const toggleInitState = {isTrue : false};
+        const inputInitState = {
+            name: '', email: '', phone: ''
+        };
+
+        /*
+            리듀서 함수 작성시 state가 객체 형식일 때 state 객체에 변화를 주기 위해서는
+            반드시 새로운 객체를 생성해서 반환해야 한다.
+        */
+
+        // 3개의 reducer를 묶어두는 root
+        const rootReducer = combineReducers({
+            countReducer : (state = countInitState, {type, payload}) => {
+                console.log('countReducer 호출됨!');
+                switch(type) {
+                    case 'INCREMENT':
+                        return {count: state.count + payload.incrementValue}
+                    case 'DECREMENT':
+                        return {count: state.count - payload.decrementValue}
+                    default:
+                        return state;
+                }
+            },
+            toggleReducer : (state = toggleInitState, {type}) => {
+                console.log('toggle 리듀서 호출됨!!!')
+                switch(type) {
+                    case 'TOGGLE':
+                        return {isTrue : !state.isTrue};
+                    default:
+                        return state;
+                }
+            },
+            inputReducer : (state = inputInitState, {type, payload}) => {
+                console.log('inputReducer 호출됨!!!');
+                switch(type) {
+                    case 'INPUT':
+                        return {
+                            ...state,
+                            [payload.name]: payload.value
+                        };
+                    default:
+                        return state;
+                }
+            }
+        });
+
+        // 위에 만든 rootReducer를 store 생성과 함께 등록
+        // store 생성시에는 reducer를 단 한 개만 사용할 수 있기 때문에 combineReducer로 묶는 것이다. (어쩔 수 없다...)
+        const store = createStore(
+            rootReducer,
+            /* 크롬 확장 프로그램(redux_devtools) 설치 후 적용 위한 구문 */
+            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        )
+
+        function App() {
+            //useSeletor를 출력했을 때 root가 관리하는 reducer들이 들어있고, 각각의 state가 value로 들어가있다.
+            // console.log(useSelector(state => state));
+            const dispatch = useDispatch();
+
+            const {count} = useSelector(state => state.countReducer);
+            const {isTrue} = useSelector(state => state.toggleReducer);
+            const {name, email, phone} = useSelector(state => state.inputReducer);
+
+            const increase = () => {
+                dispatch({
+                    type: 'INCREMENT',
+                    payload: {incrementValue : 1}
+                })
+            }
+
+            const decrease = () => {
+                dispatch({
+                    type: 'DECREMENT',
+                    payload: {decrementValue : 1}
+                })
+            }
+
+            const toggleAction = () => {
+                dispatch({
+                    type: 'TOGGLE'
+                })
+            }
+
+            const onChangeHandler = e => {
+                dispatch({
+                    type: 'INPUT',
+                    payload: {
+                        name : e.target.name,
+                        value : e.target.value
+                    }
+                })
+            }
+
+            return(
+                <>
+                    <h1>Count : {count}</h1>
+                    <button onClick={increase}>+ 1</button>
+                    <button onClick={decrease}>- 1</button>
+                    <br/>
+
+                    <h1>isTrue : {isTrue.toString()}</h1>
+                    <button onClick={toggleAction}>Toggle</button>
+                    <br/>
+
+                    <h3>input form</h3>
+                    <label>name : </label>
+                    <input type="text" name="name" value={name} onChange={onChangeHandler}/><br/>
+                    
+                    <label>email : </label>
+                    <input type="text" name="email" value={email} onChange={onChangeHandler}/><br/>
+
+                    <label>phone : </label>
+                    <input type="text" name="phone" value={phone} onChange={onChangeHandler}/><br/>
+
+                    <h3>name : {name}</h3>
+                    <h3>email : {email}</h3>
+                    <h3>phone : {phone}</h3>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root'))
+                .render(
+                    <Provider store={store}>
+                        <App/>
+                    </Provider>
+                );
+    </script>
+</body>
+</html>

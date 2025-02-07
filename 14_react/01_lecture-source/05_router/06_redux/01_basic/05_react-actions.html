@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+    <script src="https://unpkg.com/redux@4.2.0/dist/redux.js"></script>
+    <script src="https://unpkg.com/react-redux@8.0.4/dist/react-redux.js"></script>
+    <script src="https://unpkg.com/redux-actions@2.6.5/dist/redux-actions.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const {Provider, useSelector, useDispatch} = ReactRedux;
+        const {createStore} = Redux;
+        const {createAction, createActions, handleActions} = ReduxActions;
+        console.log(ReduxActions);
+
+        // CountModule.js
+        /*******************************************************************************/
+
+        // 1. 초기값
+        const initCount = 0;
+
+        // 2. 액션
+        // 액션은 주로 행위를 나타내기 때문에 동사형으로 작성하는 것이 일반적이다.
+        const INCREMENT = 'count/INCREASE';
+        const DECREMENT = 'count/DECREASE';
+
+        /* 1. createAction 사용 */
+        // const increase = createAcion(INCREMENT, (amount = 1) => ({incrementValue : amount}));
+        // const decrease = createAcion(DECREMENT, (amount = 1) => ({decrementValue : amount}));
+
+        // 2-2. createActions 사용해서 액션을 한번에 다루기
+        const {count : {increase, decrease}} = createActions({
+            [INCREMENT] : (amount = 1) => ({incrementValue : amount}),
+            [DECREMENT] : (amount = 1) => ({decrementValue : amount})
+        })
+
+        // 3. 리듀서
+        // handleActions를 사용해서 create한 action 핸들링 switch 쓰지 말고 키값과 일치하는 액션 호출하기
+        // 첫 번째 : 핸들링할 액션 함수
+        // 두 번째 : 초기값
+        const reducer = handleActions({
+            [INCREMENT] : (state, {payload : {incrementValue}}) => {
+                return state + incrementValue;
+            },
+            [DECREMENT] : (state, {payload : {decrementValue}}) => {
+                return state - decrementValue;
+            }
+        }, initCount)
+
+        /*******************************************************************************/
+
+        // src/pages/Count.js
+        /*******************************************************************************/
+
+        function Count() {
+
+            const count = useSelector(state => state);
+            const dispatch = useDispatch();
+
+            const increaseCount = () => {
+                dispatch(increase());
+            }
+
+            const decreaseCount = () => {
+                dispatch(decrease());
+            }
+
+            return(
+                <>
+                    <h1>Count : {count}</h1>
+                    <button onClick={increaseCount}>+ 1</button>
+                    <button onClick={decreaseCount}>- 1</button>
+                </>
+            );
+        }
+
+        /*******************************************************************************/
+
+        // src/store.js
+        /*******************************************************************************/
+
+        const store = createStore(
+            reducer,
+            /* 크롬 확장 프로그램(redux_devtools) 설치 후 적용 위한 구문 */
+            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        )
+
+        /*******************************************************************************/
+
+        // src/index.js
+        /*******************************************************************************/
+
+        ReactDOM.createRoot(document.getElementById('root'))
+                .render(
+                    <Provider store={store}>
+                        <Count/>
+                    </Provider>
+                )
+
+        /*******************************************************************************/
+
+    </script>
+</body>
+</html>
