@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/redux@4.2.0/dist/redux.js"></script>
+    <script src="https://unpkg.com/react-redux@8.0.4/dist/react-redux.js"></script>
+    <script src="https://unpkg.com/redux-actions@2.6.5/dist/redux-actions.js"></script>
+    <script src="https://unpkg.com/redux-logger@3.0.6/dist/redux-logger.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // 커스텀 미들웨어 만들기
+        const loggingMiddleware = store => next => action => {
+    
+            console.log('action', action);
+        
+            const result = next(action); 
+
+            return result;
+        }
+
+        // redux-logger 미들웨어 (누군가가 만들어둔 middleware)
+        const logger = reduxLogger.createLogger();
+
+        // module.js
+        /*-----------------------------------------------------*/
+        const {createActions, handleActions} = ReduxActions;
+
+        // 1. 초기값 - 우리가 관리할 상태의 초기값 지정
+        // 배열이면 [], 객체면 {} 등등 여러분들이 넘기는 API 값을 생각!!
+        const initState = 0;
+
+        // 2. 액션
+        const INCREMENT = 'count/INCREASE';
+        const DECREMENT = 'count/DECREASE';
+
+        // 3. 액션 함수
+        const {count : {increase, decrease}} = createActions({
+            [INCREMENT] : (amount = 1) => ({incrementValue : amount}),
+            [DECREMENT] : (amount = 1) => ({decrementValue : amount}),
+        });
+
+        // 위에 식에서 구조분해 할당이 왜 일어나는 지 출력하는 구문
+        // console.log('actions', actions);
+
+        // 4. 리듀서 - 액션에 따라 수행해야 할 내용
+        const reducer = handleActions({
+            [INCREMENT] : (state, {payload : {incrementValue}}) => {
+                return state + incrementValue;
+            },
+            [DECREMENT] : (state, {payload : {decrementValue}}) => {
+                return state - decrementValue;
+            }
+        }, initState);
+
+
+        /*-----------------------------------------------------*/
+
+
+        const {useDispatch, useSelector} = ReactRedux;
+
+        function App() {
+
+            const count = useSelector(state => state);
+            const dispatch = useDispatch();
+
+            const increaseCount = () => {
+                dispatch(increase());
+            }
+            const decreaseCount = () => {
+                dispatch(decrease());
+            }
+
+            return(
+                <>
+                    <h1>Count : {count}</h1>
+                    <button onClick={increaseCount}>+ 1</button>
+                    <button onClick={decreaseCount}>- 1</button>
+                </>
+            ); 
+            
+        }
+
+        const {createStore, applyMiddleware} = Redux;
+
+        const store = createStore(
+            reducer,
+            // 우리가 생성한 미들웨어 등록하는 방법
+            // store 생성 시에 같이 넣어준다.
+
+            // 생성한 redux-logger , store 생성 시 등록하기
+            applyMiddleware(loggingMiddleware, logger)
+        )
+
+        const {Provider} = ReactRedux;
+
+        ReactDOM.createRoot(document.getElementById('root'))
+                .render(
+                    <Provider store={store}>
+                        <App/>
+                    </Provider>
+                );
+    </script>
+</body>
+</html>
